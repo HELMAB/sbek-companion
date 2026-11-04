@@ -59,6 +59,10 @@ Subscribers must confirm by email, so your site needs to be able to send mail. U
 
 Nothing is deleted. Languages, translations, news details, subscribers and settings stay in the database and come back when the plugin is activated again.
 
+= And if I delete it? =
+
+Deleting the plugin under *Plugins* removes everything it stored: settings, newsletter subscribers, news details, translation links, the post languages, English category names and its caches. Export the subscribers (CSV) first if you want to keep them. Imported demo posts and images stay, as ordinary content; remove them under *Tools* before deleting the plugin if you don't want them. The theme's own settings are not touched.
+
 == External services ==
 
 The plugin connects to other services only in these cases:
