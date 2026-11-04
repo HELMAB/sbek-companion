@@ -1,0 +1,646 @@
+/*
+ * Sbek — wp-login.php branding.
+ * Hand-authored plain CSS (not part of the Tailwind build): this page lives
+ * outside the theme's template scan and renders before any app CSS exists.
+ *
+ * Layout: a grid on <body>. From 900px the brand panel fills the left
+ * column; the right column holds #login (vertically centered) with core's
+ * language switcher pinned under it. Below 900px it is one column and a
+ * brand-colored strip at the top keeps the identity.
+ *
+ * Colors and the font come from Sbek Theme → Design: sbek_login_design()
+ * (inc/design.php) overrides the tokens below and adds the @font-face rules.
+ * Covers every wp-login.php screen (log in, lost / reset password, register,
+ * confirm admin email) and the interim re-login modal.
+ */
+
+body.login {
+    --sbek-radius: 0.75rem;
+    --sbek-radius-sm: 0.5rem;
+    --sbek-bg: #f8fafc;
+    --sbek-card: #ffffff;
+    --sbek-border: #e2e8f0;
+    --sbek-fg: #0f172a;
+    --sbek-muted-fg: #64748b;
+    --sbek-primary: #fa1939;
+    --sbek-primary-hover: #d90c16;
+    --sbek-on-primary: #ffffff;
+    --sbek-ring: 250 25 57;
+    --sbek-panel-from: #fa1939;
+    --sbek-panel-to: #7d0d1d;
+    --sbek-on-panel: #ffffff;
+    --sbek-danger: #dc2626;
+    --sbek-success: #16a34a;
+    --sbek-font: "Battambang", Arial, Helvetica, sans-serif;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    background: var(--sbek-bg);
+    border-top: 4px solid var(--sbek-primary);
+    box-sizing: border-box;
+    color: var(--sbek-fg);
+    font-family: var(--sbek-font);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* ---------- Left brand panel ---------- */
+.sbek-login-panel {
+    display: none; /* shown from 900px */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sbek-panel-from) 0%, var(--sbek-panel-to) 100%);
+    color: var(--sbek-on-panel);
+}
+
+@media (min-width: 900px) {
+    body.login {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        border-top: 0;
+    }
+
+    .sbek-login-panel {
+        display: flex;
+        grid-column: 1;
+        grid-row: 1 / -1;
+    }
+
+    body.login #login,
+    body.login .language-switcher {
+        grid-column: 2;
+    }
+}
+
+/* The re-login modal inside wp-admin is narrow: form only. */
+body.login.interim-login {
+    grid-template-columns: minmax(0, 1fr);
+    border-top: 0;
+}
+
+body.login.interim-login .sbek-login-panel {
+    display: none;
+}
+
+/*
+ * Diagonal striped grid, revealed through a drifting circular spotlight
+ * mask — a subtle texture in the on-panel color.
+ */
+.sbek-login-panel__grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    background-image:
+        linear-gradient(90deg, currentColor 1px, transparent 0),
+        linear-gradient(180deg, currentColor 1px, transparent 0),
+        repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 6px);
+    background-size: 24px 24px;
+    -webkit-mask-image: radial-gradient(circle, black 0, transparent 30%);
+    mask-image: radial-gradient(circle, black 0, transparent 30%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 220% 220%;
+    mask-size: 220% 220%;
+    -webkit-mask-position: 15% 20%;
+    mask-position: 15% 20%;
+    animation: sbekSpotlight 12s ease-in-out infinite;
+}
+
+@keyframes sbekSpotlight {
+    0%, 100% { -webkit-mask-position: 15% 20%; mask-position: 15% 20%; }
+    25%      { -webkit-mask-position: 85% 15%; mask-position: 85% 15%; }
+    50%      { -webkit-mask-position: 80% 85%; mask-position: 80% 85%; }
+    75%      { -webkit-mask-position: 20% 80%; mask-position: 20% 80%; }
+}
+
+.sbek-login-panel__content {
+    position: relative;
+    z-index: 2;
+    max-width: 26rem;
+    padding: 3rem;
+}
+
+.sbek-login-panel__title {
+    margin: 0 0 1rem;
+    font-size: clamp(1.875rem, 2.6vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    animation: sbekFadeUp 0.8s ease-out 0.15s both;
+}
+
+.sbek-login-panel__subtitle {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    animation: sbekFadeUp 0.8s ease-out 0.3s both;
+}
+
+/* Floating decorative shapes */
+.sbek-login-shape {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.08;
+    animation: sbekFloat 9s ease-in-out infinite;
+}
+
+.sbek-login-shape--1 { width: 220px; height: 220px; top: -60px; left: -60px; animation-duration: 9s; }
+.sbek-login-shape--2 { width: 160px; height: 160px; bottom: -40px; right: 10%; animation-duration: 11s; animation-delay: 1s; }
+.sbek-login-shape--3 { width: 90px; height: 90px; top: 42%; right: -30px; animation-duration: 7s; animation-delay: 0.5s; }
+
+@keyframes sbekFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(12px, -24px) scale(1.06); }
+}
+
+@keyframes sbekFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Right column ---------- */
+body.login #login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 2.5rem 1.25rem 1.5rem;
+    box-sizing: border-box;
+    animation: sbekFadeUp 0.6s ease-out both;
+}
+
+/* Every block in the column shares the card's width. */
+#login > * {
+    width: 100%;
+    max-width: 22.5rem;
+    box-sizing: border-box;
+}
+
+/* WP's logo link, showing the site logo (URL injected by sbek_login_logo_styles()). */
+body.login #login h1.wp-login-logo {
+    margin: 0 auto 1rem;
+}
+
+body.login #login h1.wp-login-logo a {
+    width: 100%;
+    height: 72px;
+    margin: 0;
+    background-size: contain;
+    background-position: center;
+}
+
+/* Site name + short description (sbek_login_message()). */
+.sbek-login-intro {
+    margin: 0 0 1.5rem;
+    text-align: center;
+}
+
+.sbek-login-intro__site {
+    margin: 0 0 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.sbek-login-intro__desc {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--sbek-muted-fg);
+}
+
+/* ---------- Notices ---------- */
+.login #login .message,
+.login #login .notice,
+.login #login .success,
+.login #login #login_error {
+    margin: 0 0 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--sbek-card);
+    border: 1px solid var(--sbek-border);
+    border-left: 4px solid var(--sbek-primary);
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    color: var(--sbek-fg);
+    font-size: 0.8125rem;
+    animation: sbekFadeUp 0.5s ease-out both;
+}
+
+.login #login .notice p,
+.login #login .message p,
+.login #login #login_error p {
+    margin: 0;
+}
+
+.login #login .notice-error,
+.login #login #login_error {
+    border-left-color: var(--sbek-danger);
+}
+
+.login #login .notice-success,
+.login #login .success {
+    border-left-color: var(--sbek-success);
+}
+
+.login #login .notice a,
+.login #login #login_error a {
+    color: inherit;
+    font-weight: 600;
+}
+
+/* ---------- Form card ---------- */
+.login #login form {
+    margin: 0;
+    padding: 1.75rem;
+    background: var(--sbek-card);
+    border: 1px solid var(--sbek-border);
+    border-radius: var(--sbek-radius);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+    overflow: visible;
+}
+
+.login #login form p,
+.login #login form .user-pass-wrap {
+    margin: 0 0 1rem;
+}
+
+.login #login label {
+    display: inline-block;
+    margin-bottom: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--sbek-fg);
+}
+
+.login #login .description,
+.login #login .indicator-hint {
+    font-size: 0.75rem;
+    color: var(--sbek-muted-fg);
+}
+
+/* Inputs: 16px text so iOS doesn't zoom in on focus. */
+.login #login input[type="text"],
+.login #login input[type="password"],
+.login #login input[type="email"] {
+    display: block;
+    width: 100%;
+    height: 2.75rem;
+    margin: 0;
+    padding: 0.5rem 0.875rem;
+    background: var(--sbek-card);
+    border: 1px solid var(--sbek-border);
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    font-family: inherit; /* core forces monospace on .password-input */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--sbek-fg);
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Room for core's absolutely-positioned show/hide-password button. */
+.login #login input[type="password"],
+.login #login .wp-pwd input[type="text"] {
+    padding-right: 2.75rem;
+}
+
+.login #login input::placeholder {
+    color: #94a3b8;
+}
+
+.login #login input[type="text"]:focus,
+.login #login input[type="password"]:focus,
+.login #login input[type="email"]:focus {
+    border-color: var(--sbek-primary);
+    box-shadow: 0 0 0 3px rgb(var(--sbek-ring) / 0.2);
+}
+
+/* Show/hide-password toggle: Lucide eye / eye-off instead of the dashicon. */
+.login #login .button.wp-hide-pw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: none;
+}
+
+.login #login .wp-hide-pw .dashicons {
+    display: none;
+}
+
+.login #login .wp-hide-pw::before {
+    content: "";
+    width: 1.125rem;
+    height: 1.125rem;
+    background: center / contain no-repeat url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+}
+
+.login #login .wp-hide-pw:has(.dashicons-hidden)::before {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49'/%3E%3Cpath d='M14.084 14.158a3 3 0 0 1-4.242-4.242'/%3E%3Cpath d='M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143'/%3E%3Cpath d='m2 2 20 20'/%3E%3C/svg%3E");
+}
+
+.login #login .button.wp-hide-pw:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--sbek-primary);
+}
+
+/* ---------- "Remember Me" ---------- */
+.login #login form .forgetmenot {
+    float: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 0;
+    margin: 0 0 1.25rem;
+}
+
+.login #login .forgetmenot label {
+    margin: 0;
+    font-weight: 400;
+    color: var(--sbek-muted-fg);
+    cursor: pointer;
+}
+
+.login #login input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    flex-shrink: 0;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0;
+    background-color: var(--sbek-card);
+    border: 1px solid #cbd5e1;
+    border-radius: 0.3125rem;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login #login input[type="checkbox"]::before {
+    content: none; /* core draws its own checkmark */
+}
+
+.login #login input[type="checkbox"]:checked {
+    background: var(--sbek-primary) center / 0.75rem no-repeat;
+    border-color: var(--sbek-primary);
+}
+
+/* Checkmark in the on-brand color (white or near-black). */
+.login #login input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--sbek-on-primary);
+    -webkit-mask: center / 0.75rem no-repeat url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    mask: center / 0.75rem no-repeat url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+
+.login #login input[type="checkbox"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(var(--sbek-ring) / 0.3);
+}
+
+/* Core's "?" help toggletip next to Remember Me. */
+.login #login .wp-tooltip__toggle {
+    color: #94a3b8;
+}
+
+.login #login .wp-tooltip__toggle:hover,
+.login #login .wp-tooltip__toggle:focus-visible {
+    color: var(--sbek-fg);
+}
+
+/* ---------- Buttons ---------- */
+.login #login p.submit {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+
+.login #login .button-primary {
+    float: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.75rem;
+    min-height: 0;
+    padding: 0 1rem;
+    background: var(--sbek-primary);
+    border: 1px solid var(--sbek-primary);
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    color: var(--sbek-on-primary);
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1;
+    text-shadow: none;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login #login .button-primary:hover {
+    background: var(--sbek-primary-hover);
+    border-color: var(--sbek-primary-hover);
+    color: var(--sbek-on-primary);
+}
+
+.login #login .button-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--sbek-bg), 0 0 0 5px var(--sbek-primary);
+}
+
+/* Secondary buttons (Generate Password, the confirm-email screen…) */
+.login #login .button:not(.button-primary):not(.wp-hide-pw),
+.login .language-switcher .button {
+    height: 2.5rem;
+    min-height: 0;
+    padding: 0 1rem;
+    background: var(--sbek-card);
+    border: 1px solid var(--sbek-border);
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    color: var(--sbek-fg);
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.login #login .button:not(.button-primary):not(.wp-hide-pw):hover,
+.login .language-switcher .button:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: var(--sbek-fg);
+}
+
+.login #login .button:not(.button-primary):not(.wp-hide-pw):focus-visible,
+.login .language-switcher .button:focus-visible {
+    outline: none;
+    border-color: var(--sbek-primary);
+    box-shadow: 0 0 0 3px rgb(var(--sbek-ring) / 0.2);
+}
+
+/* Reset-password screen: Generate + Save side by side. */
+.login #login .reset-pass-submit {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.login #login .reset-pass-submit .button {
+    flex: 1 1 0;
+    width: auto;
+    margin: 0;
+}
+
+/* ---------- Links under the card ---------- */
+.login #login #nav,
+.login #login #backtoblog {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 0.8125rem;
+}
+
+.login #login #nav {
+    margin-top: 1.25rem;
+}
+
+.login #login #backtoblog {
+    margin-top: 0.5rem;
+}
+
+.login #login #nav a,
+.login #login #backtoblog a,
+.login #login .privacy-policy-page-link a {
+    color: var(--sbek-muted-fg);
+    text-decoration: none;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
+}
+
+.login #login #nav a:hover,
+.login #login #backtoblog a:hover,
+.login #login .privacy-policy-page-link a:hover {
+    color: var(--sbek-fg);
+    text-decoration: underline;
+}
+
+.login #login a:focus-visible {
+    outline: 2px solid var(--sbek-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.login #login .privacy-policy-page-link {
+    margin: 1.5rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sbek-border);
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+/* ---------- Language switcher (core, below #login) ---------- */
+.login .language-switcher {
+    align-self: end;
+    width: 100%;
+    margin: 0;
+    padding: 0 1.25rem 1.5rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.login .language-switcher form {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.login .language-switcher label {
+    display: inline-flex;
+    flex-direction: row-reverse; /* globe icon before the word */
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--sbek-muted-fg);
+}
+
+.login .language-switcher label .dashicons {
+    margin: 0;
+    font-size: 1.125rem;
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.login #language-switcher select {
+    height: 2.5rem;
+    min-height: 0;
+    margin: 0;
+    padding: 0 2rem 0 0.75rem;
+    background-color: var(--sbek-card);
+    border: 1px solid var(--sbek-border);
+    border-radius: var(--sbek-radius-sm);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    color: var(--sbek-fg);
+    font-family: inherit;
+    font-size: 0.8125rem;
+    line-height: 1;
+}
+
+.login #language-switcher select:focus {
+    border-color: var(--sbek-primary);
+    box-shadow: 0 0 0 3px rgb(var(--sbek-ring) / 0.2);
+    outline: none;
+}
+
+.login .language-switcher .button {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Phones: label on its own line so the select and button stay together. */
+@media (max-width: 480px) {
+    .login .language-switcher label {
+        flex-basis: 100%;
+        justify-content: center;
+    }
+}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    body.login *,
+    body.login *::before,
+    body.login *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

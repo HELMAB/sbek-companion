@@ -1,0 +1,898 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Sbek Companion 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sbek-companion\n"
+"POT-Creation-Date: 2026-11-03T08:17:17+00:00\n"
+"PO-Revision-Date: 2026-11-02T03:32:41+00:00\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Khmer\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sbek-companion\n"
+
+#. Plugin Name of the plugin
+#: sbek-companion.php
+msgid "Sbek Companion"
+msgstr "Sbek Companion"
+
+#. Plugin URI of the plugin
+#: sbek-companion.php
+msgid "https://github.com/HELMAB/sbek-companion"
+msgstr ""
+
+#. Description of the plugin
+#: sbek-companion.php
+msgid ""
+"The non-design features of the Sbek news theme: Khmer / English URLs and "
+"linked translations, news fields (video, source, sponsored, breaking, "
+"trending), share buttons, double opt-in newsletter, SEO tags, analytics, "
+"login branding and lockout, query caching and demo content."
+msgstr "មុខងារក្រៅពីរចនាបថរបស់ស្បែកព័ត៌មាន Sbek៖ URL ខ្មែរ / អង់គ្លេស និងអត្ថបទបកប្រែដែលភ្ជាប់គ្នា វាលព័ត៌មាន (វីដេអូ ប្រភព ឧបត្ថម្ភ ព័ត៌មានទាន់ហេតុការណ៍ ពេញនិយម) ប៊ូតុងចែករំលែក ព្រឹត្តិបត្រព័ត៌មានដែលត្រូវបញ្ជាក់ពីរដង ស្លាក SEO ការវិភាគ ការរចនាទំព័រចូល និងការចាក់សោពេលចូលខុស ឃ្លាំងសម្ងាត់សំណួរ និងមាតិកាគំរូ។"
+
+#. Author of the plugin
+#: sbek-companion.php
+msgid "Hel Mab"
+msgstr ""
+
+#. Author URI of the plugin
+#: sbek-companion.php
+msgid "https://github.com/HELMAB"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:42
+msgid "Add the English site title"
+msgstr "បញ្ចូលឈ្មោះគេហទំព័រជាភាសាអង់គ្លេស"
+
+#: includes/admin/dashboard-widget.php:47
+msgid "Upload a site logo"
+msgstr "ផ្ទុកឡូហ្គោគេហទំព័រ"
+
+#: includes/admin/dashboard-widget.php:52
+msgid "Add a site icon"
+msgstr "បន្ថែមរូបតំណាងគេហទំព័រ"
+
+#: includes/admin/dashboard-widget.php:57
+msgid "Add a default share image"
+msgstr "បន្ថែមរូបភាពចែករំលែកលំនាំដើម"
+
+#: includes/admin/dashboard-widget.php:62
+msgid "Choose the homepage category blocks"
+msgstr "ជ្រើសរើសប្លុកប្រភេទលើទំព័រដើម"
+
+#: includes/admin/dashboard-widget.php:67
+msgid "Assign the Khmer and English menus"
+msgstr "កំណត់ម៉ឺនុយភាសាខ្មែរ និងអង់គ្លេស"
+
+#: includes/admin/dashboard-widget.php:72
+msgid "Write a site description"
+msgstr "សរសេរការពិពណ៌នាគេហទំព័រ"
+
+#: includes/admin/dashboard-widget.php:77
+msgid "Add a contact email"
+msgstr "បន្ថែមអ៊ីមែលទំនាក់ទំនង"
+
+#: includes/admin/dashboard-widget.php:82
+msgid "Add a contact phone number"
+msgstr "បន្ថែមលេខទូរស័ព្ទទំនាក់ទំនង"
+
+#: includes/admin/dashboard-widget.php:87
+msgid "Set the newsroom location"
+msgstr "កំណត់ទីតាំងបន្ទប់ព័ត៌មាន"
+
+#: includes/admin/dashboard-widget.php:92
+msgid "Link a social profile"
+msgstr "ភ្ជាប់គណនីបណ្តាញសង្គម"
+
+#: includes/admin/dashboard-widget.php:97
+msgid "Connect analytics (GA4 or GTM)"
+msgstr "ភ្ជាប់ការវិភាគ (GA4 ឬ GTM)"
+
+#: includes/admin/dashboard-widget.php:114
+msgid "Theme Setup"
+msgstr "ការរៀបចំស្បែក"
+
+#: includes/admin/dashboard-widget.php:145
+msgid ""
+"Finish setting up your site. These details power your header, homepage, SEO "
+"tags, structured data and footer. Click an item to go straight to it."
+msgstr ""
+"បញ្ចប់ការរៀបចំគេហទំព័ររបស់អ្នក។ ព័ត៌មានទាំងនេះប្រើសម្រាប់ផ្នែកខាងលើ ទំព័រដើម ស្លាក SEO "
+"ទិន្នន័យរចនាសម្ព័ន្ធ និងបាតទំព័រ។ ចុចលើធាតុណាមួយ ដើម្បីទៅកែវាភ្លាមៗ។"
+
+#. translators: 1: completed count, 2: total count.
+#: includes/admin/dashboard-widget.php:155
+#, php-format
+msgid "%1$d of %2$d complete"
+msgstr "បានបញ្ចប់ %1$d ក្នុងចំណោម %2$d"
+
+#: includes/admin/dashboard-widget.php:163
+msgid "All set — your site is fully configured!"
+msgstr "រួចរាល់ — គេហទំព័ររបស់អ្នកត្រូវបានរៀបចំពេញលេញហើយ!"
+
+#: includes/admin/dashboard-widget.php:179
+msgid "Review settings"
+msgstr "ពិនិត្យការកំណត់"
+
+#: includes/admin/dashboard-widget.php:179
+msgid "Go to Sbek Theme"
+msgstr "ទៅកាន់ Sbek Theme"
+
+#: includes/admin/login.php:170
+msgid "Welcome back! Sign in to manage the newsroom."
+msgstr "សូមស្វាគមន៍! ចូលគណនីដើម្បីគ្រប់គ្រងបន្ទប់ព័ត៌មាន។"
+
+#: includes/admin/login.php:182
+msgid "Username or email"
+msgstr "ឈ្មោះអ្នកប្រើ ឬអ៊ីមែល"
+
+#: includes/admin/login.php:183
+msgid "Password"
+msgstr "ពាក្យសម្ងាត់"
+
+#: includes/admin/login.php:211
+msgid "Fast, trusted news."
+msgstr "ព័ត៌មានរហ័ស និងទុកចិត្តបាន។"
+
+#: includes/admin/login.php:212
+msgid "Write, edit and publish stories for your readers."
+msgstr "សរសេរ កែសម្រួល និងចុះផ្សាយអត្ថបទសម្រាប់អ្នកអាន។"
+
+#: includes/admin/post-meta.php:64
+msgid "News details"
+msgstr "ព័ត៌មានលម្អិតនៃអត្ថបទ"
+
+#: includes/admin/post-meta.php:79
+msgid "Trending score (0–100)"
+msgstr "ពិន្ទុពេញនិយម (0–100)"
+
+#: includes/admin/post-meta.php:81
+msgid "Higher scores rank first in \"Popular articles\"."
+msgstr "ពិន្ទុខ្ពស់ជាងនឹងបង្ហាញមុនគេនៅក្នុង \"អត្ថបទពេញនិយម\"។"
+
+#: includes/admin/post-meta.php:84
+msgid "Video URL"
+msgstr "តំណវីដេអូ"
+
+#: includes/admin/post-meta.php:86
+msgid ""
+"Embedded above the article. Saving a URL also sets the post format to "
+"\"Video\", which lists the post in the homepage video block."
+msgstr ""
+"បង្កប់នៅខាងលើអត្ថបទ។ ការរក្សាទុក URL ក៏កំណត់ទម្រង់អត្ថបទជា \"វីដេអូ\" ដែរ "
+"ដូច្នេះអត្ថបទនឹងបង្ហាញក្នុងប្លុកវីដេអូនៃទំព័រដើម។"
+
+#: includes/admin/post-meta.php:88
+msgid ""
+"This post is in the Video format but has no video: add a URL here or a video/"
+"embed block to the content. Its cards show a play icon."
+msgstr ""
+"អត្ថបទនេះស្ថិតក្នុងទម្រង់វីដេអូ ប៉ុន្តែគ្មានវីដេអូទេ៖ សូមបញ្ចូល URL នៅទីនេះ ឬបន្ថែមប្លុកវីដេអូ/"
+"បង្កប់ក្នុងខ្លឹមសារ។ កាតរបស់វាបង្ហាញរូបប៊ូតុងចាក់។"
+
+#: includes/admin/post-meta.php:92
+msgid "Source"
+msgstr "ប្រភព"
+
+#: includes/admin/post-meta.php:96
+msgid "Source URL"
+msgstr "តំណប្រភព"
+
+#: includes/admin/post-meta.php:100
+msgid "Sponsored / advertorial"
+msgstr "អត្ថបទឧបត្ថម្ភ / ពាណិជ្ជកម្ម"
+
+#: includes/admin/post-meta.php:101
+msgid "Breaking news (header ticker)"
+msgstr "ព័ត៌មានទាន់ហេតុការណ៍ (ខ្សែព័ត៌មានរត់ខាងលើ)"
+
+#. translators: %d: number of hours.
+#: includes/admin/post-meta.php:109
+#, php-format
+msgid "Shown in the ticker for %d hour after publishing."
+msgid_plural "Shown in the ticker for %d hours after publishing."
+msgstr[0] "បង្ហាញក្នុងខ្សែព័ត៌មានរយៈពេល %d ម៉ោង បន្ទាប់ពីចុះផ្សាយ។"
+
+#: includes/admin/settings-panels.php:23
+msgid "English"
+msgstr "អង់គ្លេស"
+
+#: includes/admin/settings-panels.php:26
+msgid "Integrations"
+msgstr "ការភ្ជាប់សេវា"
+
+#: includes/admin/settings-panels.php:45
+msgid "Sharing"
+msgstr "ការចែករំលែក"
+
+#: includes/admin/settings-panels.php:45
+msgid ""
+"The image used when a page without its own picture is shared on social "
+"networks."
+msgstr "រូបភាពដែលប្រើនៅពេលចែករំលែកទំព័រដែលគ្មានរូបភាពផ្ទាល់ខ្លួនលើបណ្តាញសង្គម។"
+
+#: includes/admin/settings-panels.php:49
+msgid "Default share image"
+msgstr "រូបភាពចែករំលែកលំនាំដើម"
+
+#: includes/admin/settings-panels.php:50
+msgid "Choose an image"
+msgstr "ជ្រើសរើសរូបភាព"
+
+#: includes/admin/settings-panels.php:50
+msgid "JPG or PNG, 1200×630px"
+msgstr "JPG ឬ PNG ទំហំ 1200×630px"
+
+#: includes/admin/settings-panels.php:63
+msgid "Location for search engines"
+msgstr "ទីតាំងសម្រាប់ម៉ាស៊ីនស្វែងរក"
+
+#: includes/admin/settings-panels.php:63
+msgid ""
+"Not shown to visitors: the coordinates tell search engines where your "
+"newsroom is (structured data)."
+msgstr "មិនបង្ហាញដល់អ្នកទស្សនាទេ៖ កូអរដោនេប្រាប់ម៉ាស៊ីនស្វែងរកពីទីតាំងបន្ទប់ព័ត៌មានរបស់អ្នក (ទិន្នន័យរចនាសម្ព័ន្ធ)។"
+
+#: includes/admin/settings-panels.php:69
+msgid "Latitude"
+msgstr "រយៈទទឹង"
+
+#: includes/admin/settings-panels.php:80
+msgid "Longitude"
+msgstr "រយៈបណ្ដោយ"
+
+#: includes/admin/settings-panels.php:97 templates/newsletter-form.php:13
+msgid "Newsletter"
+msgstr "ព្រឹត្តិបត្រព័ត៌មាន"
+
+#: includes/admin/settings-panels.php:97
+msgid "Email signup form in the footer."
+msgstr "ទម្រង់ចុះឈ្មោះតាមអ៊ីមែលនៅបាតទំព័រ។"
+
+#: includes/admin/settings-panels.php:98
+msgid "Newsletter signup"
+msgstr "ការចុះឈ្មោះទទួលព្រឹត្តិបត្រព័ត៌មាន"
+
+#: includes/admin/settings-panels.php:98
+msgid ""
+"Addresses are stored on this site, under Subscribers, and count only after "
+"the visitor clicks the link in the confirmation email (double opt-in). Your "
+"site must be able to send email."
+msgstr "អាសយដ្ឋានត្រូវបានរក្សាទុកលើគេហទំព័រនេះ ក្រោម អ្នកជាវ ហើយរាប់បានតែបន្ទាប់ពីអ្នកទស្សនាចុចតំណក្នុងអ៊ីមែលបញ្ជាក់ (បញ្ជាក់ពីរដង)។ គេហទំព័ររបស់អ្នកត្រូវតែអាចផ្ញើអ៊ីមែលបាន។"
+
+#. translators: %s: number of subscribers.
+#: includes/admin/settings-panels.php:104
+#, php-format
+msgid "%s subscriber"
+msgid_plural "%s subscribers"
+msgstr[0] "អ្នកជាវ %s នាក់"
+
+#. translators: %s: number of unconfirmed signups.
+#: includes/admin/settings-panels.php:108
+#, php-format
+msgid "%s waiting for confirmation"
+msgid_plural "%s waiting for confirmation"
+msgstr[0] "%s កំពុងរង់ចាំការបញ្ជាក់"
+
+#: includes/admin/settings-panels.php:114
+msgid "View subscribers"
+msgstr "មើលអ្នកជាវ"
+
+#: includes/admin/settings-panels.php:118 includes/frontend/newsletter.php:469
+msgid "Export CSV"
+msgstr "នាំចេញជា CSV"
+
+#: includes/admin/settings-panels.php:134
+msgid "Site identity in English"
+msgstr "អត្តសញ្ញាណគេហទំព័រជាភាសាអង់គ្លេស"
+
+#: includes/admin/settings-panels.php:134
+msgid "Used on /en/ pages. Leave a field empty to reuse the Khmer text."
+msgstr "ប្រើលើទំព័រ /en/ ។ ទុកវាលទទេ ដើម្បីប្រើអត្ថបទខ្មែរដដែល។"
+
+#: includes/admin/settings-panels.php:138
+msgid "Site title (English)"
+msgstr "ឈ្មោះគេហទំព័រ (អង់គ្លេស)"
+
+#: includes/admin/settings-panels.php:139
+msgid "Tagline (English)"
+msgstr "ពាក្យស្លោក (អង់គ្លេស)"
+
+#: includes/admin/settings-panels.php:145
+msgid "Footer in English"
+msgstr "បាតទំព័រជាភាសាអង់គ្លេស"
+
+#: includes/admin/settings-panels.php:145
+msgid ""
+"English versions of the About text, the address and the copyright line (you "
+"can use {year} and {site})."
+msgstr "កំណែភាសាអង់គ្លេសនៃអត្ថបទអំពីយើង អាសយដ្ឋាន និងបន្ទាត់រក្សាសិទ្ធិ (អាចប្រើ {year} និង {site})។"
+
+#: includes/admin/settings-panels.php:149
+msgid "Description (English)"
+msgstr "ការពិពណ៌នា (អង់គ្លេស)"
+
+#: includes/admin/settings-panels.php:150
+msgid "Address (English)"
+msgstr "អាសយដ្ឋាន (អង់គ្លេស)"
+
+#: includes/admin/settings-panels.php:151
+msgid "Copyright (English)"
+msgstr "រក្សាសិទ្ធិ (អង់គ្លេស)"
+
+#: includes/admin/settings-panels.php:166
+msgid "Category names in English"
+msgstr "ឈ្មោះប្រភេទជាភាសាអង់គ្លេស"
+
+#: includes/admin/settings-panels.php:166
+msgid ""
+"Shown in menus, badges and archive titles on English pages. Leave empty to "
+"use the Khmer name. Tags and descriptions are edited on each term's own "
+"screen."
+msgstr "បង្ហាញក្នុងម៉ឺនុយ ស្លាក និងចំណងជើងបណ្ណសារលើទំព័រភាសាអង់គ្លេស។ ទុកទទេ ដើម្បីប្រើឈ្មោះខ្មែរ។ ស្លាក និងការពិពណ៌នាត្រូវកែនៅលើអេក្រង់របស់វានីមួយៗ។"
+
+#: includes/admin/settings-panels.php:173
+msgid "Category"
+msgstr "ប្រភេទ"
+
+#: includes/admin/settings-panels.php:174
+msgid "English name"
+msgstr "ឈ្មោះជាភាសាអង់គ្លេស"
+
+#. translators: %s: category.
+#: includes/admin/settings-panels.php:182
+#, php-format
+msgid "English name for %s"
+msgstr "ឈ្មោះជាភាសាអង់គ្លេសសម្រាប់ %s"
+
+#: includes/admin/settings-panels.php:192
+msgid "No categories yet."
+msgstr "មិនទាន់មានប្រភេទនៅឡើយទេ។"
+
+#: includes/admin/settings-panels.php:208
+msgid "Analytics"
+msgstr "ការវិភាគ"
+
+#: includes/admin/settings-panels.php:208
+msgid ""
+"Nothing is tracked until you enter an ID here. Google Analytics 4 loads only "
+"when no Tag Manager container is set. Mention the tracking in your privacy "
+"policy."
+msgstr "គ្មានការតាមដានទេ រហូតដល់អ្នកបញ្ចូល ID នៅទីនេះ។ Google Analytics 4 ផ្ទុកតែនៅពេលគ្មាន Tag Manager ប៉ុណ្ណោះ។ សូមរៀបរាប់ពីការតាមដាននេះក្នុងគោលការណ៍ភាពឯកជនរបស់អ្នក។"
+
+#: includes/admin/settings-panels.php:214
+#: includes/admin/settings-panels.php:320
+msgid "Google Analytics 4 ID"
+msgstr "លេខសម្គាល់ Google Analytics 4"
+
+#: includes/admin/settings-panels.php:219
+msgid "Starts with G- (Admin → Data streams in Google Analytics)."
+msgstr "ចាប់ផ្ដើមដោយ G- (Admin → Data streams ក្នុង Google Analytics)។"
+
+#: includes/admin/settings-panels.php:225
+#: includes/admin/settings-panels.php:321
+msgid "Google Tag Manager ID"
+msgstr "លេខសម្គាល់ Google Tag Manager"
+
+#: includes/admin/settings-panels.php:230
+msgid ""
+"Starts with GTM-. When set, the GA4 ID above is ignored — add GA4 inside Tag "
+"Manager instead."
+msgstr ""
+"ចាប់ផ្ដើមដោយ GTM-។ នៅពេលកំណត់ លេខសម្គាល់ GA4 ខាងលើនឹងមិនត្រូវប្រើទេ — សូមបន្ថែម GA4 នៅក្នុង "
+"Tag Manager ជំនួសវិញ។"
+
+#: includes/admin/settings-panels.php:239
+msgid "Custom code"
+msgstr "កូដផ្ទាល់ខ្លួន"
+
+#: includes/admin/settings-panels.php:239
+msgid ""
+"Raw HTML/JS added to every public page. Only paste code from sources you "
+"trust."
+msgstr "កូដ HTML/JS ដែលបន្ថែមទៅគ្រប់ទំព័រសាធារណៈ។ សូមបិទភ្ជាប់តែកូដពីប្រភពដែលអ្នកទុកចិត្តប៉ុណ្ណោះ។"
+
+#: includes/admin/settings-panels.php:240
+msgid "Before </head>"
+msgstr "មុន </head>"
+
+#: includes/admin/settings-panels.php:241
+msgid "Before </body>"
+msgstr "មុន </body>"
+
+#: includes/admin/settings-panels.php:244
+msgid ""
+"Your role cannot save raw scripts; unsafe markup will be stripped on save."
+msgstr ""
+"តួនាទីរបស់អ្នកមិនអាចរក្សាទុកស្គ្រីបដើមបានទេ។ កូដដែលមិនមានសុវត្ថិភាពនឹងត្រូវដកចេញពេលរក្សាទុក។"
+
+#: includes/admin/settings-panels.php:314
+msgid "Latitude must be a number between -90 and 90."
+msgstr "រយៈទទឹងត្រូវតែជាលេខចន្លោះ -90 និង 90។"
+
+#: includes/admin/settings-panels.php:315
+msgid "Longitude must be a number between -180 and 180."
+msgstr "រយៈបណ្ដោយត្រូវតែជាលេខចន្លោះ -180 និង 180។"
+
+#. translators: 1: field label, 2: example ID.
+#: includes/admin/settings-panels.php:327
+#, php-format
+msgid "%1$s must look like %2$s."
+msgstr "%1$s ត្រូវមានទម្រង់ដូច %2$s។"
+
+#: includes/admin/tools.php:25 includes/admin/translation.php:209
+#: includes/frontend/newsletter.php:410
+msgid "You do not have permission to do this."
+msgstr "អ្នកមិនមានសិទ្ធិធ្វើសកម្មភាពនេះទេ។"
+
+#: includes/admin/tools.php:48
+msgid "Starting import…"
+msgstr "កំពុងចាប់ផ្ដើមនាំចូល…"
+
+#: includes/admin/tools.php:48
+msgid "Starting removal…"
+msgstr "កំពុងចាប់ផ្ដើមលុប…"
+
+#: includes/admin/tools.php:63
+msgid "Job cancelled. Anything already created can still be removed."
+msgstr "បានបោះបង់ការងារ។ អ្វីដែលបានបង្កើតរួច នៅតែអាចលុបចេញបាន។"
+
+#: includes/admin/tools.php:85
+msgid "Demo content"
+msgstr "មាតិកាគំរូ"
+
+#: includes/admin/tools.php:85
+msgid ""
+"Sample categories, about 140 Khmer and English posts with images, pages, "
+"menus and ad placeholders — handy for previewing the theme. Removing deletes "
+"only what the import created; your own content and Sbek Theme values are "
+"kept."
+msgstr ""
+"ប្រភេទគំរូ អត្ថបទខ្មែរ និងអង់គ្លេសប្រហែល ១៤០ ព្រមទាំងរូបភាព ទំព័រ ម៉ឺនុយ និងកន្លែងពាណិជ្ជកម្មគំរូ — "
+"ងាយស្រួលសម្រាប់មើលស្បែកជាមុន។ ការលុបនឹងលុបតែអ្វីដែលការនាំចូលបានបង្កើតប៉ុណ្ណោះ មាតិកាផ្ទាល់ខ្លួន "
+"និងការកំណត់ Sbek Theme របស់អ្នកនៅដដែល។"
+
+#. translators: 1: "import" or "removal", 2: percent.
+#: includes/admin/tools.php:94
+#, php-format
+msgid ""
+"An unfinished %1$s stopped at %2$d%%. Continue it, or remove what was "
+"created so far."
+msgstr "%1$s ដែលមិនទាន់បញ្ចប់បានឈប់ត្រឹម %2$d%%។ សូមបន្ត ឬលុបអ្វីដែលបានបង្កើតរួច។"
+
+#: includes/admin/tools.php:95
+msgid "import"
+msgstr "ការនាំចូល"
+
+#: includes/admin/tools.php:95
+msgid "removal"
+msgstr "ការលុប"
+
+#. translators: 1: date, 2: posts and pages, 3: images.
+#: includes/admin/tools.php:103
+#, php-format
+msgid "Installed %1$s: %2$d posts and pages, %3$d images."
+msgstr "បានដំឡើង %1$s៖ អត្ថបទ និងទំព័រ %2$d រូបភាព %3$d។"
+
+#. translators: 1: posts and pages, 2: images.
+#: includes/admin/tools.php:113
+#, php-format
+msgid ""
+"An incomplete import left %1$d posts and pages and %2$d images. Remove them "
+"before importing again."
+msgstr ""
+"ការនាំចូលមិនពេញលេញបានបន្សល់អត្ថបទ និងទំព័រ %1$d និងរូបភាព %2$d។ សូមលុបវាចេញ "
+"មុននឹងនាំចូលម្ដងទៀត។"
+
+#: includes/admin/tools.php:119 includes/demo/class-sbek-demo-importer.php:121
+msgid "No demo content is installed."
+msgstr "មិនទាន់បានដំឡើងមាតិកាគំរូទេ។"
+
+#: includes/admin/tools.php:128
+msgid "Also apply the demo site settings"
+msgstr "អនុវត្តការកំណត់គេហទំព័រគំរូផងដែរ"
+
+#: includes/admin/tools.php:129
+msgid ""
+"Site title, Khmer language, Phnom Penh time zone, 8 posts per page, /"
+"article/123/ links, menus, ad placeholders, privacy page, and Sbek Theme "
+"details (only fields that are still empty). These are not undone by "
+"\"Remove\"."
+msgstr ""
+"ឈ្មោះគេហទំព័រ ភាសាខ្មែរ តំបន់ម៉ោងភ្នំពេញ អត្ថបទ ៨ ក្នុងមួយទំព័រ តំណ /article/123/ ម៉ឺនុយ "
+"កន្លែងពាណិជ្ជកម្មគំរូ ទំព័រឯកជនភាព និងព័ត៌មាន Sbek Theme (តែវាលដែលនៅទទេប៉ុណ្ណោះ)។ "
+"ការទាំងនេះមិនត្រូវបានត្រឡប់វិញដោយ \"លុប\" ទេ។"
+
+#: includes/admin/tools.php:142 includes/admin/tools.php:144
+msgid "Continue"
+msgstr "បន្ត"
+
+#: includes/admin/tools.php:142
+msgid "Import demo content"
+msgstr "នាំចូលមាតិកាគំរូ"
+
+#: includes/admin/tools.php:150
+msgid "Remove demo content"
+msgstr "លុបមាតិកាគំរូ"
+
+#: includes/admin/tools.php:151
+msgid "Delete all demo posts, pages, images, categories, menus and widgets?"
+msgstr "លុបអត្ថបទ ទំព័រ រូបភាព ប្រភេទ ម៉ឺនុយ និងវិដជិតគំរូទាំងអស់ឬ?"
+
+#: includes/admin/tools.php:152
+msgid "Yes, remove"
+msgstr "បាទ/ចាស លុប"
+
+#: includes/admin/tools.php:170
+msgid "Tools"
+msgstr "ឧបករណ៍"
+
+#: includes/admin/tools.php:199
+msgid ""
+"Something went wrong. You can continue the job or remove what was created."
+msgstr "មានបញ្ហាកើតឡើង។ អ្នកអាចបន្តការងារ ឬលុបអ្វីដែលបានបង្កើតរួច។"
+
+#: includes/admin/tools.php:200
+msgid "Done! Reloading…"
+msgstr "រួចរាល់! កំពុងផ្ទុកឡើងវិញ…"
+
+#: includes/admin/translation.php:34
+msgid "Translation"
+msgstr "ការបកប្រែ"
+
+#: includes/admin/translation.php:72
+msgid "Translated version"
+msgstr "កំណែបកប្រែ"
+
+#: includes/admin/translation.php:74
+msgid "— Not translated —"
+msgstr "— មិនទាន់បកប្រែ —"
+
+#: includes/admin/translation.php:77 includes/admin/translation.php:154
+msgid "(no title)"
+msgstr "(គ្មានចំណងជើង)"
+
+#: includes/admin/translation.php:83
+msgid "Search for an older post"
+msgstr "ស្វែងរកអត្ថបទចាស់"
+
+#: includes/admin/translation.php:84
+msgid "Search older posts by title…"
+msgstr "ស្វែងរកអត្ថបទចាស់តាមចំណងជើង…"
+
+#: includes/admin/translation.php:88
+msgid "No matching posts."
+msgstr "គ្មានអត្ថបទដែលត្រូវគ្នាទេ។"
+
+#: includes/admin/translation.php:89
+msgid "Matches were added to the list above."
+msgstr "លទ្ធផលត្រូវបានបន្ថែមទៅបញ្ជីខាងលើ។"
+
+#: includes/admin/translation.php:90
+msgid "The matching posts are already in the list above."
+msgstr "អត្ថបទដែលត្រូវគ្នាមាននៅក្នុងបញ្ជីខាងលើរួចហើយ។"
+
+#: includes/admin/translation.php:94
+msgid ""
+"Pick the same story in the other language. The list shows the 100 most "
+"recent; search to find older ones. The link is saved on both posts."
+msgstr ""
+"ជ្រើសរើសអត្ថបទដដែលជាភាសាផ្សេង។ បញ្ជីបង្ហាញអត្ថបទថ្មីៗចំនួន 100 សូមស្វែងរក "
+"ដើម្បីរកអត្ថបទចាស់ជាងនេះ។ ការភ្ជាប់ត្រូវបានរក្សាទុកលើអត្ថបទទាំងពីរ។"
+
+#. translators: %s: language name, e.g. "English".
+#: includes/admin/translation.php:104
+#, php-format
+msgid "Create the %s version"
+msgstr "បង្កើតកំណែ%s"
+
+#: includes/admin/translation.php:108
+msgid ""
+"Copies this post into a linked draft (title, text, image, categories, tags "
+"and news details) for you to translate. Save your changes here first."
+msgstr ""
+"ចម្លងអត្ថបទនេះទៅជាសេចក្ដីព្រាងដែលបានភ្ជាប់ (ចំណងជើង អត្ថបទ រូបភាព ប្រភេទ ស្លាក "
+"និងព័ត៌មានលម្អិត) សម្រាប់អ្នកបកប្រែ។ សូមរក្សាទុកការកែប្រែរបស់អ្នកនៅទីនេះជាមុនសិន។"
+
+#: includes/admin/translation.php:213
+msgid "This post is already in that language."
+msgstr "អត្ថបទនេះជាភាសានោះរួចហើយ។"
+
+#: includes/admin/translation.php:288
+msgid "Filter by language"
+msgstr "ត្រងតាមភាសា"
+
+#: includes/admin/translation.php:290
+msgid "All languages"
+msgstr "គ្រប់ភាសា"
+
+#: includes/admin/translation.php:294
+msgid "No language"
+msgstr "គ្មានភាសា"
+
+#: includes/demo/class-sbek-demo-importer.php:77
+msgid ""
+"Another demo-content job is still in progress. Continue or remove it first."
+msgstr "ការងារមាតិកាគំរូមួយទៀតកំពុងដំណើរការ។ សូមបន្ត ឬលុបវាជាមុនសិន។"
+
+#: includes/demo/class-sbek-demo-importer.php:82
+msgid "Demo content is already installed. Remove it first to import again."
+msgstr "មាតិកាគំរូត្រូវបានដំឡើងរួចហើយ។ សូមលុបវាជាមុន ដើម្បីនាំចូលម្ដងទៀត។"
+
+#: includes/demo/class-sbek-demo-importer.php:85
+msgid "The PHP GD extension is required to generate the demo images."
+msgstr "ត្រូវការផ្នែកបន្ថែម PHP GD ដើម្បីបង្កើតរូបភាពគំរូ។"
+
+#: includes/demo/class-sbek-demo-importer.php:96
+msgid "No administrator account found to author the demo posts."
+msgstr "រកមិនឃើញគណនីអ្នកគ្រប់គ្រងសម្រាប់ជាអ្នកនិពន្ធអត្ថបទគំរូទេ។"
+
+#: includes/demo/class-sbek-demo-importer.php:146
+#: includes/demo/class-sbek-demo-importer.php:166
+msgid "A batch is already running in another request. Please wait a moment."
+msgstr "មានការងារមួយកំពុងដំណើរការក្នុងសំណើផ្សេង។ សូមរង់ចាំបន្តិច។"
+
+#: includes/demo/class-sbek-demo-importer.php:162
+msgid "There is no demo-content job to run."
+msgstr "គ្មានការងារមាតិកាគំរូដែលត្រូវដំណើរការទេ។"
+
+#: includes/demo/class-sbek-demo-importer.php:222
+msgid "Site options and categories ready."
+msgstr "ការកំណត់គេហទំព័រ និងប្រភេទរួចរាល់។"
+
+#. translators: 1: images done, 2: total images.
+#: includes/demo/class-sbek-demo-importer.php:236
+#, php-format
+msgid "Generated images %1$d of %2$d."
+msgstr "បានបង្កើតរូបភាព %1$d ក្នុងចំណោម %2$d។"
+
+#. translators: 1: posts done, 2: total posts.
+#: includes/demo/class-sbek-demo-importer.php:248
+#, php-format
+msgid "Created Khmer posts %1$d of %2$d."
+msgstr "បានបង្កើតអត្ថបទខ្មែរ %1$d ក្នុងចំណោម %2$d។"
+
+#. translators: 1: posts done, 2: total posts.
+#: includes/demo/class-sbek-demo-importer.php:260
+#, php-format
+msgid "Created English posts %1$d of %2$d."
+msgstr "បានបង្កើតអត្ថបទអង់គ្លេស %1$d ក្នុងចំណោម %2$d។"
+
+#: includes/demo/class-sbek-demo-importer.php:265
+msgid "Created pages."
+msgstr "បានបង្កើតទំព័រ។"
+
+#: includes/demo/class-sbek-demo-importer.php:275
+msgid "Demo content imported."
+msgstr "បាននាំចូលមាតិកាគំរូ។"
+
+#. translators: 1: deleted count, 2: total.
+#: includes/demo/class-sbek-demo-importer.php:296
+#, php-format
+msgid "Deleted posts and pages %1$d of %2$d."
+msgstr "បានលុបអត្ថបទ និងទំព័រ %1$d ក្នុងចំណោម %2$d។"
+
+#. translators: 1: deleted count, 2: total.
+#: includes/demo/class-sbek-demo-importer.php:309
+#, php-format
+msgid "Deleted images %1$d of %2$d."
+msgstr "បានលុបរូបភាព %1$d ក្នុងចំណោម %2$d។"
+
+#: includes/demo/class-sbek-demo-importer.php:314
+msgid ""
+"Demo content removed. Site options such as language and permalinks were left "
+"as they are."
+msgstr "បានលុបមាតិកាគំរូ។ ការកំណត់គេហទំព័រដូចជាភាសា និងតំណអចិន្ត្រៃយ៍ នៅដដែល។"
+
+#: includes/demo/class-sbek-demo-importer.php:510
+msgid ""
+"The Khmer core language pack could not be downloaded; theme texts are still "
+"translated."
+msgstr ""
+"មិនអាចទាញយកកញ្ចប់ភាសាខ្មែររបស់ WordPress បានទេ ប៉ុន្តែអត្ថបទរបស់ស្បែកនៅតែត្រូវបានបកប្រែ។"
+
+#: includes/frontend/article.php:50
+msgid "Watch the video"
+msgstr "មើលវីដេអូ"
+
+#: includes/frontend/article.php:69
+msgid "Source:"
+msgstr "ប្រភព៖"
+
+#: includes/frontend/article.php:93
+msgid "Share on Facebook"
+msgstr "ចែករំលែកលើ Facebook"
+
+#: includes/frontend/article.php:94
+msgid "Share on Telegram"
+msgstr "ចែករំលែកលើ Telegram"
+
+#: includes/frontend/article.php:95
+msgid "Share on X"
+msgstr "ចែករំលែកលើ X"
+
+#: includes/frontend/article.php:96
+msgid "Share by email"
+msgstr "ចែករំលែកតាមអ៊ីមែល"
+
+#: includes/frontend/article.php:103
+msgid "Share"
+msgstr "ចែករំលែក"
+
+#: includes/frontend/article.php:107
+msgid "Share…"
+msgstr "ចែករំលែក…"
+
+#: includes/frontend/article.php:119
+msgid "Link copied"
+msgstr "បានចម្លងតំណ"
+
+#: includes/frontend/article.php:121
+msgid "Copy link"
+msgstr "ចម្លងតំណ"
+
+#: includes/frontend/newsletter.php:39 includes/frontend/newsletter.php:41
+msgid "Subscribers"
+msgstr "អ្នកជាវព័ត៌មាន"
+
+#: includes/frontend/newsletter.php:40
+msgid "Subscriber"
+msgstr "អ្នកជាវព័ត៌មាន"
+
+#: includes/frontend/newsletter.php:42
+msgid "Search Subscribers"
+msgstr "ស្វែងរកអ្នកជាវ"
+
+#: includes/frontend/newsletter.php:43
+msgid "No subscribers yet."
+msgstr "មិនទាន់មានអ្នកជាវនៅឡើយ។"
+
+#: includes/frontend/newsletter.php:90
+msgid "Waiting for confirmation"
+msgstr "កំពុងរង់ចាំការបញ្ជាក់"
+
+#: includes/frontend/newsletter.php:91
+msgid "Confirmed"
+msgstr "បានបញ្ជាក់"
+
+#: includes/frontend/newsletter.php:92
+msgid "Unsubscribed"
+msgstr "បានឈប់ជាវ"
+
+#. translators: %s: site name.
+#: includes/frontend/newsletter.php:297
+#, php-format
+msgid "Confirm your subscription to %s"
+msgstr "បញ្ជាក់ការជាវរបស់អ្នកទៅ %s"
+
+#. translators: %s: site name.
+#: includes/frontend/newsletter.php:302
+#, php-format
+msgid ""
+"Someone (hopefully you) asked to receive the top stories from %s at this "
+"address."
+msgstr "មាននរណាម្នាក់ (សង្ឃឹមថាជាអ្នក) បានស្នើសុំទទួលព័ត៌មានសំខាន់ៗពី %s តាមអាសយដ្ឋាននេះ។"
+
+#: includes/frontend/newsletter.php:303
+msgid "To confirm, open this link:"
+msgstr "ដើម្បីបញ្ជាក់ សូមបើកតំណនេះ៖"
+
+#: includes/frontend/newsletter.php:304
+msgid ""
+"If you did not ask for this, ignore this email and you will not be "
+"subscribed."
+msgstr "ប្រសិនបើអ្នកមិនបានស្នើសុំទេ សូមមិនអើពើអ៊ីមែលនេះ ហើយអ្នកនឹងមិនត្រូវបានចុះឈ្មោះទេ។"
+
+#: includes/frontend/newsletter.php:305
+msgid "To unsubscribe at any time:"
+msgstr "ដើម្បីឈប់ជាវនៅពេលណាក៏បាន៖"
+
+#: includes/frontend/newsletter.php:375
+msgid ""
+"Almost done! Check your inbox and click the link to confirm your "
+"subscription."
+msgstr "ជិតរួចរាល់ហើយ! សូមពិនិត្យប្រអប់សំបុត្ររបស់អ្នក ហើយចុចតំណ ដើម្បីបញ្ជាក់ការជាវ។"
+
+#: includes/frontend/newsletter.php:376
+msgid "Thanks! Your subscription is confirmed."
+msgstr "សូមអរគុណ! ការជាវរបស់អ្នកត្រូវបានបញ្ជាក់។"
+
+#: includes/frontend/newsletter.php:377
+msgid "This email address is already subscribed."
+msgstr "អាសយដ្ឋានអ៊ីមែលនេះបានចុះឈ្មោះរួចហើយ។"
+
+#: includes/frontend/newsletter.php:378
+msgid "You have been unsubscribed. Sorry to see you go."
+msgstr "អ្នកបានឈប់ជាវហើយ។ សោកស្ដាយដែលអ្នកចាកចេញ។"
+
+#: includes/frontend/newsletter.php:379
+msgid "That link is not valid any more. Please sign up again."
+msgstr "តំណនោះលែងមានសុពលភាពហើយ។ សូមចុះឈ្មោះម្ដងទៀត។"
+
+#: includes/frontend/newsletter.php:380
+msgid "We could not send the confirmation email. Please try again later."
+msgstr "យើងមិនអាចផ្ញើអ៊ីមែលបញ្ជាក់បានទេ។ សូមព្យាយាមម្ដងទៀតនៅពេលក្រោយ។"
+
+#: includes/frontend/newsletter.php:381
+msgid "Sorry, that did not work. Please check the address and try again."
+msgstr "សូមអភ័យទោស មិនអាចដំណើរការបានទេ។ សូមពិនិត្យអាសយដ្ឋាន ហើយព្យាយាមម្ដងទៀត។"
+
+#: includes/frontend/newsletter.php:484
+msgid "Status"
+msgstr "ស្ថានភាព"
+
+#: includes/frontend/newsletter.php:485 includes/i18n.php:289
+#: includes/i18n.php:731
+msgid "Language"
+msgstr "ភាសា"
+
+#: includes/i18n.php:288 includes/i18n.php:290
+msgid "Languages"
+msgstr "ភាសា"
+
+#. translators: %s: language name, e.g. "English".
+#: includes/i18n.php:700
+#, php-format
+msgid "Primary menu (%s)"
+msgstr "ម៉ឺនុយមេ (%s)"
+
+#. translators: %s: language name, e.g. "English".
+#: includes/i18n.php:702
+#, php-format
+msgid "Footer links (%s)"
+msgstr "តំណបាតទំព័រ (%s)"
+
+#: includes/security.php:81
+msgid "Too many failed login attempts. Please try again in 15 minutes."
+msgstr "ការព្យាយាមចូលបរាជ័យច្រើនដងពេក។ សូមព្យាយាមម្ដងទៀតក្នុងរយៈពេល ១៥ នាទី។"
+
+#. translators: %s: language name.
+#: includes/term-names.php:80
+#, php-format
+msgid "Name (%s)"
+msgstr "ឈ្មោះ (%s)"
+
+#: includes/term-names.php:82
+msgid "Shown on pages in that language. Leave empty to use the main name."
+msgstr "បង្ហាញលើទំព័រជាភាសានោះ។ ទុកទទេ ដើម្បីប្រើឈ្មោះចម្បង។"
+
+#. translators: %s: language name.
+#: includes/term-names.php:86
+#, php-format
+msgid "Description (%s)"
+msgstr "ការពិពណ៌នា (%s)"
+
+#: includes/term-names.php:88
+msgid ""
+"Shown under the archive title on pages in that language. Leave empty to show "
+"no description there."
+msgstr "បង្ហាញនៅក្រោមចំណងជើងបណ្ណសារលើទំព័រភាសានោះ។ ទុកទទេ ដើម្បីមិនបង្ហាញការពិពណ៌នានៅទីនោះ។"
+
+#: sbek-companion.php:43
+msgid ""
+"Sbek Companion does nothing on its own: it adds features to the Sbek theme. "
+"Activate the Sbek theme, or deactivate this plugin."
+msgstr "Sbek Companion មិនធ្វើអ្វីដោយខ្លួនឯងទេ៖ វាបន្ថែមមុខងារទៅស្បែក Sbek ។ សូមបើកដំណើរការស្បែក Sbek ឬបិទកម្មវិធីជំនួយនេះ។"
+
+#: templates/newsletter-form.php:14
+msgid "Get the top stories in your inbox."
+msgstr "ទទួលព័ត៌មានសំខាន់ៗតាមអ៊ីមែលរបស់អ្នក។"
+
+#: templates/newsletter-form.php:27 templates/newsletter-form.php:28
+msgid "Email address"
+msgstr "អាសយដ្ឋានអ៊ីមែល"
+
+#: templates/newsletter-form.php:29
+msgid "Subscribe"
+msgstr "ចុះឈ្មោះ"
+
+#: templates/newsletter-form.php:32
+msgid "We will email you a link to confirm. You can unsubscribe at any time."
+msgstr "យើងនឹងផ្ញើតំណបញ្ជាក់ទៅអ៊ីមែលរបស់អ្នក។ អ្នកអាចឈប់ជាវនៅពេលណាក៏បាន។"
+
+#: templates/newsletter-form.php:34
+msgid "Privacy Policy"
+msgstr "គោលការណ៍ភាពឯកជន"

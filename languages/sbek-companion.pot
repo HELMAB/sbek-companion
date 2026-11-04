@@ -1,0 +1,827 @@
+# Copyright (C) 2026 Hel Mab
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sbek Companion 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sbek-companion\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-03T08:17:17+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: sbek-companion\n"
+
+#. Plugin Name of the plugin
+#: sbek-companion.php
+msgid "Sbek Companion"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: sbek-companion.php
+msgid "https://github.com/HELMAB/sbek-companion"
+msgstr ""
+
+#. Description of the plugin
+#: sbek-companion.php
+msgid "The non-design features of the Sbek news theme: Khmer / English URLs and linked translations, news fields (video, source, sponsored, breaking, trending), share buttons, double opt-in newsletter, SEO tags, analytics, login branding and lockout, query caching and demo content."
+msgstr ""
+
+#. Author of the plugin
+#: sbek-companion.php
+msgid "Hel Mab"
+msgstr ""
+
+#. Author URI of the plugin
+#: sbek-companion.php
+msgid "https://github.com/HELMAB"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:42
+msgid "Add the English site title"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:47
+msgid "Upload a site logo"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:52
+msgid "Add a site icon"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:57
+msgid "Add a default share image"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:62
+msgid "Choose the homepage category blocks"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:67
+msgid "Assign the Khmer and English menus"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:72
+msgid "Write a site description"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:77
+msgid "Add a contact email"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:82
+msgid "Add a contact phone number"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:87
+msgid "Set the newsroom location"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:92
+msgid "Link a social profile"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:97
+msgid "Connect analytics (GA4 or GTM)"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:114
+msgid "Theme Setup"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:145
+msgid "Finish setting up your site. These details power your header, homepage, SEO tags, structured data and footer. Click an item to go straight to it."
+msgstr ""
+
+#. translators: 1: completed count, 2: total count.
+#: includes/admin/dashboard-widget.php:155
+#, php-format
+msgid "%1$d of %2$d complete"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:163
+msgid "All set — your site is fully configured!"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:179
+msgid "Review settings"
+msgstr ""
+
+#: includes/admin/dashboard-widget.php:179
+msgid "Go to Sbek Theme"
+msgstr ""
+
+#: includes/admin/login.php:170
+msgid "Welcome back! Sign in to manage the newsroom."
+msgstr ""
+
+#: includes/admin/login.php:182
+msgid "Username or email"
+msgstr ""
+
+#: includes/admin/login.php:183
+msgid "Password"
+msgstr ""
+
+#: includes/admin/login.php:211
+msgid "Fast, trusted news."
+msgstr ""
+
+#: includes/admin/login.php:212
+msgid "Write, edit and publish stories for your readers."
+msgstr ""
+
+#: includes/admin/post-meta.php:64
+msgid "News details"
+msgstr ""
+
+#: includes/admin/post-meta.php:79
+msgid "Trending score (0–100)"
+msgstr ""
+
+#: includes/admin/post-meta.php:81
+msgid "Higher scores rank first in \"Popular articles\"."
+msgstr ""
+
+#: includes/admin/post-meta.php:84
+msgid "Video URL"
+msgstr ""
+
+#: includes/admin/post-meta.php:86
+msgid "Embedded above the article. Saving a URL also sets the post format to \"Video\", which lists the post in the homepage video block."
+msgstr ""
+
+#: includes/admin/post-meta.php:88
+msgid "This post is in the Video format but has no video: add a URL here or a video/embed block to the content. Its cards show a play icon."
+msgstr ""
+
+#: includes/admin/post-meta.php:92
+msgid "Source"
+msgstr ""
+
+#: includes/admin/post-meta.php:96
+msgid "Source URL"
+msgstr ""
+
+#: includes/admin/post-meta.php:100
+msgid "Sponsored / advertorial"
+msgstr ""
+
+#: includes/admin/post-meta.php:101
+msgid "Breaking news (header ticker)"
+msgstr ""
+
+#. translators: %d: number of hours.
+#: includes/admin/post-meta.php:109
+#, php-format
+msgid "Shown in the ticker for %d hour after publishing."
+msgid_plural "Shown in the ticker for %d hours after publishing."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/settings-panels.php:23
+msgid "English"
+msgstr ""
+
+#: includes/admin/settings-panels.php:26
+msgid "Integrations"
+msgstr ""
+
+#: includes/admin/settings-panels.php:45
+msgid "Sharing"
+msgstr ""
+
+#: includes/admin/settings-panels.php:45
+msgid "The image used when a page without its own picture is shared on social networks."
+msgstr ""
+
+#: includes/admin/settings-panels.php:49
+msgid "Default share image"
+msgstr ""
+
+#: includes/admin/settings-panels.php:50
+msgid "Choose an image"
+msgstr ""
+
+#: includes/admin/settings-panels.php:50
+msgid "JPG or PNG, 1200×630px"
+msgstr ""
+
+#: includes/admin/settings-panels.php:63
+msgid "Location for search engines"
+msgstr ""
+
+#: includes/admin/settings-panels.php:63
+msgid "Not shown to visitors: the coordinates tell search engines where your newsroom is (structured data)."
+msgstr ""
+
+#: includes/admin/settings-panels.php:69
+msgid "Latitude"
+msgstr ""
+
+#: includes/admin/settings-panels.php:80
+msgid "Longitude"
+msgstr ""
+
+#: includes/admin/settings-panels.php:97
+#: templates/newsletter-form.php:13
+msgid "Newsletter"
+msgstr ""
+
+#: includes/admin/settings-panels.php:97
+msgid "Email signup form in the footer."
+msgstr ""
+
+#: includes/admin/settings-panels.php:98
+msgid "Newsletter signup"
+msgstr ""
+
+#: includes/admin/settings-panels.php:98
+msgid "Addresses are stored on this site, under Subscribers, and count only after the visitor clicks the link in the confirmation email (double opt-in). Your site must be able to send email."
+msgstr ""
+
+#. translators: %s: number of subscribers.
+#: includes/admin/settings-panels.php:104
+#, php-format
+msgid "%s subscriber"
+msgid_plural "%s subscribers"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of unconfirmed signups.
+#: includes/admin/settings-panels.php:108
+#, php-format
+msgid "%s waiting for confirmation"
+msgid_plural "%s waiting for confirmation"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/settings-panels.php:114
+msgid "View subscribers"
+msgstr ""
+
+#: includes/admin/settings-panels.php:118
+#: includes/frontend/newsletter.php:469
+msgid "Export CSV"
+msgstr ""
+
+#: includes/admin/settings-panels.php:134
+msgid "Site identity in English"
+msgstr ""
+
+#: includes/admin/settings-panels.php:134
+msgid "Used on /en/ pages. Leave a field empty to reuse the Khmer text."
+msgstr ""
+
+#: includes/admin/settings-panels.php:138
+msgid "Site title (English)"
+msgstr ""
+
+#: includes/admin/settings-panels.php:139
+msgid "Tagline (English)"
+msgstr ""
+
+#: includes/admin/settings-panels.php:145
+msgid "Footer in English"
+msgstr ""
+
+#: includes/admin/settings-panels.php:145
+msgid "English versions of the About text, the address and the copyright line (you can use {year} and {site})."
+msgstr ""
+
+#: includes/admin/settings-panels.php:149
+msgid "Description (English)"
+msgstr ""
+
+#: includes/admin/settings-panels.php:150
+msgid "Address (English)"
+msgstr ""
+
+#: includes/admin/settings-panels.php:151
+msgid "Copyright (English)"
+msgstr ""
+
+#: includes/admin/settings-panels.php:166
+msgid "Category names in English"
+msgstr ""
+
+#: includes/admin/settings-panels.php:166
+msgid "Shown in menus, badges and archive titles on English pages. Leave empty to use the Khmer name. Tags and descriptions are edited on each term's own screen."
+msgstr ""
+
+#: includes/admin/settings-panels.php:173
+msgid "Category"
+msgstr ""
+
+#: includes/admin/settings-panels.php:174
+msgid "English name"
+msgstr ""
+
+#. translators: %s: category.
+#: includes/admin/settings-panels.php:182
+#, php-format
+msgid "English name for %s"
+msgstr ""
+
+#: includes/admin/settings-panels.php:192
+msgid "No categories yet."
+msgstr ""
+
+#: includes/admin/settings-panels.php:208
+msgid "Analytics"
+msgstr ""
+
+#: includes/admin/settings-panels.php:208
+msgid "Nothing is tracked until you enter an ID here. Google Analytics 4 loads only when no Tag Manager container is set. Mention the tracking in your privacy policy."
+msgstr ""
+
+#: includes/admin/settings-panels.php:214
+#: includes/admin/settings-panels.php:320
+msgid "Google Analytics 4 ID"
+msgstr ""
+
+#: includes/admin/settings-panels.php:219
+msgid "Starts with G- (Admin → Data streams in Google Analytics)."
+msgstr ""
+
+#: includes/admin/settings-panels.php:225
+#: includes/admin/settings-panels.php:321
+msgid "Google Tag Manager ID"
+msgstr ""
+
+#: includes/admin/settings-panels.php:230
+msgid "Starts with GTM-. When set, the GA4 ID above is ignored — add GA4 inside Tag Manager instead."
+msgstr ""
+
+#: includes/admin/settings-panels.php:239
+msgid "Custom code"
+msgstr ""
+
+#: includes/admin/settings-panels.php:239
+msgid "Raw HTML/JS added to every public page. Only paste code from sources you trust."
+msgstr ""
+
+#: includes/admin/settings-panels.php:240
+msgid "Before </head>"
+msgstr ""
+
+#: includes/admin/settings-panels.php:241
+msgid "Before </body>"
+msgstr ""
+
+#: includes/admin/settings-panels.php:244
+msgid "Your role cannot save raw scripts; unsafe markup will be stripped on save."
+msgstr ""
+
+#: includes/admin/settings-panels.php:314
+msgid "Latitude must be a number between -90 and 90."
+msgstr ""
+
+#: includes/admin/settings-panels.php:315
+msgid "Longitude must be a number between -180 and 180."
+msgstr ""
+
+#. translators: 1: field label, 2: example ID.
+#: includes/admin/settings-panels.php:327
+#, php-format
+msgid "%1$s must look like %2$s."
+msgstr ""
+
+#: includes/admin/tools.php:25
+#: includes/admin/translation.php:209
+#: includes/frontend/newsletter.php:410
+msgid "You do not have permission to do this."
+msgstr ""
+
+#: includes/admin/tools.php:48
+msgid "Starting import…"
+msgstr ""
+
+#: includes/admin/tools.php:48
+msgid "Starting removal…"
+msgstr ""
+
+#: includes/admin/tools.php:63
+msgid "Job cancelled. Anything already created can still be removed."
+msgstr ""
+
+#: includes/admin/tools.php:85
+msgid "Demo content"
+msgstr ""
+
+#: includes/admin/tools.php:85
+msgid "Sample categories, about 140 Khmer and English posts with images, pages, menus and ad placeholders — handy for previewing the theme. Removing deletes only what the import created; your own content and Sbek Theme values are kept."
+msgstr ""
+
+#. translators: 1: "import" or "removal", 2: percent.
+#: includes/admin/tools.php:94
+#, php-format
+msgid "An unfinished %1$s stopped at %2$d%%. Continue it, or remove what was created so far."
+msgstr ""
+
+#: includes/admin/tools.php:95
+msgid "import"
+msgstr ""
+
+#: includes/admin/tools.php:95
+msgid "removal"
+msgstr ""
+
+#. translators: 1: date, 2: posts and pages, 3: images.
+#: includes/admin/tools.php:103
+#, php-format
+msgid "Installed %1$s: %2$d posts and pages, %3$d images."
+msgstr ""
+
+#. translators: 1: posts and pages, 2: images.
+#: includes/admin/tools.php:113
+#, php-format
+msgid "An incomplete import left %1$d posts and pages and %2$d images. Remove them before importing again."
+msgstr ""
+
+#: includes/admin/tools.php:119
+#: includes/demo/class-sbek-demo-importer.php:121
+msgid "No demo content is installed."
+msgstr ""
+
+#: includes/admin/tools.php:128
+msgid "Also apply the demo site settings"
+msgstr ""
+
+#: includes/admin/tools.php:129
+msgid "Site title, Khmer language, Phnom Penh time zone, 8 posts per page, /article/123/ links, menus, ad placeholders, privacy page, and Sbek Theme details (only fields that are still empty). These are not undone by \"Remove\"."
+msgstr ""
+
+#: includes/admin/tools.php:142
+#: includes/admin/tools.php:144
+msgid "Continue"
+msgstr ""
+
+#: includes/admin/tools.php:142
+msgid "Import demo content"
+msgstr ""
+
+#: includes/admin/tools.php:150
+msgid "Remove demo content"
+msgstr ""
+
+#: includes/admin/tools.php:151
+msgid "Delete all demo posts, pages, images, categories, menus and widgets?"
+msgstr ""
+
+#: includes/admin/tools.php:152
+msgid "Yes, remove"
+msgstr ""
+
+#: includes/admin/tools.php:170
+msgid "Tools"
+msgstr ""
+
+#: includes/admin/tools.php:199
+msgid "Something went wrong. You can continue the job or remove what was created."
+msgstr ""
+
+#: includes/admin/tools.php:200
+msgid "Done! Reloading…"
+msgstr ""
+
+#: includes/admin/translation.php:34
+msgid "Translation"
+msgstr ""
+
+#: includes/admin/translation.php:72
+msgid "Translated version"
+msgstr ""
+
+#: includes/admin/translation.php:74
+msgid "— Not translated —"
+msgstr ""
+
+#: includes/admin/translation.php:77
+#: includes/admin/translation.php:154
+msgid "(no title)"
+msgstr ""
+
+#: includes/admin/translation.php:83
+msgid "Search for an older post"
+msgstr ""
+
+#: includes/admin/translation.php:84
+msgid "Search older posts by title…"
+msgstr ""
+
+#: includes/admin/translation.php:88
+msgid "No matching posts."
+msgstr ""
+
+#: includes/admin/translation.php:89
+msgid "Matches were added to the list above."
+msgstr ""
+
+#: includes/admin/translation.php:90
+msgid "The matching posts are already in the list above."
+msgstr ""
+
+#: includes/admin/translation.php:94
+msgid "Pick the same story in the other language. The list shows the 100 most recent; search to find older ones. The link is saved on both posts."
+msgstr ""
+
+#. translators: %s: language name, e.g. "English".
+#: includes/admin/translation.php:104
+#, php-format
+msgid "Create the %s version"
+msgstr ""
+
+#: includes/admin/translation.php:108
+msgid "Copies this post into a linked draft (title, text, image, categories, tags and news details) for you to translate. Save your changes here first."
+msgstr ""
+
+#: includes/admin/translation.php:213
+msgid "This post is already in that language."
+msgstr ""
+
+#: includes/admin/translation.php:288
+msgid "Filter by language"
+msgstr ""
+
+#: includes/admin/translation.php:290
+msgid "All languages"
+msgstr ""
+
+#: includes/admin/translation.php:294
+msgid "No language"
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:77
+msgid "Another demo-content job is still in progress. Continue or remove it first."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:82
+msgid "Demo content is already installed. Remove it first to import again."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:85
+msgid "The PHP GD extension is required to generate the demo images."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:96
+msgid "No administrator account found to author the demo posts."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:146
+#: includes/demo/class-sbek-demo-importer.php:166
+msgid "A batch is already running in another request. Please wait a moment."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:162
+msgid "There is no demo-content job to run."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:222
+msgid "Site options and categories ready."
+msgstr ""
+
+#. translators: 1: images done, 2: total images.
+#: includes/demo/class-sbek-demo-importer.php:236
+#, php-format
+msgid "Generated images %1$d of %2$d."
+msgstr ""
+
+#. translators: 1: posts done, 2: total posts.
+#: includes/demo/class-sbek-demo-importer.php:248
+#, php-format
+msgid "Created Khmer posts %1$d of %2$d."
+msgstr ""
+
+#. translators: 1: posts done, 2: total posts.
+#: includes/demo/class-sbek-demo-importer.php:260
+#, php-format
+msgid "Created English posts %1$d of %2$d."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:265
+msgid "Created pages."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:275
+msgid "Demo content imported."
+msgstr ""
+
+#. translators: 1: deleted count, 2: total.
+#: includes/demo/class-sbek-demo-importer.php:296
+#, php-format
+msgid "Deleted posts and pages %1$d of %2$d."
+msgstr ""
+
+#. translators: 1: deleted count, 2: total.
+#: includes/demo/class-sbek-demo-importer.php:309
+#, php-format
+msgid "Deleted images %1$d of %2$d."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:314
+msgid "Demo content removed. Site options such as language and permalinks were left as they are."
+msgstr ""
+
+#: includes/demo/class-sbek-demo-importer.php:510
+msgid "The Khmer core language pack could not be downloaded; theme texts are still translated."
+msgstr ""
+
+#: includes/frontend/article.php:50
+msgid "Watch the video"
+msgstr ""
+
+#: includes/frontend/article.php:69
+msgid "Source:"
+msgstr ""
+
+#: includes/frontend/article.php:93
+msgid "Share on Facebook"
+msgstr ""
+
+#: includes/frontend/article.php:94
+msgid "Share on Telegram"
+msgstr ""
+
+#: includes/frontend/article.php:95
+msgid "Share on X"
+msgstr ""
+
+#: includes/frontend/article.php:96
+msgid "Share by email"
+msgstr ""
+
+#: includes/frontend/article.php:103
+msgid "Share"
+msgstr ""
+
+#: includes/frontend/article.php:107
+msgid "Share…"
+msgstr ""
+
+#: includes/frontend/article.php:119
+msgid "Link copied"
+msgstr ""
+
+#: includes/frontend/article.php:121
+msgid "Copy link"
+msgstr ""
+
+#: includes/frontend/newsletter.php:39
+#: includes/frontend/newsletter.php:41
+msgid "Subscribers"
+msgstr ""
+
+#: includes/frontend/newsletter.php:40
+msgid "Subscriber"
+msgstr ""
+
+#: includes/frontend/newsletter.php:42
+msgid "Search Subscribers"
+msgstr ""
+
+#: includes/frontend/newsletter.php:43
+msgid "No subscribers yet."
+msgstr ""
+
+#: includes/frontend/newsletter.php:90
+msgid "Waiting for confirmation"
+msgstr ""
+
+#: includes/frontend/newsletter.php:91
+msgid "Confirmed"
+msgstr ""
+
+#: includes/frontend/newsletter.php:92
+msgid "Unsubscribed"
+msgstr ""
+
+#. translators: %s: site name.
+#: includes/frontend/newsletter.php:297
+#, php-format
+msgid "Confirm your subscription to %s"
+msgstr ""
+
+#. translators: %s: site name.
+#: includes/frontend/newsletter.php:302
+#, php-format
+msgid "Someone (hopefully you) asked to receive the top stories from %s at this address."
+msgstr ""
+
+#: includes/frontend/newsletter.php:303
+msgid "To confirm, open this link:"
+msgstr ""
+
+#: includes/frontend/newsletter.php:304
+msgid "If you did not ask for this, ignore this email and you will not be subscribed."
+msgstr ""
+
+#: includes/frontend/newsletter.php:305
+msgid "To unsubscribe at any time:"
+msgstr ""
+
+#: includes/frontend/newsletter.php:375
+msgid "Almost done! Check your inbox and click the link to confirm your subscription."
+msgstr ""
+
+#: includes/frontend/newsletter.php:376
+msgid "Thanks! Your subscription is confirmed."
+msgstr ""
+
+#: includes/frontend/newsletter.php:377
+msgid "This email address is already subscribed."
+msgstr ""
+
+#: includes/frontend/newsletter.php:378
+msgid "You have been unsubscribed. Sorry to see you go."
+msgstr ""
+
+#: includes/frontend/newsletter.php:379
+msgid "That link is not valid any more. Please sign up again."
+msgstr ""
+
+#: includes/frontend/newsletter.php:380
+msgid "We could not send the confirmation email. Please try again later."
+msgstr ""
+
+#: includes/frontend/newsletter.php:381
+msgid "Sorry, that did not work. Please check the address and try again."
+msgstr ""
+
+#: includes/frontend/newsletter.php:484
+msgid "Status"
+msgstr ""
+
+#: includes/frontend/newsletter.php:485
+#: includes/i18n.php:289
+#: includes/i18n.php:731
+msgid "Language"
+msgstr ""
+
+#: includes/i18n.php:288
+#: includes/i18n.php:290
+msgid "Languages"
+msgstr ""
+
+#. translators: %s: language name, e.g. "English".
+#: includes/i18n.php:700
+#, php-format
+msgid "Primary menu (%s)"
+msgstr ""
+
+#. translators: %s: language name, e.g. "English".
+#: includes/i18n.php:702
+#, php-format
+msgid "Footer links (%s)"
+msgstr ""
+
+#: includes/security.php:81
+msgid "Too many failed login attempts. Please try again in 15 minutes."
+msgstr ""
+
+#. translators: %s: language name.
+#: includes/term-names.php:80
+#, php-format
+msgid "Name (%s)"
+msgstr ""
+
+#: includes/term-names.php:82
+msgid "Shown on pages in that language. Leave empty to use the main name."
+msgstr ""
+
+#. translators: %s: language name.
+#: includes/term-names.php:86
+#, php-format
+msgid "Description (%s)"
+msgstr ""
+
+#: includes/term-names.php:88
+msgid "Shown under the archive title on pages in that language. Leave empty to show no description there."
+msgstr ""
+
+#: sbek-companion.php:43
+msgid "Sbek Companion does nothing on its own: it adds features to the Sbek theme. Activate the Sbek theme, or deactivate this plugin."
+msgstr ""
+
+#: templates/newsletter-form.php:14
+msgid "Get the top stories in your inbox."
+msgstr ""
+
+#: templates/newsletter-form.php:27
+#: templates/newsletter-form.php:28
+msgid "Email address"
+msgstr ""
+
+#: templates/newsletter-form.php:29
+msgid "Subscribe"
+msgstr ""
+
+#: templates/newsletter-form.php:32
+msgid "We will email you a link to confirm. You can unsubscribe at any time."
+msgstr ""
+
+#: templates/newsletter-form.php:34
+msgid "Privacy Policy"
+msgstr ""
