@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-03T08:17:17+00:00\n"
+"POT-Creation-Date: 2026-11-04T02:38:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sbek-companion\n"
@@ -189,61 +189,65 @@ msgstr ""
 msgid "Integrations"
 msgstr ""
 
-#: includes/admin/settings-panels.php:45
+#: includes/admin/settings-panels.php:27
+msgid "Security"
+msgstr ""
+
+#: includes/admin/settings-panels.php:46
 msgid "Sharing"
 msgstr ""
 
-#: includes/admin/settings-panels.php:45
+#: includes/admin/settings-panels.php:46
 msgid "The image used when a page without its own picture is shared on social networks."
 msgstr ""
 
-#: includes/admin/settings-panels.php:49
+#: includes/admin/settings-panels.php:50
 msgid "Default share image"
 msgstr ""
 
-#: includes/admin/settings-panels.php:50
+#: includes/admin/settings-panels.php:51
 msgid "Choose an image"
 msgstr ""
 
-#: includes/admin/settings-panels.php:50
+#: includes/admin/settings-panels.php:51
 msgid "JPG or PNG, 1200×630px"
 msgstr ""
 
-#: includes/admin/settings-panels.php:63
+#: includes/admin/settings-panels.php:64
 msgid "Location for search engines"
 msgstr ""
 
-#: includes/admin/settings-panels.php:63
+#: includes/admin/settings-panels.php:64
 msgid "Not shown to visitors: the coordinates tell search engines where your newsroom is (structured data)."
 msgstr ""
 
-#: includes/admin/settings-panels.php:69
+#: includes/admin/settings-panels.php:70
 msgid "Latitude"
 msgstr ""
 
-#: includes/admin/settings-panels.php:80
+#: includes/admin/settings-panels.php:81
 msgid "Longitude"
 msgstr ""
 
-#: includes/admin/settings-panels.php:97
+#: includes/admin/settings-panels.php:98
 #: templates/newsletter-form.php:13
 msgid "Newsletter"
 msgstr ""
 
-#: includes/admin/settings-panels.php:97
+#: includes/admin/settings-panels.php:98
 msgid "Email signup form in the footer."
 msgstr ""
 
-#: includes/admin/settings-panels.php:98
+#: includes/admin/settings-panels.php:99
 msgid "Newsletter signup"
 msgstr ""
 
-#: includes/admin/settings-panels.php:98
+#: includes/admin/settings-panels.php:99
 msgid "Addresses are stored on this site, under Subscribers, and count only after the visitor clicks the link in the confirmation email (double opt-in). Your site must be able to send email."
 msgstr ""
 
 #. translators: %s: number of subscribers.
-#: includes/admin/settings-panels.php:104
+#: includes/admin/settings-panels.php:105
 #, php-format
 msgid "%s subscriber"
 msgid_plural "%s subscribers"
@@ -251,140 +255,188 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of unconfirmed signups.
-#: includes/admin/settings-panels.php:108
+#: includes/admin/settings-panels.php:109
 #, php-format
 msgid "%s waiting for confirmation"
 msgid_plural "%s waiting for confirmation"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/settings-panels.php:114
+#: includes/admin/settings-panels.php:115
 msgid "View subscribers"
 msgstr ""
 
-#: includes/admin/settings-panels.php:118
+#: includes/admin/settings-panels.php:119
 #: includes/frontend/newsletter.php:469
 msgid "Export CSV"
 msgstr ""
 
-#: includes/admin/settings-panels.php:134
+#: includes/admin/settings-panels.php:135
 msgid "Site identity in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:134
+#: includes/admin/settings-panels.php:135
 msgid "Used on /en/ pages. Leave a field empty to reuse the Khmer text."
 msgstr ""
 
-#: includes/admin/settings-panels.php:138
+#: includes/admin/settings-panels.php:139
 msgid "Site title (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:139
+#: includes/admin/settings-panels.php:140
 msgid "Tagline (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:145
+#: includes/admin/settings-panels.php:146
 msgid "Footer in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:145
+#: includes/admin/settings-panels.php:146
 msgid "English versions of the About text, the address and the copyright line (you can use {year} and {site})."
 msgstr ""
 
-#: includes/admin/settings-panels.php:149
+#: includes/admin/settings-panels.php:150
 msgid "Description (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:150
+#: includes/admin/settings-panels.php:151
 msgid "Address (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:151
+#: includes/admin/settings-panels.php:152
 msgid "Copyright (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:166
+#: includes/admin/settings-panels.php:167
 msgid "Category names in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:166
+#: includes/admin/settings-panels.php:167
 msgid "Shown in menus, badges and archive titles on English pages. Leave empty to use the Khmer name. Tags and descriptions are edited on each term's own screen."
 msgstr ""
 
-#: includes/admin/settings-panels.php:173
+#: includes/admin/settings-panels.php:174
 msgid "Category"
 msgstr ""
 
-#: includes/admin/settings-panels.php:174
+#: includes/admin/settings-panels.php:175
 msgid "English name"
 msgstr ""
 
 #. translators: %s: category.
-#: includes/admin/settings-panels.php:182
+#: includes/admin/settings-panels.php:183
 #, php-format
 msgid "English name for %s"
 msgstr ""
 
-#: includes/admin/settings-panels.php:192
+#: includes/admin/settings-panels.php:193
 msgid "No categories yet."
 msgstr ""
 
-#: includes/admin/settings-panels.php:208
+#: includes/admin/settings-panels.php:209
 msgid "Analytics"
 msgstr ""
 
-#: includes/admin/settings-panels.php:208
+#: includes/admin/settings-panels.php:209
 msgid "Nothing is tracked until you enter an ID here. Google Analytics 4 loads only when no Tag Manager container is set. Mention the tracking in your privacy policy."
 msgstr ""
 
-#: includes/admin/settings-panels.php:214
-#: includes/admin/settings-panels.php:320
+#: includes/admin/settings-panels.php:215
+#: includes/admin/settings-panels.php:360
 msgid "Google Analytics 4 ID"
 msgstr ""
 
-#: includes/admin/settings-panels.php:219
+#: includes/admin/settings-panels.php:220
 msgid "Starts with G- (Admin → Data streams in Google Analytics)."
 msgstr ""
 
-#: includes/admin/settings-panels.php:225
-#: includes/admin/settings-panels.php:321
+#: includes/admin/settings-panels.php:226
+#: includes/admin/settings-panels.php:361
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: includes/admin/settings-panels.php:230
+#: includes/admin/settings-panels.php:231
 msgid "Starts with GTM-. When set, the GA4 ID above is ignored — add GA4 inside Tag Manager instead."
 msgstr ""
 
-#: includes/admin/settings-panels.php:239
+#: includes/admin/settings-panels.php:240
 msgid "Custom code"
 msgstr ""
 
-#: includes/admin/settings-panels.php:239
+#: includes/admin/settings-panels.php:240
 msgid "Raw HTML/JS added to every public page. Only paste code from sources you trust."
 msgstr ""
 
-#: includes/admin/settings-panels.php:240
+#: includes/admin/settings-panels.php:241
 msgid "Before </head>"
 msgstr ""
 
-#: includes/admin/settings-panels.php:241
+#: includes/admin/settings-panels.php:242
 msgid "Before </body>"
 msgstr ""
 
-#: includes/admin/settings-panels.php:244
+#: includes/admin/settings-panels.php:245
 msgid "Your role cannot save raw scripts; unsafe markup will be stripped on save."
 msgstr ""
 
-#: includes/admin/settings-panels.php:314
+#: includes/admin/settings-panels.php:262
+msgid "Login lockout"
+msgstr ""
+
+#: includes/admin/settings-panels.php:263
+msgid "Block an IP address for 15 minutes after 5 failed logins. A one-way hash of the address is kept for that time."
+msgstr ""
+
+#: includes/admin/settings-panels.php:266
+msgid "Security headers"
+msgstr ""
+
+#: includes/admin/settings-panels.php:267
+msgid "Send the X-Content-Type-Options, X-Frame-Options, Referrer-Policy and Permissions-Policy headers. Other sites can then no longer show your pages in a frame."
+msgstr ""
+
+#: includes/admin/settings-panels.php:270
+msgid "Turn off XML-RPC"
+msgstr ""
+
+#: includes/admin/settings-panels.php:271
+msgid "XML-RPC is a common brute-force target. Keep it on if you use the WordPress mobile app, Jetpack or a remote publishing tool."
+msgstr ""
+
+#: includes/admin/settings-panels.php:274
+msgid "Turn off the file editors"
+msgstr ""
+
+#: includes/admin/settings-panels.php:275
+msgid "Remove the theme and plugin file editors from wp-admin, so a stolen admin login cannot change the site's PHP code."
+msgstr ""
+
+#: includes/admin/settings-panels.php:278
+msgid "Hide the user list from visitors"
+msgstr ""
+
+#: includes/admin/settings-panels.php:279
+msgid "Remove the REST API users endpoint for visitors who are not logged in, so author logins cannot be listed. Keep it off if an app or headless front end reads author data."
+msgstr ""
+
+#: includes/admin/settings-panels.php:283
+msgid "Hardening"
+msgstr ""
+
+#: includes/admin/settings-panels.php:283
+msgid "Optional protections for the whole site. Only the login lockout is on by default; turn the others on if nothing you use depends on what they block."
+msgstr ""
+
+#: includes/admin/settings-panels.php:354
 msgid "Latitude must be a number between -90 and 90."
 msgstr ""
 
-#: includes/admin/settings-panels.php:315
+#: includes/admin/settings-panels.php:355
 msgid "Longitude must be a number between -180 and 180."
 msgstr ""
 
 #. translators: 1: field label, 2: example ID.
-#: includes/admin/settings-panels.php:327
+#: includes/admin/settings-panels.php:367
 #, php-format
 msgid "%1$s must look like %2$s."
 msgstr ""
@@ -777,7 +829,7 @@ msgstr ""
 msgid "Footer links (%s)"
 msgstr ""
 
-#: includes/security.php:81
+#: includes/security.php:106
 msgid "Too many failed login attempts. Please try again in 15 minutes."
 msgstr ""
 

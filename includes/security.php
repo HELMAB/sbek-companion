@@ -1,24 +1,27 @@
 <?php
 /**
  * Security and performance hardening shared by admin and front-end
- * requests: response headers, information-disclosure reduction, login rate
- * limiting, and dropping the emoji polyfill.
+ * requests. Each hardening feature is a switch on the Security tab
+ * (sbek_security_options() has the defaults) and reads it when its hook
+ * runs. Removing the generator tag and the emoji polyfill is always on.
  *
  * @package sbek-companion
  */
 
 defined( 'ABSPATH' ) || exit;
 
-// Must be defined before capability checks run (i.e. at include time).
-if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
-	define( 'DISALLOW_FILE_EDIT', true );
+/**
+ * Whether a Security tab switch is on.
+ */
+function sbek_security_enabled( string $key ): bool {
+	return (bool) sbek_companion_setting( $key, 0 );
 }
 
 /**
  * Baseline security response headers.
  */
 function sbek_security_headers(): void {
-	if ( headers_sent() ) {
+	if ( headers_sent() || ! sbek_security_enabled( 'security_headers' ) ) {
 		return;
 	}
 
@@ -29,12 +32,34 @@ function sbek_security_headers(): void {
 }
 add_action( 'send_headers', 'sbek_security_headers' );
 
+/**
+ * The same effect as DISALLOW_FILE_EDIT, without defining a core constant
+ * for the whole site: nobody gets the file-editor capabilities.
+ *
+ * @param string[] $caps Primitive capabilities the user needs.
+ * @param string   $cap  Capability being checked.
+ * @return string[]
+ */
+function sbek_disallow_file_edit( array $caps, string $cap ): array {
+	if ( in_array( $cap, array( 'edit_files', 'edit_plugins', 'edit_themes' ), true ) && sbek_security_enabled( 'disable_file_edit' ) ) {
+		$caps[] = 'do_not_allow';
+	}
+
+	return $caps;
+}
+add_filter( 'map_meta_cap', 'sbek_disallow_file_edit', 10, 2 );
+
 // No generator meta tag. (Asset ?ver= strings are kept on purpose: they are
 // the cache-busting mechanism, and hiding them doesn't hide the version.)
 remove_action( 'wp_head', 'wp_generator' );
 
-// The theme doesn't use XML-RPC; it is a common brute-force target.
-add_filter( 'xmlrpc_enabled', '__return_false' );
+/**
+ * XML-RPC is a common brute-force target; off only when the owner says so.
+ */
+function sbek_xmlrpc_enabled( bool $enabled ): bool {
+	return $enabled && ! sbek_security_enabled( 'disable_xmlrpc' );
+}
+add_filter( 'xmlrpc_enabled', 'sbek_xmlrpc_enabled' );
 
 /**
  * Don't let REST user enumeration (/wp/v2/users) leak author logins to
@@ -44,7 +69,7 @@ add_filter( 'xmlrpc_enabled', '__return_false' );
  * @return array<string,mixed>
  */
 function sbek_restrict_user_endpoints( array $endpoints ): array {
-	if ( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() && sbek_security_enabled( 'hide_rest_users' ) ) {
 		unset( $endpoints['/wp/v2/users'], $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
 	}
 
@@ -69,8 +94,8 @@ function sbek_login_attempts_key(): string {
  * @return WP_User|WP_Error|null
  */
 function sbek_check_login_lockout( $user, $username, $password ) {
-	if ( empty( $username ) && empty( $password ) ) {
-		return $user; // Not a submission (initial form render).
+	if ( ( empty( $username ) && empty( $password ) ) || ! sbek_security_enabled( 'login_lockout' ) ) {
+		return $user; // Not a submission (initial form render), or lockout off.
 	}
 
 	$key = sbek_login_attempts_key();
@@ -87,7 +112,7 @@ function sbek_check_login_lockout( $user, $username, $password ) {
 add_filter( 'authenticate', 'sbek_check_login_lockout', 30, 3 );
 
 function sbek_record_login_failure(): void {
-	$key = sbek_login_attempts_key();
+	$key = sbek_security_enabled( 'login_lockout' ) ? sbek_login_attempts_key() : '';
 
 	if ( $key ) {
 		set_transient( $key, (int) get_transient( $key ) + 1, 15 * MINUTE_IN_SECONDS );

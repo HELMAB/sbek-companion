@@ -33,11 +33,11 @@ Sbek Companion adds the features of the [Sbek](https://github.com/HELMAB/sbek) n
 
 * Meta descriptions, Open Graph tags and Organization / NewsArticle / BreadcrumbList structured data (switched off automatically when Yoast SEO, Rank Math, SEOPress or All in One SEO is active).
 * Google Analytics 4 or Tag Manager, and custom header / footer code.
-* A branded login screen, a login lockout after 5 failed attempts, security headers, XML-RPC off.
+* A branded login screen and a login lockout after 5 failed attempts. Optional switches on the *Security* tab add security headers, turn off XML-RPC and the file editors, and hide the user list from visitors (all off until you turn them on).
 * Caching of the theme's homepage queries, refreshed automatically when content changes.
 * Demo content (about 140 Khmer and English posts with images, menus and widgets) that can be removed again exactly.
 
-All settings are on the theme's *Appearance > Sbek Theme* page: the *English*, *Integrations* and *Tools* tabs, and cards on *General* and *Contact & Footer*.
+All settings are on the theme's *Appearance > Sbek Theme* page: the *English*, *Integrations*, *Security* and *Tools* tabs, and cards on *General* and *Contact & Footer*.
 
 == Installation ==
 
@@ -70,7 +70,7 @@ The plugin connects to other services only in these cases:
 
 == Privacy ==
 
-The newsletter stores each subscriber's email address, language, status and signup date on your site (in the *Subscribers* list), together with a one-way hash of the IP address the signup came from; the same hash is also kept for an hour to limit repeated signups. Nothing else is collected unless you enable analytics or add custom code. The login lockout stores a hash of the IP address for 15 minutes after a failed login.
+The newsletter stores each subscriber's email address, language, status and signup date on your site (in the *Subscribers* list), together with a one-way hash of the IP address the signup came from; the same hash is also kept for an hour to limit repeated signups. Nothing else is collected unless you enable analytics or add custom code. The login lockout (on by default, under *Security*) stores a hash of the IP address for 15 minutes after a failed login.
 
 == Changelog ==
 

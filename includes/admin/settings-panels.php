@@ -3,7 +3,7 @@
  * This plugin's fields on the theme's Appearance → Sbek Theme page, added
  * through the page's hooks (inc/admin/theme-options.php in the theme):
  *
- *   sbek_theme_option_tabs            filter  adds English, Integrations (and Tools, admin/tools.php)
+ *   sbek_theme_option_tabs            filter  adds English, Integrations, Security (and Tools, admin/tools.php)
  *   sbek_theme_options_panel_{slug}   action  cards at the end of a tab
  *   sbek_theme_options_save           filter  saves `sbek_companion`, returns "not saved" messages
  *
@@ -24,6 +24,7 @@ function sbek_companion_option_tabs( array $tabs ): array {
 
 	if ( current_user_can( 'manage_options' ) ) {
 		$tabs['integrations'] = array( __( 'Integrations', 'sbek-companion' ), 'trending-up' );
+		$tabs['security']     = array( __( 'Security', 'sbek-companion' ), 'asterisk' );
 	}
 
 	return $tabs;
@@ -248,12 +249,51 @@ function sbek_companion_panel_integrations(): void {
 }
 add_action( 'sbek_theme_options_panel_integrations', 'sbek_companion_panel_integrations' );
 
+// ─── Security tab ──────────────────────────────────────────────────────────────
+
+function sbek_companion_panel_security(): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$s      = sbek_companion_setting();
+	$labels = array(
+		'login_lockout'     => array(
+			__( 'Login lockout', 'sbek-companion' ),
+			__( 'Block an IP address for 15 minutes after 5 failed logins. A one-way hash of the address is kept for that time.', 'sbek-companion' ),
+		),
+		'security_headers'  => array(
+			__( 'Security headers', 'sbek-companion' ),
+			__( 'Send the X-Content-Type-Options, X-Frame-Options, Referrer-Policy and Permissions-Policy headers. Other sites can then no longer show your pages in a frame.', 'sbek-companion' ),
+		),
+		'disable_xmlrpc'    => array(
+			__( 'Turn off XML-RPC', 'sbek-companion' ),
+			__( 'XML-RPC is a common brute-force target. Keep it on if you use the WordPress mobile app, Jetpack or a remote publishing tool.', 'sbek-companion' ),
+		),
+		'disable_file_edit' => array(
+			__( 'Turn off the file editors', 'sbek-companion' ),
+			__( 'Remove the theme and plugin file editors from wp-admin, so a stolen admin login cannot change the site\'s PHP code.', 'sbek-companion' ),
+		),
+		'hide_rest_users'   => array(
+			__( 'Hide the user list from visitors', 'sbek-companion' ),
+			__( 'Remove the REST API users endpoint for visitors who are not logged in, so author logins cannot be listed. Keep it off if an app or headless front end reads author data.', 'sbek-companion' ),
+		),
+	);
+
+	sbek_section_open( 'asterisk', __( 'Hardening', 'sbek-companion' ), __( 'Optional protections for the whole site. Only the login lockout is on by default; turn the others on if nothing you use depends on what they block.', 'sbek-companion' ) );
+	foreach ( $labels as $key => $text ) {
+		sbek_option_toggle( sbek_companion_field( $key ), $text[0], $text[1], (bool) $s[ $key ] );
+	}
+	sbek_section_close();
+}
+add_action( 'sbek_theme_options_panel_security', 'sbek_companion_panel_security' );
+
 // ─── Save ──────────────────────────────────────────────────────────────────────
 
 /**
  * Save this plugin's fields with the theme page (nonce and
- * edit_theme_options already checked by the theme). Integrations need
- * manage_options; without it the stored values are kept.
+ * edit_theme_options already checked by the theme). Integrations and
+ * Security need manage_options; without it the stored values are kept.
  *
  * @param string[] $problems "Not saved" messages collected so far.
  * @return string[]
@@ -268,7 +308,7 @@ function sbek_companion_save_settings( array $problems ): array {
 	$current = sbek_companion_setting();
 
 	if ( ! current_user_can( 'manage_options' ) ) {
-		foreach ( array( 'ga4_id', 'gtm_id', 'header_scripts', 'footer_scripts' ) as $key ) {
+		foreach ( array_merge( array( 'ga4_id', 'gtm_id', 'header_scripts', 'footer_scripts' ), array_keys( sbek_security_options() ) ) as $key ) {
 			$input[ $key ] = $current[ $key ];
 		}
 	}

@@ -38,6 +38,24 @@ function sbek_companion_defaults(): array {
 		'gtm_id'          => '',
 		'header_scripts'  => '',
 		'footer_scripts'  => '',
+	) + sbek_security_options();
+}
+
+/**
+ * The hardening switches on the Security tab (labels in
+ * admin/settings-panels.php). Only the login lockout is on by default: the
+ * others change how the whole site behaves (and can break the mobile app,
+ * embeds or headless front ends), so the owner opts in.
+ *
+ * @return array<string,int> setting key => default.
+ */
+function sbek_security_options(): array {
+	return array(
+		'login_lockout'     => 1,
+		'security_headers'  => 0,
+		'disable_xmlrpc'    => 0,
+		'disable_file_edit' => 0,
+		'hide_rest_users'   => 0,
 	);
 }
 
@@ -84,6 +102,12 @@ function sbek_companion_sanitize_settings( $input ): array {
 	$clean['lng'] = is_numeric( $lng ) && abs( (float) $lng ) <= 180 ? (string) (float) $lng : '';
 
 	$clean['show_newsletter'] = array_key_exists( 'show_newsletter', $input ) ? (int) (bool) $input['show_newsletter'] : 1;
+
+	foreach ( array_keys( sbek_security_options() ) as $key ) {
+		if ( array_key_exists( $key, $input ) ) {
+			$clean[ $key ] = (int) (bool) $input[ $key ];
+		}
+	}
 
 	// Tracking IDs: only well-formed ones, or the snippet would load nothing.
 	foreach ( sbek_tracking_id_patterns() as $key => $pattern ) {
