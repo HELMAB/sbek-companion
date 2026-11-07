@@ -140,6 +140,19 @@ function sbek_seo_description( WP_Post $post ): string {
 }
 
 /**
+ * Print a schema.org JSON-LD block through core's inline script API.
+ * JSON_HEX_TAG encodes < and > so no value can close the tag early.
+ *
+ * @param array<string,mixed> $data Structured data.
+ */
+function sbek_print_jsonld( array $data ): void {
+    wp_print_inline_script_tag(
+        (string) wp_json_encode( $data, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ),
+        [ 'type' => 'application/ld+json' ]
+    );
+}
+
+/**
  * Output NewsMediaOrganization JSON-LD structured data (site-wide).
  *
  * Built from the values collected in Sbek Theme: description, logo,
@@ -212,9 +225,7 @@ function sbek_organization_jsonld() {
         ];
     }
 
-    echo '<script type="application/ld+json">'
-        . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
-        . '</script>' . "\n";
+    sbek_print_jsonld( $data );
 }
 add_action( 'wp_head', 'sbek_organization_jsonld' );
 
@@ -275,9 +286,7 @@ function sbek_article_jsonld() {
         $data['articleSection'] = $category->name;
     }
 
-    echo '<script type="application/ld+json">'
-        . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
-        . '</script>' . "\n";
+    sbek_print_jsonld( $data );
 }
 add_action( 'wp_head', 'sbek_article_jsonld' );
 
@@ -301,13 +310,11 @@ function sbek_breadcrumb_jsonld() {
         ];
     }
 
-    echo '<script type="application/ld+json">'
-        . wp_json_encode( [
-            '@context'        => 'https://schema.org',
-            '@type'           => 'BreadcrumbList',
-            'itemListElement' => $items,
-        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
-        . '</script>' . "\n";
+    sbek_print_jsonld( [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => $items,
+    ] );
 }
 add_action( 'wp_head', 'sbek_breadcrumb_jsonld' );
 

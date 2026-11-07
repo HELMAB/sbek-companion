@@ -19,6 +19,17 @@ defined( 'ABSPATH' ) || exit;
 
 function sbek_login_enqueue(): void {
 	wp_enqueue_style( 'sbek-login', SBEK_COMPANION_URL . '/assets/css/login.css', array( 'login' ), sbek_companion_asset_version( 'assets/css/login.css' ) );
+
+	// Placeholders on the username/password fields (core markup has no filter).
+	wp_enqueue_script( 'sbek-login', SBEK_COMPANION_URL . '/assets/js/login.js', array(), sbek_companion_asset_version( 'assets/js/login.js' ), true );
+	wp_localize_script(
+		'sbek-login',
+		'sbekLoginPlaceholders',
+		array(
+			'user_login' => __( 'Username or email', 'sbek-companion' ),
+			'user_pass'  => __( 'Password', 'sbek-companion' ),
+		)
+	);
 }
 add_action( 'login_enqueue_scripts', 'sbek_login_enqueue' );
 
@@ -148,20 +159,18 @@ add_filter( 'the_privacy_policy_link', 'sbek_login_privacy_link' );
 
 /**
  * Swap the WordPress mark for the site logo (no filter exists for that
- * markup, so an inline style is the update-safe way). Without a logo the
- * site name below it is enough, so the mark is hidden.
+ * markup, so CSS added to login.css is the update-safe way). Without a logo
+ * the site name below it is enough, so the mark is hidden.
  */
 function sbek_login_logo_styles(): void {
 	$logo = sbek_companion_logo_url( 'medium' );
+	$css  = $logo
+		? '#login h1.wp-login-logo a{background-image:url("' . esc_url_raw( $logo ) . '");}'
+		: '#login h1.wp-login-logo{display:none;}';
 
-	if ( $logo ) {
-		printf( '<style>#login h1.wp-login-logo a{background-image:url(%s);}</style>', esc_url( $logo ) );
-		return;
-	}
-
-	echo '<style>#login h1.wp-login-logo{display:none;}</style>';
+	wp_add_inline_style( 'sbek-login', $css );
 }
-add_action( 'login_head', 'sbek_login_logo_styles' );
+add_action( 'login_enqueue_scripts', 'sbek_login_logo_styles', 20 );
 
 function sbek_login_message( string $message ): string {
 	$intro = sprintf(
@@ -173,29 +182,6 @@ function sbek_login_message( string $message ): string {
 	return $intro . $message;
 }
 add_filter( 'login_message', 'sbek_login_message' );
-
-/**
- * Placeholders on the username/password fields (core markup has no filter).
- */
-function sbek_login_footer_script(): void {
-	$placeholders = array(
-		'user_login' => __( 'Username or email', 'sbek-companion' ),
-		'user_pass'  => __( 'Password', 'sbek-companion' ),
-	);
-	?>
-	<script>
-	( function ( placeholders ) {
-		Object.keys( placeholders ).forEach( function ( id ) {
-			var field = document.getElementById( id );
-			if ( field ) {
-				field.setAttribute( 'placeholder', placeholders[ id ] );
-			}
-		} );
-	} )( <?php echo wp_json_encode( $placeholders ); ?> );
-	</script>
-	<?php
-}
-add_action( 'login_footer', 'sbek_login_footer_script' );
 
 /**
  * Left brand panel (sibling of #login, laid out by login.css).

@@ -32,11 +32,23 @@ function sbek_companion_theme_is_active(): bool {
 	return 'sbek' === get_template();
 }
 
+/**
+ * Whether the "activate the Sbek theme" notice may show on this admin screen.
+ * Notices must stay limited in scope (plugin guideline 11), so it is not
+ * shown on every page of wp-admin.
+ *
+ * @param WP_Screen|null $screen Current admin screen (null if not set up yet).
+ */
+function sbek_companion_theme_notice_screen( ?WP_Screen $screen ): bool {
+	// TODO: return true only on the screen(s) where this notice belongs.
+	return false;
+}
+
 if ( ! sbek_companion_theme_is_active() ) {
 	add_action(
 		'admin_notices',
 		static function (): void {
-			if ( ! current_user_can( 'activate_plugins' ) ) {
+			if ( ! current_user_can( 'activate_plugins' ) || ! sbek_companion_theme_notice_screen( get_current_screen() ) ) {
 				return;
 			}
 			wp_admin_notice(

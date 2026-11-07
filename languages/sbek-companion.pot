@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-04T02:38:15+00:00\n"
+"POT-Creation-Date: 2026-11-07T14:21:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sbek-companion\n"
@@ -113,23 +113,23 @@ msgstr ""
 msgid "Go to Sbek Theme"
 msgstr ""
 
-#: includes/admin/login.php:170
-msgid "Welcome back! Sign in to manage the newsroom."
-msgstr ""
-
-#: includes/admin/login.php:182
+#: includes/admin/login.php:29
 msgid "Username or email"
 msgstr ""
 
-#: includes/admin/login.php:183
+#: includes/admin/login.php:30
 msgid "Password"
 msgstr ""
 
-#: includes/admin/login.php:211
+#: includes/admin/login.php:179
+msgid "Welcome back! Sign in to manage the newsroom."
+msgstr ""
+
+#: includes/admin/login.php:197
 msgid "Fast, trusted news."
 msgstr ""
 
-#: includes/admin/login.php:212
+#: includes/admin/login.php:198
 msgid "Write, edit and publish stories for your readers."
 msgstr ""
 
@@ -181,73 +181,73 @@ msgid_plural "Shown in the ticker for %d hours after publishing."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/settings-panels.php:23
+#: includes/admin/settings-panels.php:30
 msgid "English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:26
+#: includes/admin/settings-panels.php:33
 msgid "Integrations"
 msgstr ""
 
-#: includes/admin/settings-panels.php:27
+#: includes/admin/settings-panels.php:34
 msgid "Security"
 msgstr ""
 
-#: includes/admin/settings-panels.php:46
+#: includes/admin/settings-panels.php:53
 msgid "Sharing"
 msgstr ""
 
-#: includes/admin/settings-panels.php:46
+#: includes/admin/settings-panels.php:53
 msgid "The image used when a page without its own picture is shared on social networks."
 msgstr ""
 
-#: includes/admin/settings-panels.php:50
+#: includes/admin/settings-panels.php:57
 msgid "Default share image"
 msgstr ""
 
-#: includes/admin/settings-panels.php:51
+#: includes/admin/settings-panels.php:58
 msgid "Choose an image"
 msgstr ""
 
-#: includes/admin/settings-panels.php:51
+#: includes/admin/settings-panels.php:58
 msgid "JPG or PNG, 1200×630px"
 msgstr ""
 
-#: includes/admin/settings-panels.php:64
+#: includes/admin/settings-panels.php:71
 msgid "Location for search engines"
 msgstr ""
 
-#: includes/admin/settings-panels.php:64
+#: includes/admin/settings-panels.php:71
 msgid "Not shown to visitors: the coordinates tell search engines where your newsroom is (structured data)."
 msgstr ""
 
-#: includes/admin/settings-panels.php:70
+#: includes/admin/settings-panels.php:77
 msgid "Latitude"
 msgstr ""
 
-#: includes/admin/settings-panels.php:81
+#: includes/admin/settings-panels.php:88
 msgid "Longitude"
 msgstr ""
 
-#: includes/admin/settings-panels.php:98
+#: includes/admin/settings-panels.php:105
 #: templates/newsletter-form.php:13
 msgid "Newsletter"
 msgstr ""
 
-#: includes/admin/settings-panels.php:98
+#: includes/admin/settings-panels.php:105
 msgid "Email signup form in the footer."
 msgstr ""
 
-#: includes/admin/settings-panels.php:99
+#: includes/admin/settings-panels.php:106
 msgid "Newsletter signup"
 msgstr ""
 
-#: includes/admin/settings-panels.php:99
+#: includes/admin/settings-panels.php:106
 msgid "Addresses are stored on this site, under Subscribers, and count only after the visitor clicks the link in the confirmation email (double opt-in). Your site must be able to send email."
 msgstr ""
 
 #. translators: %s: number of subscribers.
-#: includes/admin/settings-panels.php:105
+#: includes/admin/settings-panels.php:112
 #, php-format
 msgid "%s subscriber"
 msgid_plural "%s subscribers"
@@ -255,175 +255,155 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: number of unconfirmed signups.
-#: includes/admin/settings-panels.php:109
+#: includes/admin/settings-panels.php:116
 #, php-format
 msgid "%s waiting for confirmation"
 msgid_plural "%s waiting for confirmation"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/settings-panels.php:115
+#: includes/admin/settings-panels.php:122
 msgid "View subscribers"
 msgstr ""
 
-#: includes/admin/settings-panels.php:119
-#: includes/frontend/newsletter.php:469
+#: includes/admin/settings-panels.php:126
+#: includes/frontend/newsletter.php:478
 msgid "Export CSV"
 msgstr ""
 
-#: includes/admin/settings-panels.php:135
+#: includes/admin/settings-panels.php:142
 msgid "Site identity in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:135
+#: includes/admin/settings-panels.php:142
 msgid "Used on /en/ pages. Leave a field empty to reuse the Khmer text."
 msgstr ""
 
-#: includes/admin/settings-panels.php:139
+#: includes/admin/settings-panels.php:146
 msgid "Site title (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:140
+#: includes/admin/settings-panels.php:147
 msgid "Tagline (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:146
+#: includes/admin/settings-panels.php:153
 msgid "Footer in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:146
+#: includes/admin/settings-panels.php:153
 msgid "English versions of the About text, the address and the copyright line (you can use {year} and {site})."
 msgstr ""
 
-#: includes/admin/settings-panels.php:150
+#: includes/admin/settings-panels.php:157
 msgid "Description (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:151
+#: includes/admin/settings-panels.php:158
 msgid "Address (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:152
+#: includes/admin/settings-panels.php:159
 msgid "Copyright (English)"
 msgstr ""
 
-#: includes/admin/settings-panels.php:167
+#: includes/admin/settings-panels.php:174
 msgid "Category names in English"
 msgstr ""
 
-#: includes/admin/settings-panels.php:167
+#: includes/admin/settings-panels.php:174
 msgid "Shown in menus, badges and archive titles on English pages. Leave empty to use the Khmer name. Tags and descriptions are edited on each term's own screen."
 msgstr ""
 
-#: includes/admin/settings-panels.php:174
+#: includes/admin/settings-panels.php:181
 msgid "Category"
 msgstr ""
 
-#: includes/admin/settings-panels.php:175
+#: includes/admin/settings-panels.php:182
 msgid "English name"
 msgstr ""
 
 #. translators: %s: category.
-#: includes/admin/settings-panels.php:183
+#: includes/admin/settings-panels.php:190
 #, php-format
 msgid "English name for %s"
 msgstr ""
 
-#: includes/admin/settings-panels.php:193
+#: includes/admin/settings-panels.php:200
 msgid "No categories yet."
 msgstr ""
 
-#: includes/admin/settings-panels.php:209
+#: includes/admin/settings-panels.php:216
 msgid "Analytics"
 msgstr ""
 
-#: includes/admin/settings-panels.php:209
+#: includes/admin/settings-panels.php:216
 msgid "Nothing is tracked until you enter an ID here. Google Analytics 4 loads only when no Tag Manager container is set. Mention the tracking in your privacy policy."
 msgstr ""
 
-#: includes/admin/settings-panels.php:215
+#: includes/admin/settings-panels.php:222
 #: includes/admin/settings-panels.php:360
 msgid "Google Analytics 4 ID"
 msgstr ""
 
-#: includes/admin/settings-panels.php:220
+#: includes/admin/settings-panels.php:227
 msgid "Starts with G- (Admin → Data streams in Google Analytics)."
 msgstr ""
 
-#: includes/admin/settings-panels.php:226
+#: includes/admin/settings-panels.php:233
 #: includes/admin/settings-panels.php:361
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: includes/admin/settings-panels.php:231
+#: includes/admin/settings-panels.php:238
 msgid "Starts with GTM-. When set, the GA4 ID above is ignored — add GA4 inside Tag Manager instead."
 msgstr ""
 
-#: includes/admin/settings-panels.php:240
-msgid "Custom code"
-msgstr ""
-
-#: includes/admin/settings-panels.php:240
-msgid "Raw HTML/JS added to every public page. Only paste code from sources you trust."
-msgstr ""
-
-#: includes/admin/settings-panels.php:241
-msgid "Before </head>"
-msgstr ""
-
-#: includes/admin/settings-panels.php:242
-msgid "Before </body>"
-msgstr ""
-
-#: includes/admin/settings-panels.php:245
-msgid "Your role cannot save raw scripts; unsafe markup will be stripped on save."
-msgstr ""
-
-#: includes/admin/settings-panels.php:262
+#: includes/admin/settings-panels.php:259
 msgid "Login lockout"
 msgstr ""
 
-#: includes/admin/settings-panels.php:263
+#: includes/admin/settings-panels.php:260
 msgid "Block an IP address for 15 minutes after 5 failed logins. A one-way hash of the address is kept for that time."
 msgstr ""
 
-#: includes/admin/settings-panels.php:266
+#: includes/admin/settings-panels.php:263
 msgid "Security headers"
 msgstr ""
 
-#: includes/admin/settings-panels.php:267
+#: includes/admin/settings-panels.php:264
 msgid "Send the X-Content-Type-Options, X-Frame-Options, Referrer-Policy and Permissions-Policy headers. Other sites can then no longer show your pages in a frame."
 msgstr ""
 
-#: includes/admin/settings-panels.php:270
+#: includes/admin/settings-panels.php:267
 msgid "Turn off XML-RPC"
 msgstr ""
 
-#: includes/admin/settings-panels.php:271
+#: includes/admin/settings-panels.php:268
 msgid "XML-RPC is a common brute-force target. Keep it on if you use the WordPress mobile app, Jetpack or a remote publishing tool."
 msgstr ""
 
-#: includes/admin/settings-panels.php:274
+#: includes/admin/settings-panels.php:271
 msgid "Turn off the file editors"
 msgstr ""
 
-#: includes/admin/settings-panels.php:275
+#: includes/admin/settings-panels.php:272
 msgid "Remove the theme and plugin file editors from wp-admin, so a stolen admin login cannot change the site's PHP code."
 msgstr ""
 
-#: includes/admin/settings-panels.php:278
+#: includes/admin/settings-panels.php:275
 msgid "Hide the user list from visitors"
 msgstr ""
 
-#: includes/admin/settings-panels.php:279
+#: includes/admin/settings-panels.php:276
 msgid "Remove the REST API users endpoint for visitors who are not logged in, so author logins cannot be listed. Keep it off if an app or headless front end reads author data."
 msgstr ""
 
-#: includes/admin/settings-panels.php:283
+#: includes/admin/settings-panels.php:280
 msgid "Hardening"
 msgstr ""
 
-#: includes/admin/settings-panels.php:283
+#: includes/admin/settings-panels.php:280
 msgid "Optional protections for the whole site. Only the login lockout is on by default; turn the others on if nothing you use depends on what they block."
 msgstr ""
 
@@ -443,7 +423,7 @@ msgstr ""
 
 #: includes/admin/tools.php:25
 #: includes/admin/translation.php:209
-#: includes/frontend/newsletter.php:410
+#: includes/frontend/newsletter.php:419
 msgid "You do not have permission to do this."
 msgstr ""
 
@@ -721,92 +701,96 @@ msgstr ""
 msgid "Copy link"
 msgstr ""
 
-#: includes/frontend/newsletter.php:39
-#: includes/frontend/newsletter.php:41
+#: includes/frontend/newsletter.php:42
+#: includes/frontend/newsletter.php:44
 msgid "Subscribers"
 msgstr ""
 
-#: includes/frontend/newsletter.php:40
+#: includes/frontend/newsletter.php:43
 msgid "Subscriber"
 msgstr ""
 
-#: includes/frontend/newsletter.php:42
+#: includes/frontend/newsletter.php:45
 msgid "Search Subscribers"
 msgstr ""
 
-#: includes/frontend/newsletter.php:43
+#: includes/frontend/newsletter.php:46
 msgid "No subscribers yet."
 msgstr ""
 
-#: includes/frontend/newsletter.php:90
+#: includes/frontend/newsletter.php:93
 msgid "Waiting for confirmation"
 msgstr ""
 
-#: includes/frontend/newsletter.php:91
+#: includes/frontend/newsletter.php:94
 msgid "Confirmed"
 msgstr ""
 
-#: includes/frontend/newsletter.php:92
+#: includes/frontend/newsletter.php:95
 msgid "Unsubscribed"
 msgstr ""
 
 #. translators: %s: site name.
-#: includes/frontend/newsletter.php:297
+#: includes/frontend/newsletter.php:305
 #, php-format
 msgid "Confirm your subscription to %s"
 msgstr ""
 
 #. translators: %s: site name.
-#: includes/frontend/newsletter.php:302
+#: includes/frontend/newsletter.php:310
 #, php-format
 msgid "Someone (hopefully you) asked to receive the top stories from %s at this address."
 msgstr ""
 
-#: includes/frontend/newsletter.php:303
+#: includes/frontend/newsletter.php:311
 msgid "To confirm, open this link:"
 msgstr ""
 
-#: includes/frontend/newsletter.php:304
+#: includes/frontend/newsletter.php:312
 msgid "If you did not ask for this, ignore this email and you will not be subscribed."
 msgstr ""
 
-#: includes/frontend/newsletter.php:305
+#: includes/frontend/newsletter.php:313
 msgid "To unsubscribe at any time:"
 msgstr ""
 
-#: includes/frontend/newsletter.php:375
+#: includes/frontend/newsletter.php:383
 msgid "Almost done! Check your inbox and click the link to confirm your subscription."
 msgstr ""
 
-#: includes/frontend/newsletter.php:376
+#: includes/frontend/newsletter.php:384
 msgid "Thanks! Your subscription is confirmed."
 msgstr ""
 
-#: includes/frontend/newsletter.php:377
+#: includes/frontend/newsletter.php:385
 msgid "This email address is already subscribed."
 msgstr ""
 
-#: includes/frontend/newsletter.php:378
+#: includes/frontend/newsletter.php:386
 msgid "You have been unsubscribed. Sorry to see you go."
 msgstr ""
 
-#: includes/frontend/newsletter.php:379
+#: includes/frontend/newsletter.php:387
 msgid "That link is not valid any more. Please sign up again."
 msgstr ""
 
-#: includes/frontend/newsletter.php:380
+#: includes/frontend/newsletter.php:388
+msgid "The form had expired. Please enter your email address again."
+msgstr ""
+
+#: includes/frontend/newsletter.php:389
 msgid "We could not send the confirmation email. Please try again later."
 msgstr ""
 
-#: includes/frontend/newsletter.php:381
+#: includes/frontend/newsletter.php:390
 msgid "Sorry, that did not work. Please check the address and try again."
 msgstr ""
 
-#: includes/frontend/newsletter.php:484
+#: includes/frontend/newsletter.php:493
 msgid "Status"
 msgstr ""
 
-#: includes/frontend/newsletter.php:485
+#: includes/frontend/newsletter.php:494
 #: includes/i18n.php:289
 #: includes/i18n.php:731
 msgid "Language"
@@ -853,7 +837,7 @@ msgstr ""
 msgid "Shown under the archive title on pages in that language. Leave empty to show no description there."
 msgstr ""
 
-#: sbek-companion.php:43
+#: sbek-companion.php:55
 msgid "Sbek Companion does nothing on its own: it adds features to the Sbek theme. Activate the Sbek theme, or deactivate this plugin."
 msgstr ""
 

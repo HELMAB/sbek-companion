@@ -16,10 +16,12 @@
  * Every step redirects back with a ?subscribed= flag that the form reads to
  * show a message.
  *
- * The form deliberately has no nonce: a nonce printed into a page-cached
- * footer goes stale and turns every signup into an error. Forged requests
- * are stopped by the same-origin check, and the worst one could do is send
- * a confirmation email — nothing is subscribed without clicking it.
+ * The form carries a nonce (SBEK_SUBSCRIBE_NONCE), checked before anything
+ * else. Visitors who aren't logged in all share one nonce, so page-cached
+ * footers keep working while it is valid (12–24 hours). A page cached for
+ * longer gets the `expired` message; its ?subscribed= URL is one page caches
+ * usually don't serve from cache, so the form there has a fresh nonce for the
+ * retry. The same-origin check and double opt-in remain as further guards.
  *
  * Subscribers saved before double opt-in existed have no status meta and
  * count as confirmed.
@@ -30,6 +32,7 @@
 defined( 'ABSPATH' ) || exit;
 
 const SBEK_SUBSCRIBE_MAX_PER_HOUR = 5;
+const SBEK_SUBSCRIBE_NONCE        = 'sbek_subscribe';
 
 function sbek_register_subscriber_cpt(): void {
 	register_post_type(
@@ -206,8 +209,13 @@ function sbek_subscribe_same_origin(): bool {
 }
 
 function sbek_handle_subscribe(): void {
+	$nonce = isset( $_POST['sbek_subscribe_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['sbek_subscribe_nonce'] ) ) : '';
+	if ( ! wp_verify_nonce( $nonce, SBEK_SUBSCRIBE_NONCE ) ) {
+		sbek_subscribe_redirect( 'expired' );
+	}
+
 	// Honeypot: bots fill the hidden field. Pretend success, store nothing.
-	if ( ! empty( $_POST['sbek_website'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- no nonce by design, see file header.
+	if ( ! empty( $_POST['sbek_website'] ) ) {
 		sbek_subscribe_redirect( 'pending' );
 	}
 
@@ -225,12 +233,12 @@ function sbek_handle_subscribe(): void {
 		set_transient( $throttle_key, $attempts + 1, HOUR_IN_SECONDS );
 	}
 
-	$email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
 	if ( ! is_email( $email ) ) {
 		sbek_subscribe_redirect( 'error' );
 	}
 
-	$lang = sanitize_key( wp_unslash( $_POST['lang'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	$lang = sanitize_key( wp_unslash( $_POST['lang'] ?? '' ) );
 	if ( ! isset( sbek_languages()[ $lang ] ) ) {
 		$lang = SBEK_DEFAULT_LANGUAGE;
 	}
@@ -377,6 +385,7 @@ function sbek_subscribe_notice(): ?array {
 		'duplicate'    => array( __( 'This email address is already subscribed.', 'sbek-companion' ), false ),
 		'unsubscribed' => array( __( 'You have been unsubscribed. Sorry to see you go.', 'sbek-companion' ), false ),
 		'invalid'      => array( __( 'That link is not valid any more. Please sign up again.', 'sbek-companion' ), true ),
+		'expired'      => array( __( 'The form had expired. Please enter your email address again.', 'sbek-companion' ), true ),
 		'mailfail'     => array( __( 'We could not send the confirmation email. Please try again later.', 'sbek-companion' ), true ),
 		'error'        => array( __( 'Sorry, that did not work. Please check the address and try again.', 'sbek-companion' ), true ),
 	);

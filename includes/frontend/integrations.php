@@ -1,9 +1,9 @@
 <?php
 /**
- * Third-party integrations: Google Analytics 4, Google Tag Manager, and
- * custom header/footer scripts — all driven by Appearance → Sbek Theme →
- * Integrations (this plugin's settings). Nothing loads until an ID or a
- * script is entered there.
+ * Third-party integrations: Google Analytics 4 and Google Tag Manager, driven
+ * by Appearance → Sbek Theme → Integrations (this plugin's settings). Only the
+ * IDs are stored; the code is generated here and enqueued like any script.
+ * Nothing loads until an ID is entered there.
  *
  * @package sbek-companion
  */
@@ -11,32 +11,31 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Head output: GTM container and raw header scripts (GA4 is enqueued below).
- * Skipped in the admin and for logged-in editors to keep analytics clean.
+ * Google Tag Manager container. Google's snippet only pushes the start event
+ * and loads gtm.js asynchronously, so that is done here with an enqueued
+ * script and its inline "before" code.
  */
-function sbek_integrations_head(): void {
-	if ( is_admin() ) {
+function sbek_integrations_gtm(): void {
+	$gtm_id = sbek_companion_setting( 'gtm_id', '' );
+
+	if ( ! $gtm_id ) {
 		return;
 	}
 
-	$gtm_id         = sbek_companion_setting( 'gtm_id', '' );
-	$ga4_id         = sbek_companion_setting( 'ga4_id', '' );
-	$header_scripts = sbek_companion_setting( 'header_scripts', '' );
-
-	// Google Tag Manager (head half).
-	if ( $gtm_id ) {
-		printf(
-			"<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','%s');</script>\n<!-- End Google Tag Manager -->\n",
-			esc_js( $gtm_id )
-		);
-	}
-
-	// Raw custom header scripts (already capability-gated on save).
-	if ( $header_scripts ) {
-		echo "\n" . $header_scripts . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
+	wp_enqueue_script(
+		'sbek-gtm',
+		'https://www.googletagmanager.com/gtm.js?id=' . rawurlencode( $gtm_id ),
+		array(),
+		null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Google serves the current version; a ?ver would only break caching.
+		array( 'strategy' => 'async' )
+	);
+	wp_add_inline_script(
+		'sbek-gtm',
+		"window.dataLayer=window.dataLayer||[];window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});",
+		'before'
+	);
 }
-add_action( 'wp_head', 'sbek_integrations_head', 20 );
+add_action( 'wp_enqueue_scripts', 'sbek_integrations_gtm' );
 
 /**
  * Google Analytics 4 (gtag.js) — only when no Tag Manager container handles
@@ -82,19 +81,3 @@ function sbek_integrations_body_open(): void {
 	}
 }
 add_action( 'wp_body_open', 'sbek_integrations_body_open' );
-
-/**
- * Footer output: raw custom footer scripts.
- */
-function sbek_integrations_footer(): void {
-	if ( is_admin() ) {
-		return;
-	}
-
-	$footer_scripts = sbek_companion_setting( 'footer_scripts', '' );
-
-	if ( $footer_scripts ) {
-		echo "\n" . $footer_scripts . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-}
-add_action( 'wp_footer', 'sbek_integrations_footer', 20 );

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sbek Companion 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sbek-companion\n"
-"POT-Creation-Date: 2026-11-04T02:38:15+00:00\n"
+"POT-Creation-Date: 2026-11-07T14:21:36+00:00\n"
 "PO-Revision-Date: 2026-11-02T03:32:41+00:00\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Khmer\n"
@@ -125,23 +125,23 @@ msgstr "ពិនិត្យការកំណត់"
 msgid "Go to Sbek Theme"
 msgstr "ទៅកាន់ Sbek Theme"
 
-#: includes/admin/login.php:170
-msgid "Welcome back! Sign in to manage the newsroom."
-msgstr "សូមស្វាគមន៍! ចូលគណនីដើម្បីគ្រប់គ្រងបន្ទប់ព័ត៌មាន។"
-
-#: includes/admin/login.php:182
+#: includes/admin/login.php:29
 msgid "Username or email"
 msgstr "ឈ្មោះអ្នកប្រើ ឬអ៊ីមែល"
 
-#: includes/admin/login.php:183
+#: includes/admin/login.php:30
 msgid "Password"
 msgstr "ពាក្យសម្ងាត់"
 
-#: includes/admin/login.php:211
+#: includes/admin/login.php:179
+msgid "Welcome back! Sign in to manage the newsroom."
+msgstr "សូមស្វាគមន៍! ចូលគណនីដើម្បីគ្រប់គ្រងបន្ទប់ព័ត៌មាន។"
+
+#: includes/admin/login.php:197
 msgid "Fast, trusted news."
 msgstr "ព័ត៌មានរហ័ស និងទុកចិត្តបាន។"
 
-#: includes/admin/login.php:212
+#: includes/admin/login.php:198
 msgid "Write, edit and publish stories for your readers."
 msgstr "សរសេរ កែសម្រួល និងចុះផ្សាយអត្ថបទសម្រាប់អ្នកអាន។"
 
@@ -200,45 +200,45 @@ msgid "Shown in the ticker for %d hour after publishing."
 msgid_plural "Shown in the ticker for %d hours after publishing."
 msgstr[0] "បង្ហាញក្នុងខ្សែព័ត៌មានរយៈពេល %d ម៉ោង បន្ទាប់ពីចុះផ្សាយ។"
 
-#: includes/admin/settings-panels.php:23
+#: includes/admin/settings-panels.php:30
 msgid "English"
 msgstr "អង់គ្លេស"
 
-#: includes/admin/settings-panels.php:26
+#: includes/admin/settings-panels.php:33
 msgid "Integrations"
 msgstr "ការភ្ជាប់សេវា"
 
-#: includes/admin/settings-panels.php:27
+#: includes/admin/settings-panels.php:34
 msgid "Security"
 msgstr ""
 
-#: includes/admin/settings-panels.php:46
+#: includes/admin/settings-panels.php:53
 msgid "Sharing"
 msgstr "ការចែករំលែក"
 
-#: includes/admin/settings-panels.php:46
+#: includes/admin/settings-panels.php:53
 msgid ""
 "The image used when a page without its own picture is shared on social "
 "networks."
 msgstr "រូបភាពដែលប្រើនៅពេលចែករំលែកទំព័រដែលគ្មានរូបភាពផ្ទាល់ខ្លួនលើបណ្តាញសង្គម។"
 
-#: includes/admin/settings-panels.php:50
+#: includes/admin/settings-panels.php:57
 msgid "Default share image"
 msgstr "រូបភាពចែករំលែកលំនាំដើម"
 
-#: includes/admin/settings-panels.php:51
+#: includes/admin/settings-panels.php:58
 msgid "Choose an image"
 msgstr "ជ្រើសរើសរូបភាព"
 
-#: includes/admin/settings-panels.php:51
+#: includes/admin/settings-panels.php:58
 msgid "JPG or PNG, 1200×630px"
 msgstr "JPG ឬ PNG ទំហំ 1200×630px"
 
-#: includes/admin/settings-panels.php:64
+#: includes/admin/settings-panels.php:71
 msgid "Location for search engines"
 msgstr "ទីតាំងសម្រាប់ម៉ាស៊ីនស្វែងរក"
 
-#: includes/admin/settings-panels.php:64
+#: includes/admin/settings-panels.php:71
 msgid ""
 "Not shown to visitors: the coordinates tell search engines where your "
 "newsroom is (structured data)."
@@ -246,27 +246,27 @@ msgstr ""
 "មិនបង្ហាញដល់អ្នកទស្សនាទេ៖ កូអរដោនេប្រាប់ម៉ាស៊ីនស្វែងរកពីទីតាំងបន្ទប់ព័ត៌មានរបស់អ្នក "
 "(ទិន្នន័យរចនាសម្ព័ន្ធ)។"
 
-#: includes/admin/settings-panels.php:70
+#: includes/admin/settings-panels.php:77
 msgid "Latitude"
 msgstr "រយៈទទឹង"
 
-#: includes/admin/settings-panels.php:81
+#: includes/admin/settings-panels.php:88
 msgid "Longitude"
 msgstr "រយៈបណ្ដោយ"
 
-#: includes/admin/settings-panels.php:98 templates/newsletter-form.php:13
+#: includes/admin/settings-panels.php:105 templates/newsletter-form.php:13
 msgid "Newsletter"
 msgstr "ព្រឹត្តិបត្រព័ត៌មាន"
 
-#: includes/admin/settings-panels.php:98
+#: includes/admin/settings-panels.php:105
 msgid "Email signup form in the footer."
 msgstr "ទម្រង់ចុះឈ្មោះតាមអ៊ីមែលនៅបាតទំព័រ។"
 
-#: includes/admin/settings-panels.php:99
+#: includes/admin/settings-panels.php:106
 msgid "Newsletter signup"
 msgstr "ការចុះឈ្មោះទទួលព្រឹត្តិបត្រព័ត៌មាន"
 
-#: includes/admin/settings-panels.php:99
+#: includes/admin/settings-panels.php:106
 msgid ""
 "Addresses are stored on this site, under Subscribers, and count only after "
 "the visitor clicks the link in the confirmation email (double opt-in). Your "
@@ -277,71 +277,71 @@ msgstr ""
 "គេហទំព័ររបស់អ្នកត្រូវតែអាចផ្ញើអ៊ីមែលបាន។"
 
 #. translators: %s: number of subscribers.
-#: includes/admin/settings-panels.php:105
+#: includes/admin/settings-panels.php:112
 #, php-format
 msgid "%s subscriber"
 msgid_plural "%s subscribers"
 msgstr[0] "អ្នកជាវ %s នាក់"
 
 #. translators: %s: number of unconfirmed signups.
-#: includes/admin/settings-panels.php:109
+#: includes/admin/settings-panels.php:116
 #, php-format
 msgid "%s waiting for confirmation"
 msgid_plural "%s waiting for confirmation"
 msgstr[0] "%s កំពុងរង់ចាំការបញ្ជាក់"
 
-#: includes/admin/settings-panels.php:115
+#: includes/admin/settings-panels.php:122
 msgid "View subscribers"
 msgstr "មើលអ្នកជាវ"
 
-#: includes/admin/settings-panels.php:119 includes/frontend/newsletter.php:469
+#: includes/admin/settings-panels.php:126 includes/frontend/newsletter.php:478
 msgid "Export CSV"
 msgstr "នាំចេញជា CSV"
 
-#: includes/admin/settings-panels.php:135
+#: includes/admin/settings-panels.php:142
 msgid "Site identity in English"
 msgstr "អត្តសញ្ញាណគេហទំព័រជាភាសាអង់គ្លេស"
 
-#: includes/admin/settings-panels.php:135
+#: includes/admin/settings-panels.php:142
 msgid "Used on /en/ pages. Leave a field empty to reuse the Khmer text."
 msgstr "ប្រើលើទំព័រ /en/ ។ ទុកវាលទទេ ដើម្បីប្រើអត្ថបទខ្មែរដដែល។"
 
-#: includes/admin/settings-panels.php:139
+#: includes/admin/settings-panels.php:146
 msgid "Site title (English)"
 msgstr "ឈ្មោះគេហទំព័រ (អង់គ្លេស)"
 
-#: includes/admin/settings-panels.php:140
+#: includes/admin/settings-panels.php:147
 msgid "Tagline (English)"
 msgstr "ពាក្យស្លោក (អង់គ្លេស)"
 
-#: includes/admin/settings-panels.php:146
+#: includes/admin/settings-panels.php:153
 msgid "Footer in English"
 msgstr "បាតទំព័រជាភាសាអង់គ្លេស"
 
-#: includes/admin/settings-panels.php:146
+#: includes/admin/settings-panels.php:153
 msgid ""
 "English versions of the About text, the address and the copyright line (you "
 "can use {year} and {site})."
 msgstr ""
 "កំណែភាសាអង់គ្លេសនៃអត្ថបទអំពីយើង អាសយដ្ឋាន និងបន្ទាត់រក្សាសិទ្ធិ (អាចប្រើ {year} និង {site})។"
 
-#: includes/admin/settings-panels.php:150
+#: includes/admin/settings-panels.php:157
 msgid "Description (English)"
 msgstr "ការពិពណ៌នា (អង់គ្លេស)"
 
-#: includes/admin/settings-panels.php:151
+#: includes/admin/settings-panels.php:158
 msgid "Address (English)"
 msgstr "អាសយដ្ឋាន (អង់គ្លេស)"
 
-#: includes/admin/settings-panels.php:152
+#: includes/admin/settings-panels.php:159
 msgid "Copyright (English)"
 msgstr "រក្សាសិទ្ធិ (អង់គ្លេស)"
 
-#: includes/admin/settings-panels.php:167
+#: includes/admin/settings-panels.php:174
 msgid "Category names in English"
 msgstr "ឈ្មោះប្រភេទជាភាសាអង់គ្លេស"
 
-#: includes/admin/settings-panels.php:167
+#: includes/admin/settings-panels.php:174
 msgid ""
 "Shown in menus, badges and archive titles on English pages. Leave empty to "
 "use the Khmer name. Tags and descriptions are edited on each term's own "
@@ -350,29 +350,29 @@ msgstr ""
 "បង្ហាញក្នុងម៉ឺនុយ ស្លាក និងចំណងជើងបណ្ណសារលើទំព័រភាសាអង់គ្លេស។ ទុកទទេ ដើម្បីប្រើឈ្មោះខ្មែរ។ ស្លាក "
 "និងការពិពណ៌នាត្រូវកែនៅលើអេក្រង់របស់វានីមួយៗ។"
 
-#: includes/admin/settings-panels.php:174
+#: includes/admin/settings-panels.php:181
 msgid "Category"
 msgstr "ប្រភេទ"
 
-#: includes/admin/settings-panels.php:175
+#: includes/admin/settings-panels.php:182
 msgid "English name"
 msgstr "ឈ្មោះជាភាសាអង់គ្លេស"
 
 #. translators: %s: category.
-#: includes/admin/settings-panels.php:183
+#: includes/admin/settings-panels.php:190
 #, php-format
 msgid "English name for %s"
 msgstr "ឈ្មោះជាភាសាអង់គ្លេសសម្រាប់ %s"
 
-#: includes/admin/settings-panels.php:193
+#: includes/admin/settings-panels.php:200
 msgid "No categories yet."
 msgstr "មិនទាន់មានប្រភេទនៅឡើយទេ។"
 
-#: includes/admin/settings-panels.php:209
+#: includes/admin/settings-panels.php:216
 msgid "Analytics"
 msgstr "ការវិភាគ"
 
-#: includes/admin/settings-panels.php:209
+#: includes/admin/settings-panels.php:216
 msgid ""
 "Nothing is tracked until you enter an ID here. Google Analytics 4 loads only "
 "when no Tag Manager container is set. Mention the tracking in your privacy "
@@ -381,21 +381,21 @@ msgstr ""
 "គ្មានការតាមដានទេ រហូតដល់អ្នកបញ្ចូល ID នៅទីនេះ។ Google Analytics 4 ផ្ទុកតែនៅពេលគ្មាន "
 "Tag Manager ប៉ុណ្ណោះ។ សូមរៀបរាប់ពីការតាមដាននេះក្នុងគោលការណ៍ភាពឯកជនរបស់អ្នក។"
 
-#: includes/admin/settings-panels.php:215
+#: includes/admin/settings-panels.php:222
 #: includes/admin/settings-panels.php:360
 msgid "Google Analytics 4 ID"
 msgstr "លេខសម្គាល់ Google Analytics 4"
 
-#: includes/admin/settings-panels.php:220
+#: includes/admin/settings-panels.php:227
 msgid "Starts with G- (Admin → Data streams in Google Analytics)."
 msgstr "ចាប់ផ្ដើមដោយ G- (Admin → Data streams ក្នុង Google Analytics)។"
 
-#: includes/admin/settings-panels.php:226
+#: includes/admin/settings-panels.php:233
 #: includes/admin/settings-panels.php:361
 msgid "Google Tag Manager ID"
 msgstr "លេខសម្គាល់ Google Tag Manager"
 
-#: includes/admin/settings-panels.php:231
+#: includes/admin/settings-panels.php:238
 msgid ""
 "Starts with GTM-. When set, the GA4 ID above is ignored — add GA4 inside Tag "
 "Manager instead."
@@ -403,87 +403,63 @@ msgstr ""
 "ចាប់ផ្ដើមដោយ GTM-។ នៅពេលកំណត់ លេខសម្គាល់ GA4 ខាងលើនឹងមិនត្រូវប្រើទេ — សូមបន្ថែម GA4 នៅក្នុង "
 "Tag Manager ជំនួសវិញ។"
 
-#: includes/admin/settings-panels.php:240
-msgid "Custom code"
-msgstr "កូដផ្ទាល់ខ្លួន"
-
-#: includes/admin/settings-panels.php:240
-msgid ""
-"Raw HTML/JS added to every public page. Only paste code from sources you "
-"trust."
-msgstr "កូដ HTML/JS ដែលបន្ថែមទៅគ្រប់ទំព័រសាធារណៈ។ សូមបិទភ្ជាប់តែកូដពីប្រភពដែលអ្នកទុកចិត្តប៉ុណ្ណោះ។"
-
-#: includes/admin/settings-panels.php:241
-msgid "Before </head>"
-msgstr "មុន </head>"
-
-#: includes/admin/settings-panels.php:242
-msgid "Before </body>"
-msgstr "មុន </body>"
-
-#: includes/admin/settings-panels.php:245
-msgid ""
-"Your role cannot save raw scripts; unsafe markup will be stripped on save."
-msgstr ""
-"តួនាទីរបស់អ្នកមិនអាចរក្សាទុកស្គ្រីបដើមបានទេ។ កូដដែលមិនមានសុវត្ថិភាពនឹងត្រូវដកចេញពេលរក្សាទុក។"
-
-#: includes/admin/settings-panels.php:262
+#: includes/admin/settings-panels.php:259
 msgid "Login lockout"
 msgstr ""
 
-#: includes/admin/settings-panels.php:263
+#: includes/admin/settings-panels.php:260
 msgid ""
 "Block an IP address for 15 minutes after 5 failed logins. A one-way hash of "
 "the address is kept for that time."
 msgstr ""
 
-#: includes/admin/settings-panels.php:266
+#: includes/admin/settings-panels.php:263
 msgid "Security headers"
 msgstr ""
 
-#: includes/admin/settings-panels.php:267
+#: includes/admin/settings-panels.php:264
 msgid ""
 "Send the X-Content-Type-Options, X-Frame-Options, Referrer-Policy and "
 "Permissions-Policy headers. Other sites can then no longer show your pages "
 "in a frame."
 msgstr ""
 
-#: includes/admin/settings-panels.php:270
+#: includes/admin/settings-panels.php:267
 msgid "Turn off XML-RPC"
 msgstr ""
 
-#: includes/admin/settings-panels.php:271
+#: includes/admin/settings-panels.php:268
 msgid ""
 "XML-RPC is a common brute-force target. Keep it on if you use the WordPress "
 "mobile app, Jetpack or a remote publishing tool."
 msgstr ""
 
-#: includes/admin/settings-panels.php:274
+#: includes/admin/settings-panels.php:271
 msgid "Turn off the file editors"
 msgstr ""
 
-#: includes/admin/settings-panels.php:275
+#: includes/admin/settings-panels.php:272
 msgid ""
 "Remove the theme and plugin file editors from wp-admin, so a stolen admin "
 "login cannot change the site's PHP code."
 msgstr ""
 
-#: includes/admin/settings-panels.php:278
+#: includes/admin/settings-panels.php:275
 msgid "Hide the user list from visitors"
 msgstr ""
 
-#: includes/admin/settings-panels.php:279
+#: includes/admin/settings-panels.php:276
 msgid ""
 "Remove the REST API users endpoint for visitors who are not logged in, so "
 "author logins cannot be listed. Keep it off if an app or headless front end "
 "reads author data."
 msgstr ""
 
-#: includes/admin/settings-panels.php:283
+#: includes/admin/settings-panels.php:280
 msgid "Hardening"
 msgstr ""
 
-#: includes/admin/settings-panels.php:283
+#: includes/admin/settings-panels.php:280
 msgid ""
 "Optional protections for the whole site. Only the login lockout is on by "
 "default; turn the others on if nothing you use depends on what they block."
@@ -504,7 +480,7 @@ msgid "%1$s must look like %2$s."
 msgstr "%1$s ត្រូវមានទម្រង់ដូច %2$s។"
 
 #: includes/admin/tools.php:25 includes/admin/translation.php:209
-#: includes/frontend/newsletter.php:410
+#: includes/frontend/newsletter.php:419
 msgid "You do not have permission to do this."
 msgstr "អ្នកមិនមានសិទ្ធិធ្វើសកម្មភាពនេះទេ។"
 
@@ -577,10 +553,9 @@ msgstr "អនុវត្តការកំណត់គេហទំព័រគ
 
 #: includes/admin/tools.php:129
 msgid ""
-"Site title, Khmer language, Phnom Penh time zone, 8 posts per page, /"
-"article/123/ links, menus, ad placeholders, privacy page, and Sbek Theme "
-"details (only fields that are still empty). These are not undone by "
-"\"Remove\"."
+"Site title, Khmer language, Phnom Penh time zone, 8 posts per page, /article/"
+"123/ links, menus, ad placeholders, privacy page, and Sbek Theme details "
+"(only fields that are still empty). These are not undone by \"Remove\"."
 msgstr ""
 "ឈ្មោះគេហទំព័រ ភាសាខ្មែរ តំបន់ម៉ោងភ្នំពេញ អត្ថបទ ៨ ក្នុងមួយទំព័រ តំណ /article/123/ ម៉ឺនុយ "
 "កន្លែងពាណិជ្ជកម្មគំរូ ទំព័រឯកជនភាព និងព័ត៌មាន Sbek Theme (តែវាលដែលនៅទទេប៉ុណ្ណោះ)។ "
@@ -814,97 +789,101 @@ msgstr "បានចម្លងតំណ"
 msgid "Copy link"
 msgstr "ចម្លងតំណ"
 
-#: includes/frontend/newsletter.php:39 includes/frontend/newsletter.php:41
+#: includes/frontend/newsletter.php:42 includes/frontend/newsletter.php:44
 msgid "Subscribers"
 msgstr "អ្នកជាវព័ត៌មាន"
 
-#: includes/frontend/newsletter.php:40
+#: includes/frontend/newsletter.php:43
 msgid "Subscriber"
 msgstr "អ្នកជាវព័ត៌មាន"
 
-#: includes/frontend/newsletter.php:42
+#: includes/frontend/newsletter.php:45
 msgid "Search Subscribers"
 msgstr "ស្វែងរកអ្នកជាវ"
 
-#: includes/frontend/newsletter.php:43
+#: includes/frontend/newsletter.php:46
 msgid "No subscribers yet."
 msgstr "មិនទាន់មានអ្នកជាវនៅឡើយ។"
 
-#: includes/frontend/newsletter.php:90
+#: includes/frontend/newsletter.php:93
 msgid "Waiting for confirmation"
 msgstr "កំពុងរង់ចាំការបញ្ជាក់"
 
-#: includes/frontend/newsletter.php:91
+#: includes/frontend/newsletter.php:94
 msgid "Confirmed"
 msgstr "បានបញ្ជាក់"
 
-#: includes/frontend/newsletter.php:92
+#: includes/frontend/newsletter.php:95
 msgid "Unsubscribed"
 msgstr "បានឈប់ជាវ"
 
 #. translators: %s: site name.
-#: includes/frontend/newsletter.php:297
+#: includes/frontend/newsletter.php:305
 #, php-format
 msgid "Confirm your subscription to %s"
 msgstr "បញ្ជាក់ការជាវរបស់អ្នកទៅ %s"
 
 #. translators: %s: site name.
-#: includes/frontend/newsletter.php:302
+#: includes/frontend/newsletter.php:310
 #, php-format
 msgid ""
 "Someone (hopefully you) asked to receive the top stories from %s at this "
 "address."
 msgstr "មាននរណាម្នាក់ (សង្ឃឹមថាជាអ្នក) បានស្នើសុំទទួលព័ត៌មានសំខាន់ៗពី %s តាមអាសយដ្ឋាននេះ។"
 
-#: includes/frontend/newsletter.php:303
+#: includes/frontend/newsletter.php:311
 msgid "To confirm, open this link:"
 msgstr "ដើម្បីបញ្ជាក់ សូមបើកតំណនេះ៖"
 
-#: includes/frontend/newsletter.php:304
+#: includes/frontend/newsletter.php:312
 msgid ""
 "If you did not ask for this, ignore this email and you will not be "
 "subscribed."
 msgstr "ប្រសិនបើអ្នកមិនបានស្នើសុំទេ សូមមិនអើពើអ៊ីមែលនេះ ហើយអ្នកនឹងមិនត្រូវបានចុះឈ្មោះទេ។"
 
-#: includes/frontend/newsletter.php:305
+#: includes/frontend/newsletter.php:313
 msgid "To unsubscribe at any time:"
 msgstr "ដើម្បីឈប់ជាវនៅពេលណាក៏បាន៖"
 
-#: includes/frontend/newsletter.php:375
+#: includes/frontend/newsletter.php:383
 msgid ""
 "Almost done! Check your inbox and click the link to confirm your "
 "subscription."
 msgstr "ជិតរួចរាល់ហើយ! សូមពិនិត្យប្រអប់សំបុត្ររបស់អ្នក ហើយចុចតំណ ដើម្បីបញ្ជាក់ការជាវ។"
 
-#: includes/frontend/newsletter.php:376
+#: includes/frontend/newsletter.php:384
 msgid "Thanks! Your subscription is confirmed."
 msgstr "សូមអរគុណ! ការជាវរបស់អ្នកត្រូវបានបញ្ជាក់។"
 
-#: includes/frontend/newsletter.php:377
+#: includes/frontend/newsletter.php:385
 msgid "This email address is already subscribed."
 msgstr "អាសយដ្ឋានអ៊ីមែលនេះបានចុះឈ្មោះរួចហើយ។"
 
-#: includes/frontend/newsletter.php:378
+#: includes/frontend/newsletter.php:386
 msgid "You have been unsubscribed. Sorry to see you go."
 msgstr "អ្នកបានឈប់ជាវហើយ។ សោកស្ដាយដែលអ្នកចាកចេញ។"
 
-#: includes/frontend/newsletter.php:379
+#: includes/frontend/newsletter.php:387
 msgid "That link is not valid any more. Please sign up again."
 msgstr "តំណនោះលែងមានសុពលភាពហើយ។ សូមចុះឈ្មោះម្ដងទៀត។"
 
-#: includes/frontend/newsletter.php:380
+#: includes/frontend/newsletter.php:388
+msgid "The form had expired. Please enter your email address again."
+msgstr ""
+
+#: includes/frontend/newsletter.php:389
 msgid "We could not send the confirmation email. Please try again later."
 msgstr "យើងមិនអាចផ្ញើអ៊ីមែលបញ្ជាក់បានទេ។ សូមព្យាយាមម្ដងទៀតនៅពេលក្រោយ។"
 
-#: includes/frontend/newsletter.php:381
+#: includes/frontend/newsletter.php:390
 msgid "Sorry, that did not work. Please check the address and try again."
 msgstr "សូមអភ័យទោស មិនអាចដំណើរការបានទេ។ សូមពិនិត្យអាសយដ្ឋាន ហើយព្យាយាមម្ដងទៀត។"
 
-#: includes/frontend/newsletter.php:484
+#: includes/frontend/newsletter.php:493
 msgid "Status"
 msgstr "ស្ថានភាព"
 
-#: includes/frontend/newsletter.php:485 includes/i18n.php:289
+#: includes/frontend/newsletter.php:494 includes/i18n.php:289
 #: includes/i18n.php:731
 msgid "Language"
 msgstr "ភាសា"
@@ -951,7 +930,7 @@ msgid ""
 "no description there."
 msgstr "បង្ហាញនៅក្រោមចំណងជើងបណ្ណសារលើទំព័រភាសានោះ។ ទុកទទេ ដើម្បីមិនបង្ហាញការពិពណ៌នានៅទីនោះ។"
 
-#: sbek-companion.php:43
+#: sbek-companion.php:55
 msgid ""
 "Sbek Companion does nothing on its own: it adds features to the Sbek theme. "
 "Activate the Sbek theme, or deactivate this plugin."

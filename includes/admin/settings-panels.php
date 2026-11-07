@@ -7,13 +7,20 @@
  *   sbek_theme_options_panel_{slug}   action  cards at the end of a tab
  *   sbek_theme_options_save           filter  saves `sbek_companion`, returns "not saved" messages
  *
- * Field names are `sbek_companion[...]`; the theme's save handler has
- * already checked its nonce and edit_theme_options when the save filter runs.
+ * Field names are `sbek_companion[...]`. The save filter checks the form's
+ * nonce and edit_theme_options itself, although the theme's save handler has
+ * already done so, so it never depends on who applies the filter.
  *
  * @package sbek-companion
  */
 
 defined( 'ABSPATH' ) || exit;
+
+/**
+ * Nonce action of the theme's settings form (SBEK_SETTINGS_ACTION in the
+ * theme's inc/admin/theme-options.php, printed with wp_nonce_field()).
+ */
+const SBEK_COMPANION_SAVE_ACTION = 'sbek_save_theme_options';
 
 /**
  * @param array<string,array> $tabs Tabs: slug => [ label, icon, no_save? ].
@@ -236,16 +243,6 @@ function sbek_companion_panel_integrations(): void {
 	</div>
 	<?php
 	sbek_section_close();
-
-	sbek_section_open( 'code', __( 'Custom code', 'sbek-companion' ), __( 'Raw HTML/JS added to every public page. Only paste code from sources you trust.', 'sbek-companion' ) );
-	sbek_option_textarea( sbek_companion_field( 'header_scripts' ), __( 'Before </head>', 'sbek-companion' ), (string) $s['header_scripts'], array( 'rows' => '5', 'code' => '1' ) );
-	sbek_option_textarea( sbek_companion_field( 'footer_scripts' ), __( 'Before </body>', 'sbek-companion' ), (string) $s['footer_scripts'], array( 'rows' => '5', 'code' => '1' ) );
-	if ( ! current_user_can( 'unfiltered_html' ) ) :
-		?>
-		<p class="sbek-field__help sbek-field__help--warn"><?php esc_html_e( 'Your role cannot save raw scripts; unsafe markup will be stripped on save.', 'sbek-companion' ); ?></p>
-		<?php
-	endif;
-	sbek_section_close();
 }
 add_action( 'sbek_theme_options_panel_integrations', 'sbek_companion_panel_integrations' );
 
@@ -291,15 +288,19 @@ add_action( 'sbek_theme_options_panel_security', 'sbek_companion_panel_security'
 // ─── Save ──────────────────────────────────────────────────────────────────────
 
 /**
- * Save this plugin's fields with the theme page (nonce and
- * edit_theme_options already checked by the theme). Integrations and
- * Security need manage_options; without it the stored values are kept.
+ * Save this plugin's fields with the theme page. Needs the form's nonce and
+ * edit_theme_options; Integrations and Security also need manage_options,
+ * without which their stored values are kept.
  *
  * @param string[] $problems "Not saved" messages collected so far.
  * @return string[]
  */
 function sbek_companion_save_settings( array $problems ): array {
-	// phpcs:disable WordPress.Security.NonceVerification.Missing -- verified by the theme's save handler before this filter runs.
+	$nonce = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) : '';
+	if ( ! wp_verify_nonce( $nonce, SBEK_COMPANION_SAVE_ACTION ) || ! current_user_can( 'edit_theme_options' ) ) {
+		return $problems;
+	}
+
 	if ( ! isset( $_POST[ SBEK_COMPANION_OPTION ] ) || ! is_array( $_POST[ SBEK_COMPANION_OPTION ] ) ) {
 		return $problems;
 	}
@@ -308,7 +309,7 @@ function sbek_companion_save_settings( array $problems ): array {
 	$current = sbek_companion_setting();
 
 	if ( ! current_user_can( 'manage_options' ) ) {
-		foreach ( array_merge( array( 'ga4_id', 'gtm_id', 'header_scripts', 'footer_scripts' ), array_keys( sbek_security_options() ) ) as $key ) {
+		foreach ( array_merge( array( 'ga4_id', 'gtm_id' ), array_keys( sbek_security_options() ) ) as $key ) {
 			$input[ $key ] = $current[ $key ];
 		}
 	}
@@ -318,7 +319,6 @@ function sbek_companion_save_settings( array $problems ): array {
 
 	// English category names.
 	$terms = isset( $_POST['sbek_companion_terms'] ) && is_array( $_POST['sbek_companion_terms'] ) ? wp_unslash( $_POST['sbek_companion_terms'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized by the registered term meta callback.
-	// phpcs:enable
 
 	foreach ( $terms as $term_id => $name ) {
 		$term_id = absint( $term_id );

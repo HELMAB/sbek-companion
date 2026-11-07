@@ -6,7 +6,7 @@ The non-design half of the [Sbek](https://github.com/HELMAB/sbek) news theme, as
 - News details post meta: video, source, sponsored, breaking, trending (`includes/admin/post-meta.php`, `includes/frontend/article.php`)
 - Share buttons (`includes/frontend/article.php`, `assets/js/share.js`)
 - Double opt-in newsletter (`includes/frontend/newsletter.php`)
-- SEO tags and JSON-LD, analytics and custom scripts (`includes/frontend/seo.php`, `includes/frontend/integrations.php`)
+- SEO tags and JSON-LD, GA4 / GTM analytics (`includes/frontend/seo.php`, `includes/frontend/integrations.php`)
 - Security hardening, login lockout and the branded login screen (`includes/security.php`, `includes/admin/login.php`)
 - Query caching for the theme's blocks (`includes/cache.php`)
 - Dashboard setup checklist and demo content with `wp sbek demo` (`includes/admin/`, `includes/demo/`, `includes/cli/`)

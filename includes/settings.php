@@ -4,7 +4,7 @@
  * Appearance → Sbek Theme page through the hooks in admin/settings-panels.php.
  *
  * Keys that used to live in the theme option `sbek_site_settings` (English
- * texts, share image, coordinates, newsletter toggle, analytics, scripts) are
+ * texts, share image, coordinates, newsletter toggle, analytics IDs) are
  * copied over once by sbek_companion_maybe_upgrade().
  *
  * @package sbek-companion
@@ -36,8 +36,6 @@ function sbek_companion_defaults(): array {
 		// Integrations.
 		'ga4_id'          => '',
 		'gtm_id'          => '',
-		'header_scripts'  => '',
-		'footer_scripts'  => '',
 	) + sbek_security_options();
 }
 
@@ -115,22 +113,6 @@ function sbek_companion_sanitize_settings( $input ): array {
 		$clean[ $key ] = preg_match( $pattern, $id ) ? $id : '';
 	}
 
-	// Raw scripts only for users allowed to post unfiltered HTML. For anyone
-	// else (including WP-CLI / cron, where there is no user) the stored value
-	// is kept rather than kses-filtered, so an automated update can't strip it.
-	$stored  = (array) get_option( SBEK_COMPANION_OPTION, array() );
-	$can_raw = current_user_can( 'unfiltered_html' );
-	foreach ( array( 'header_scripts', 'footer_scripts' ) as $key ) {
-		$value = (string) ( $input[ $key ] ?? '' );
-		if ( $can_raw ) {
-			$clean[ $key ] = $value;
-		} elseif ( is_user_logged_in() ) {
-			$clean[ $key ] = wp_kses_post( $value );
-		} else {
-			$clean[ $key ] = (string) ( $stored[ $key ] ?? '' );
-		}
-	}
-
 	return $clean;
 }
 
@@ -202,16 +184,11 @@ function sbek_companion_maybe_upgrade(): void {
 
 	// Settings that moved here from the theme option (first run only).
 	if ( false === get_option( SBEK_COMPANION_OPTION ) ) {
-		$theme    = (array) get_option( 'sbek_site_settings', array() );
-		$migrated = array_intersect_key( $theme, sbek_companion_defaults() );
+		$theme = (array) get_option( 'sbek_site_settings', array() );
 
-		// Stored as-is: these values were sanitized when the theme saved them,
-		// and re-sanitizing here (no user during activation via WP-CLI) would
-		// drop the raw scripts. So the registered sanitizer is unhooked for
-		// this one write.
-		remove_all_filters( 'sanitize_option_' . SBEK_COMPANION_OPTION );
-		add_option( SBEK_COMPANION_OPTION, wp_parse_args( $migrated, sbek_companion_defaults() ) );
-		sbek_companion_register_settings();
+		// Sanitized explicitly: on the activation request the setting isn't
+		// registered yet, so add_option() would not run the callback itself.
+		add_option( SBEK_COMPANION_OPTION, sbek_companion_sanitize_settings( array_intersect_key( $theme, sbek_companion_defaults() ) ) );
 	}
 
 	delete_option( 'sbek_theme_version' );

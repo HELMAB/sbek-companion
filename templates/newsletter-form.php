@@ -20,7 +20,7 @@ $sbek_notice = sbek_subscribe_notice();
 	<form class="newsletter__form" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
 		<input type="hidden" name="action" value="sbek_subscribe">
 		<input type="hidden" name="lang" value="<?php echo esc_attr( sbek_lang() ); ?>">
-		<?php // No nonce on purpose: it would go stale in page caches (see includes/frontend/newsletter.php). ?>
+		<?php wp_nonce_field( SBEK_SUBSCRIBE_NONCE, 'sbek_subscribe_nonce', false ); // Stale-cache handling: see includes/frontend/newsletter.php. ?>
 		<p class="newsletter__hp" aria-hidden="true">
 			<label>Website <input type="text" name="sbek_website" tabindex="-1" autocomplete="off"></label>
 		</p>
