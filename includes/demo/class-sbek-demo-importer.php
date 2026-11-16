@@ -745,7 +745,7 @@ class Sbek_Demo_Importer {
 
 		$this->manifest['posts'][] = $id;
 
-		wp_set_object_terms( $id, array( $extras['lang'] ?? SBEK_DEFAULT_LANGUAGE ), 'language' );
+		wp_set_object_terms( $id, array( $extras['lang'] ?? SBEK_DEFAULT_LANGUAGE ), SBEK_LANGUAGE_TAXONOMY );
 
 		if ( ! empty( $extras['categories'] ) ) {
 			wp_set_post_categories( $id, $extras['categories'] );

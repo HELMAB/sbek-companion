@@ -336,7 +336,7 @@ function sbek_handle_newsletter_link(): void {
 	$post   = $id ? get_post( $id ) : null;
 	$stored = $post && 'sbek_subscriber' === $post->post_type ? (string) get_post_meta( $id, '_sbek_sub_token', true ) : '';
 	$lang   = $post ? (string) get_post_meta( $id, '_sbek_sub_lang', true ) : '';
-	$home   = sbek_home_url( isset( sbek_languages()[ $lang ] ) ? $lang : SBEK_DEFAULT_LANGUAGE );
+	$home   = sbek_companion_home_url( isset( sbek_languages()[ $lang ] ) ? $lang : SBEK_DEFAULT_LANGUAGE );
 
 	if ( '' === $stored || '' === $token || ! hash_equals( $stored, wp_hash( $token ) ) || ! in_array( $task, array( 'confirm', 'unsubscribe' ), true ) ) {
 		sbek_subscribe_redirect( 'invalid', $home );

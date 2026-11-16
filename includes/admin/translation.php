@@ -53,7 +53,7 @@ function sbek_render_translation_meta_box( WP_Post $post ): void {
 			'sbek_all_languages' => true,
 			'tax_query'          => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
-					'taxonomy' => 'language',
+					'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 					'field'    => 'slug',
 					'terms'    => array_values( $others ),
 				),
@@ -139,7 +139,7 @@ function sbek_ajax_translation_search(): void {
 			'sbek_all_languages' => true,
 			'tax_query'          => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
-					'taxonomy' => 'language',
+					'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 					'field'    => 'slug',
 					'terms'    => $others,
 				),
@@ -265,7 +265,7 @@ function sbek_create_translation(): void {
 		}
 	}
 
-	wp_set_object_terms( $new_id, array( $lang ), 'language' );
+	wp_set_object_terms( $new_id, array( $lang ), SBEK_LANGUAGE_TAXONOMY );
 	sbek_set_translation( $post_id, $new_id );
 
 	wp_safe_redirect( get_edit_post_link( $new_id, 'raw' ) );
@@ -279,7 +279,7 @@ add_action( 'admin_post_' . SBEK_CREATE_TRANSLATION_ACTION, 'sbek_create_transla
  * Language dropdown above the Posts / Pages lists.
  */
 function sbek_language_filter_dropdown( string $post_type ): void {
-	if ( ! is_object_in_taxonomy( $post_type, 'language' ) ) {
+	if ( ! is_object_in_taxonomy( $post_type, SBEK_LANGUAGE_TAXONOMY ) ) {
 		return;
 	}
 
@@ -308,12 +308,12 @@ function sbek_apply_language_filter( WP_Query $query ): void {
 
 	if ( 'none' === $lang ) {
 		$clause = array(
-			'taxonomy' => 'language',
+			'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 			'operator' => 'NOT EXISTS',
 		);
 	} elseif ( isset( sbek_languages()[ $lang ] ) ) {
 		$clause = array(
-			'taxonomy' => 'language',
+			'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 			'field'    => 'slug',
 			'terms'    => array( $lang ),
 		);

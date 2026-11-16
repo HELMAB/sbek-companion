@@ -23,7 +23,7 @@ function sbek_seo_plugin_active(): bool {
  */
 function sbek_seo_context(): ?array {
     $default_image = sbek_companion_image_url( 'og_image', 'large' );
-    $site_text     = trim( sbek_site_text( 'description' ) );
+    $site_text     = trim( sbek_companion_site_text( 'description' ) );
     $site_text     = '' !== $site_text ? $site_text : (string) get_bloginfo( 'description' );
 
     if ( is_singular() ) {
@@ -45,7 +45,7 @@ function sbek_seo_context(): ?array {
         return [
             'title'       => (string) get_bloginfo( 'name' ),
             'description' => $site_text,
-            'url'         => sbek_home_url(),
+            'url'         => sbek_companion_home_url(),
             'image'       => $default_image,
             'type'        => 'website',
         ];
@@ -55,7 +55,7 @@ function sbek_seo_context(): ?array {
 
     if ( $object instanceof WP_Term && in_array( $object->taxonomy, array( 'category', 'post_tag' ), true ) ) {
         $link = get_term_link( $object );
-        $text = sbek_plain_text( sbek_term_description( $object ) );
+        $text = sbek_plain_text( sbek_companion_term_description( $object ) );
 
         return [
             'title'       => $object->name,
@@ -171,10 +171,10 @@ function sbek_organization_jsonld() {
         '@context' => 'https://schema.org',
         '@type'    => 'NewsMediaOrganization',
         'name'     => get_bloginfo( 'name' ),
-        'url'      => sbek_home_url(),
+        'url'      => sbek_companion_home_url(),
     ];
 
-    $description = sbek_site_text( 'description' );
+    $description = sbek_companion_site_text( 'description' );
     if ( '' !== $description ) {
         $data['description'] = $description;
     }
@@ -247,7 +247,7 @@ function sbek_article_jsonld() {
         '@context'         => 'https://schema.org',
         '@type'            => 'NewsArticle',
         'headline'         => wp_strip_all_tags( get_the_title( $post ) ),
-        'inLanguage'       => sbek_languages()[ sbek_lang() ]['hreflang'],
+        'inLanguage'       => sbek_languages()[ sbek_companion_lang() ]['hreflang'],
         'description'      => sbek_seo_description( $post ),
         'datePublished'    => get_the_date( 'c', $post ),
         'dateModified'     => get_the_modified_date( 'c', $post ),

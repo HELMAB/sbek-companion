@@ -4,7 +4,7 @@ Tags: khmer, bilingual, news, newsletter, share buttons
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,9 @@ The plugin connects to other services only in these cases:
 The newsletter stores each subscriber's email address, language, status and signup date on your site (in the *Subscribers* list), together with a one-way hash of the IP address the signup came from; the same hash is also kept for an hour to limit repeated signups. Nothing else is collected unless you enable analytics. The login lockout (on by default, under *Security*) stores a hash of the IP address for 15 minutes after a failed login.
 
 == Changelog ==
+
+= 1.0.1 - 2026-11-16 =
+* The language taxonomy is now named `sbek_language` (was `language`) to avoid conflicts with other plugins. Existing posts keep their language: the terms are moved on upgrade.
 
 = 1.0.0 - 2026-11-03 =
 * Initial release: the language, news, sharing, newsletter, SEO, analytics, login and demo features that used to be part of the Sbek theme.

@@ -102,7 +102,7 @@ function sbek_login_site_name(): string {
 	return '' !== $name ? $name : (string) get_bloginfo( 'name' );
 }
 
-add_filter( 'login_headerurl', static fn(): string => sbek_home_url( sbek_login_language() ) );
+add_filter( 'login_headerurl', static fn(): string => sbek_companion_home_url( sbek_login_language() ) );
 add_filter( 'login_headertext', 'sbek_login_site_name' );
 
 /**
@@ -119,7 +119,7 @@ function sbek_login_site_link( string $link ): string {
 		return $link;
 	}
 
-	$link = str_replace( esc_url( home_url( '/' ) ), esc_url( sbek_home_url( $lang ) ), $link );
+	$link = str_replace( esc_url( home_url( '/' ) ), esc_url( sbek_companion_home_url( $lang ) ), $link );
 
 	return str_replace( get_bloginfo( 'title', 'display' ), esc_html( sbek_login_site_name() ), $link );
 }
@@ -151,7 +151,7 @@ function sbek_login_privacy_link( string $link ): string {
 
 	return sprintf(
 		'<a class="privacy-policy-link" href="%s" rel="privacy-policy">%s</a>',
-		esc_url( sbek_localize_url( (string) get_permalink( $translation ), $lang ) ),
+		esc_url( sbek_companion_localize_url( (string) get_permalink( $translation ), $lang ) ),
 		esc_html( get_the_title( $translation ) )
 	);
 }

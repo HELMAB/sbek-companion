@@ -53,20 +53,20 @@ function sbek_companion_uninstall_site(): void {
 		delete_metadata( 'term', 0, $key, '', true );
 	}
 
-	// The `language` terms and their links to posts. The taxonomy has to be
-	// registered for wp_delete_term() to accept it.
-	if ( ! taxonomy_exists( 'language' ) ) {
-		register_taxonomy( 'language', array( 'post', 'page' ), array( 'public' => false ) );
+	// The `sbek_language` terms and their links to posts. The taxonomy has to
+	// be registered for wp_delete_term() to accept it.
+	if ( ! taxonomy_exists( 'sbek_language' ) ) {
+		register_taxonomy( 'sbek_language', array( 'post', 'page' ), array( 'public' => false ) );
 	}
 	$terms = get_terms(
 		array(
-			'taxonomy'   => 'language',
+			'taxonomy'   => 'sbek_language',
 			'hide_empty' => false,
 			'fields'     => 'ids',
 		)
 	);
 	foreach ( is_array( $terms ) ? $terms : array() as $term_id ) {
-		wp_delete_term( (int) $term_id, 'language' );
+		wp_delete_term( (int) $term_id, 'sbek_language' );
 	}
 
 	// Transients: query caches, term-language caches, login lockout and

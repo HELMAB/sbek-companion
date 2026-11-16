@@ -23,12 +23,11 @@
  *   5. Category/tag names are localized from `sbek_name_{lang}` term meta via
  *      a `get_term` filter (menus, badges and archive titles all pick it up).
  *
- * The six helpers the theme also uses (sbek_lang(), sbek_is_default_lang(),
+ * The theme's language helpers (sbek_lang(), sbek_is_default_lang(),
  * sbek_home_url(), sbek_localize_url(), sbek_term_description(),
- * sbek_site_text()) replace the theme's single-language versions in
- * inc/language.php. Plugins load first, so these win; they are still wrapped
- * in function_exists() because on the plugin-activation request WordPress
- * includes this file *after* the theme.
+ * sbek_site_text() in its inc/language.php) hand over to the multilingual
+ * versions here (sbek_companion_lang() and so on) when this plugin is active.
+ * The plugin never declares the theme's function names itself.
  *
  * @package sbek-companion
  */
@@ -36,6 +35,9 @@
 defined( 'ABSPATH' ) || exit;
 
 const SBEK_DEFAULT_LANGUAGE = 'km';
+
+// Taxonomy that tags posts and pages with their language (km / en).
+const SBEK_LANGUAGE_TAXONOMY = 'sbek_language';
 
 /**
  * Supported languages, keyed by URL slug. The first entry is not special —
@@ -58,19 +60,15 @@ function sbek_languages(): array {
 	);
 }
 
-if ( ! function_exists( 'sbek_lang' ) ) {
-	/**
-	 * Current front-end language slug (`km` | `en`).
-	 */
-	function sbek_lang(): string {
-		return $GLOBALS['sbek_lang'] ?? SBEK_DEFAULT_LANGUAGE;
-	}
+/**
+ * Current front-end language slug (`km` | `en`).
+ */
+function sbek_companion_lang(): string {
+	return $GLOBALS['sbek_lang'] ?? SBEK_DEFAULT_LANGUAGE;
 }
 
-if ( ! function_exists( 'sbek_is_default_lang' ) ) {
-	function sbek_is_default_lang(): bool {
-		return SBEK_DEFAULT_LANGUAGE === sbek_lang();
-	}
+function sbek_companion_is_default_lang(): bool {
+	return SBEK_DEFAULT_LANGUAGE === sbek_companion_lang();
 }
 
 /**
@@ -144,7 +142,7 @@ function sbek_switch_to_url_locale(): void {
 		return;
 	}
 
-	$locale = sbek_languages()[ sbek_lang() ]['locale'];
+	$locale = sbek_languages()[ sbek_companion_lang() ]['locale'];
 	if ( determine_locale() !== $locale ) {
 		// Fails silently when the locale's core pack isn't installed; the
 		// locale filters below still load the theme's and plugin's translations.
@@ -163,7 +161,7 @@ add_action( 'after_setup_theme', 'sbek_switch_to_url_locale', 0 );
  */
 function sbek_url_locale_for_domain( string $locale, string $domain ): string {
 	return ( in_array( $domain, array( 'sbek', 'sbek-companion' ), true ) && sbek_is_routed_request() )
-		? sbek_languages()[ sbek_lang() ]['locale']
+		? sbek_languages()[ sbek_companion_lang() ]['locale']
 		: $locale;
 }
 add_filter( 'theme_locale', 'sbek_url_locale_for_domain', 10, 2 );
@@ -187,39 +185,35 @@ function sbek_unlocalize_url( string $url ): string {
 	return $url;
 }
 
-if ( ! function_exists( 'sbek_localize_url' ) ) {
-	/**
-	 * Add the language prefix to a site URL (no-op for the default language and
-	 * for external URLs). Idempotent: an existing prefix is replaced.
-	 */
-	function sbek_localize_url( string $url, ?string $lang = null ): string {
-		$lang ??= sbek_lang();
-		$url    = sbek_unlocalize_url( $url );
-		$home   = home_url( '/' );
+/**
+ * Add the language prefix to a site URL (no-op for the default language and
+ * for external URLs). Idempotent: an existing prefix is replaced.
+ */
+function sbek_companion_localize_url( string $url, ?string $lang = null ): string {
+	$lang ??= sbek_companion_lang();
+	$url    = sbek_unlocalize_url( $url );
+	$home   = home_url( '/' );
 
-		if ( SBEK_DEFAULT_LANGUAGE === $lang || 0 !== strpos( $url, $home ) ) {
-			return $url;
-		}
-
-		return $home . $lang . '/' . substr( $url, strlen( $home ) );
+	if ( SBEK_DEFAULT_LANGUAGE === $lang || 0 !== strpos( $url, $home ) ) {
+		return $url;
 	}
+
+	return $home . $lang . '/' . substr( $url, strlen( $home ) );
 }
 
-if ( ! function_exists( 'sbek_home_url' ) ) {
-	/**
-	 * Home URL in the current (or given) language. Use instead of home_url('/')
-	 * in templates.
-	 */
-	function sbek_home_url( ?string $lang = null ): string {
-		return sbek_localize_url( home_url( '/' ), $lang );
-	}
+/**
+ * Home URL in the current (or given) language. Use instead of home_url('/')
+ * in templates.
+ */
+function sbek_companion_home_url( ?string $lang = null ): string {
+	return sbek_companion_localize_url( home_url( '/' ), $lang );
 }
 
 /**
  * Prefix every permalink WordPress builds on non-default-language pages.
  */
 function sbek_register_link_filters(): void {
-	if ( ! sbek_is_routed_request() || sbek_is_default_lang() ) {
+	if ( ! sbek_is_routed_request() || sbek_companion_is_default_lang() ) {
 		return;
 	}
 
@@ -252,7 +246,7 @@ add_action( 'after_setup_theme', 'sbek_register_link_filters' );
  * @return mixed
  */
 function sbek_localize_url_filter( $url ) {
-	return is_string( $url ) ? sbek_localize_url( $url ) : $url;
+	return is_string( $url ) ? sbek_companion_localize_url( $url ) : $url;
 }
 
 /**
@@ -265,11 +259,11 @@ function sbek_localize_url_filter( $url ) {
  * @return string|false
  */
 function sbek_redirect_canonical( $redirect_url, $requested_url ) {
-	if ( ! $redirect_url || ! sbek_is_routed_request() || sbek_is_default_lang() ) {
+	if ( ! $redirect_url || ! sbek_is_routed_request() || sbek_companion_is_default_lang() ) {
 		return $redirect_url;
 	}
 
-	if ( untrailingslashit( sbek_localize_url( (string) $requested_url ) ) === untrailingslashit( $redirect_url ) ) {
+	if ( untrailingslashit( sbek_companion_localize_url( (string) $requested_url ) ) === untrailingslashit( $redirect_url ) ) {
 		return false;
 	}
 
@@ -277,11 +271,11 @@ function sbek_redirect_canonical( $redirect_url, $requested_url ) {
 }
 add_filter( 'redirect_canonical', 'sbek_redirect_canonical', 10, 2 );
 
-// ─── 3. `language` taxonomy ────────────────────────────────────────────────────
+// ─── 3. `sbek_language` taxonomy ──────────────────────────────────────────────────
 
 function sbek_register_language_taxonomy(): void {
 	register_taxonomy(
-		'language',
+		SBEK_LANGUAGE_TAXONOMY,
 		array( 'post', 'page' ),
 		array(
 			'labels'             => array(
@@ -315,8 +309,8 @@ add_action( 'init', 'sbek_register_language_taxonomy', 5 );
  */
 function sbek_ensure_language_terms(): void {
 	foreach ( sbek_languages() as $slug => $language ) {
-		if ( ! term_exists( $slug, 'language' ) ) {
-			wp_insert_term( $language['label'], 'language', array( 'slug' => $slug ) );
+		if ( ! term_exists( $slug, SBEK_LANGUAGE_TAXONOMY ) ) {
+			wp_insert_term( $language['label'], SBEK_LANGUAGE_TAXONOMY, array( 'slug' => $slug ) );
 		}
 	}
 }
@@ -330,11 +324,11 @@ function sbek_default_post_language( int $post_id, WP_Post $post ): void {
 		return;
 	}
 
-	if ( ! is_object_in_taxonomy( $post->post_type, 'language' ) ) {
+	if ( ! is_object_in_taxonomy( $post->post_type, SBEK_LANGUAGE_TAXONOMY ) ) {
 		return;
 	}
 
-	$terms = wp_get_post_terms( $post_id, 'language', array( 'fields' => 'ids' ) );
+	$terms = wp_get_post_terms( $post_id, SBEK_LANGUAGE_TAXONOMY, array( 'fields' => 'ids' ) );
 
 	if ( is_wp_error( $terms ) || ! empty( $terms ) ) {
 		return;
@@ -342,7 +336,7 @@ function sbek_default_post_language( int $post_id, WP_Post $post ): void {
 
 	// wp_set_object_terms() (not wp_set_post_terms()) — the taxonomy is
 	// hierarchical, and wp_set_post_terms() would cast the slug to int 0.
-	wp_set_object_terms( $post_id, array( SBEK_DEFAULT_LANGUAGE ), 'language' );
+	wp_set_object_terms( $post_id, array( SBEK_DEFAULT_LANGUAGE ), SBEK_LANGUAGE_TAXONOMY );
 }
 add_action( 'save_post', 'sbek_default_post_language', 20, 2 );
 
@@ -350,7 +344,7 @@ add_action( 'save_post', 'sbek_default_post_language', 20, 2 );
  * Language slug of a post, or '' if untagged.
  */
 function sbek_post_language( int $post_id ): string {
-	$terms = get_the_terms( $post_id, 'language' );
+	$terms = get_the_terms( $post_id, SBEK_LANGUAGE_TAXONOMY );
 
 	return ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->slug : '';
 }
@@ -371,7 +365,7 @@ function sbek_filter_query_by_language( WP_Query $query ): void {
 
 	if ( 'any' !== $post_types ) {
 		foreach ( (array) $post_types as $post_type ) {
-			if ( ! is_object_in_taxonomy( $post_type, 'language' ) ) {
+			if ( ! is_object_in_taxonomy( $post_type, SBEK_LANGUAGE_TAXONOMY ) ) {
 				return;
 			}
 		}
@@ -379,9 +373,9 @@ function sbek_filter_query_by_language( WP_Query $query ): void {
 
 	$tax_query   = (array) $query->get( 'tax_query' );
 	$tax_query[] = array(
-		'taxonomy' => 'language',
+		'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 		'field'    => 'slug',
-		'terms'    => array( sbek_lang() ),
+		'terms'    => array( sbek_companion_lang() ),
 	);
 	$query->set( 'tax_query', $tax_query );
 }
@@ -399,12 +393,12 @@ function sbek_redirect_wrong_language(): void {
 	$post_id   = get_queried_object_id();
 	$post_lang = sbek_post_language( $post_id );
 
-	if ( ! $post_lang || sbek_lang() === $post_lang ) {
+	if ( ! $post_lang || sbek_companion_lang() === $post_lang ) {
 		return;
 	}
 
-	$translation = sbek_get_translation( $post_id, sbek_lang() );
-	$target      = $translation ? get_permalink( $translation ) : sbek_home_url();
+	$translation = sbek_get_translation( $post_id, sbek_companion_lang() );
+	$target      = $translation ? get_permalink( $translation ) : sbek_companion_home_url();
 
 	wp_safe_redirect( $target, 302 );
 	exit;
@@ -442,11 +436,11 @@ function sbek_get_translation( int $post_id, string $lang ): ?WP_Post {
  * @return string
  */
 function sbek_localize_privacy_policy_url( $url, $policy_page_id ) {
-	if ( ! $url || ! sbek_is_routed_request() || sbek_is_default_lang() ) {
+	if ( ! $url || ! sbek_is_routed_request() || sbek_companion_is_default_lang() ) {
 		return $url;
 	}
 
-	$translation = sbek_get_translation( (int) $policy_page_id, sbek_lang() );
+	$translation = sbek_get_translation( (int) $policy_page_id, sbek_companion_lang() );
 
 	return $translation ? (string) get_permalink( $translation ) : $url;
 }
@@ -462,7 +456,7 @@ function sbek_hreflang_links(): void {
 
 	if ( is_front_page() || is_home() ) {
 		foreach ( array_keys( sbek_languages() ) as $lang ) {
-			$alternates[ $lang ] = sbek_home_url( $lang );
+			$alternates[ $lang ] = sbek_companion_home_url( $lang );
 		}
 	} elseif ( is_singular() ) {
 		$post_id   = get_queried_object_id();
@@ -473,7 +467,7 @@ function sbek_hreflang_links(): void {
 		foreach ( array_keys( sbek_languages() ) as $lang ) {
 			$translation = $lang !== $post_lang ? sbek_get_translation( $post_id, $lang ) : null;
 			if ( $translation ) {
-				$alternates[ $lang ] = sbek_localize_url( sbek_unlocalize_url( get_permalink( $translation ) ), $lang );
+				$alternates[ $lang ] = sbek_companion_localize_url( sbek_unlocalize_url( get_permalink( $translation ) ), $lang );
 			}
 		}
 
@@ -488,8 +482,8 @@ function sbek_hreflang_links(): void {
 		}
 
 		foreach ( array_keys( sbek_languages() ) as $lang ) {
-			if ( sbek_lang() === $lang || sbek_term_has_posts_in( $term, $lang ) ) {
-				$alternates[ $lang ] = sbek_localize_url( sbek_unlocalize_url( $link ), $lang );
+			if ( sbek_companion_lang() === $lang || sbek_term_has_posts_in( $term, $lang ) ) {
+				$alternates[ $lang ] = sbek_companion_localize_url( sbek_unlocalize_url( $link ), $lang );
 			}
 		}
 
@@ -539,7 +533,7 @@ function sbek_term_has_posts_in( WP_Term $term, string $lang ): bool {
 						'terms'    => array( $term->term_id ),
 					),
 					array(
-						'taxonomy' => 'language',
+						'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
 						'field'    => 'slug',
 						'terms'    => array( $lang ),
 					),
@@ -564,19 +558,19 @@ function sbek_language_switcher_items(): array {
 	$items = array();
 
 	foreach ( sbek_languages() as $lang => $language ) {
-		$active = sbek_lang() === $lang;
+		$active = sbek_companion_lang() === $lang;
 
 		if ( $active ) {
-			$url = sbek_localize_url( sbek_current_url(), $lang );
+			$url = sbek_companion_localize_url( sbek_current_url(), $lang );
 		} elseif ( is_singular() && ! is_front_page() ) {
 			$translation = sbek_get_translation( get_queried_object_id(), $lang );
 			$url         = $translation
-				? sbek_localize_url( sbek_unlocalize_url( get_permalink( $translation ) ), $lang )
-				: sbek_home_url( $lang );
+				? sbek_companion_localize_url( sbek_unlocalize_url( get_permalink( $translation ) ), $lang )
+				: sbek_companion_home_url( $lang );
 		} elseif ( is_404() || is_search() ) {
-			$url = sbek_home_url( $lang );
+			$url = sbek_companion_home_url( $lang );
 		} else {
-			$url = sbek_localize_url( sbek_current_url(), $lang );
+			$url = sbek_companion_localize_url( sbek_current_url(), $lang );
 		}
 
 		$items[ $lang ] = array(
@@ -617,9 +611,9 @@ function sbek_localize_term_name( $term ) {
 		$term instanceof WP_Term
 		&& in_array( $term->taxonomy, array( 'category', 'post_tag' ), true )
 		&& sbek_is_routed_request()
-		&& ! sbek_is_default_lang()
+		&& ! sbek_companion_is_default_lang()
 	) {
-		$name = get_term_meta( $term->term_id, 'sbek_name_' . sbek_lang(), true );
+		$name = get_term_meta( $term->term_id, 'sbek_name_' . sbek_companion_lang(), true );
 		if ( is_string( $name ) && '' !== $name ) {
 			$term->name = $name;
 		}
@@ -629,19 +623,17 @@ function sbek_localize_term_name( $term ) {
 }
 add_filter( 'get_term', 'sbek_localize_term_name' );
 
-if ( ! function_exists( 'sbek_term_description' ) ) {
-	/**
-	 * A category/tag description in the current language: the core description
-	 * on default-language pages, term meta `sbek_description_{lang}` elsewhere
-	 * ('' when that translation is missing, rather than Khmer on English pages).
-	 */
-	function sbek_term_description( WP_Term $term ): string {
-		if ( sbek_is_default_lang() ) {
-			return (string) $term->description;
-		}
-
-		return (string) get_term_meta( $term->term_id, 'sbek_description_' . sbek_lang(), true );
+/**
+ * A category/tag description in the current language: the core description
+ * on default-language pages, term meta `sbek_description_{lang}` elsewhere
+ * ('' when that translation is missing, rather than Khmer on English pages).
+ */
+function sbek_companion_term_description( WP_Term $term ): string {
+	if ( sbek_companion_is_default_lang() ) {
+		return (string) $term->description;
 	}
+
+	return (string) get_term_meta( $term->term_id, 'sbek_description_' . sbek_companion_lang(), true );
 }
 
 /**
@@ -653,34 +645,32 @@ if ( ! function_exists( 'sbek_term_description' ) ) {
  * @return mixed
  */
 function sbek_localize_site_identity( $value, string $option ) {
-	if ( ! sbek_is_routed_request() || sbek_is_default_lang() ) {
+	if ( ! sbek_is_routed_request() || sbek_companion_is_default_lang() ) {
 		return $value;
 	}
 
 	$key        = 'blogname' === $option ? 'name_' : 'tagline_';
-	$translated = trim( (string) sbek_companion_setting( $key . sbek_lang(), '' ) );
+	$translated = trim( (string) sbek_companion_setting( $key . sbek_companion_lang(), '' ) );
 
 	return '' !== $translated ? $translated : $value;
 }
 add_filter( 'option_blogname', 'sbek_localize_site_identity', 10, 2 );
 add_filter( 'option_blogdescription', 'sbek_localize_site_identity', 10, 2 );
 
-if ( ! function_exists( 'sbek_site_text' ) ) {
-	/**
-	 * A theme text setting in the current language: the English version (this
-	 * plugin's `{key}_en` setting) on English pages when filled in, else the
-	 * theme's own value. Replaces the theme's single-language fallback.
-	 */
-	function sbek_site_text( string $key ): string {
-		if ( ! sbek_is_default_lang() ) {
-			$localized = (string) sbek_companion_setting( $key . '_' . sbek_lang(), '' );
-			if ( '' !== trim( $localized ) ) {
-				return $localized;
-			}
+/**
+ * A theme text setting in the current language: the English version (this
+ * plugin's `{key}_en` setting) on English pages when filled in, else the
+ * theme's own value. Replaces the theme's single-language fallback.
+ */
+function sbek_companion_site_text( string $key ): string {
+	if ( ! sbek_companion_is_default_lang() ) {
+		$localized = (string) sbek_companion_setting( $key . '_' . sbek_companion_lang(), '' );
+		if ( '' !== trim( $localized ) ) {
+			return $localized;
 		}
-
-		return function_exists( 'sbek_site_setting' ) ? (string) sbek_site_setting( $key, '' ) : '';
 	}
+
+	return function_exists( 'sbek_site_setting' ) ? (string) sbek_site_setting( $key, '' ) : '';
 }
 
 // ─── 7. Theme integration: menus per language, header switcher ─────────────────
@@ -713,11 +703,11 @@ add_action( 'after_setup_theme', 'sbek_register_language_menus', 20 );
  * @param string $location Default-language location.
  */
 function sbek_language_menu_location( string $location ): string {
-	if ( sbek_is_default_lang() ) {
+	if ( sbek_companion_is_default_lang() ) {
 		return $location;
 	}
 
-	$localized = $location . '-' . sbek_lang();
+	$localized = $location . '-' . sbek_companion_lang();
 
 	return isset( get_registered_nav_menus()[ $localized ] ) ? $localized : $location;
 }
@@ -753,7 +743,7 @@ add_action( 'sbek_menu_tools', 'sbek_render_language_switcher' );
  */
 function sbek_localize_footer_links( array $atts, $item, $args ): array {
 	if ( isset( $args->theme_location ) && str_starts_with( (string) $args->theme_location, 'footer' ) && 'custom' === $item->type && ! empty( $atts['href'] ) ) {
-		$atts['href'] = sbek_localize_url( $atts['href'] );
+		$atts['href'] = sbek_companion_localize_url( $atts['href'] );
 	}
 
 	return $atts;

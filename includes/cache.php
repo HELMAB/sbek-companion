@@ -31,7 +31,7 @@ function sbek_bump_cache_version(): void {
  * Transient key for a cached query.
  */
 function sbek_query_cache_key( string $name ): string {
-	return sprintf( 'sbek_q_%s_%s_v%d', $name, sbek_lang(), sbek_cache_version() );
+	return sprintf( 'sbek_q_%s_%s_v%d', $name, sbek_companion_lang(), sbek_cache_version() );
 }
 
 /**

@@ -173,13 +173,14 @@ function sbek_companion_maybe_upgrade(): void {
 		return;
 	}
 
+	sbek_companion_migrate_language_taxonomy();
 	sbek_register_language_taxonomy();
 	sbek_ensure_language_terms();
 
 	// 1.x of the theme shipped an en/jp layout: drop the obsolete Japanese term.
-	$jp = get_term_by( 'slug', 'jp', 'language' );
+	$jp = get_term_by( 'slug', 'jp', SBEK_LANGUAGE_TAXONOMY );
 	if ( $jp instanceof WP_Term ) {
-		wp_delete_term( $jp->term_id, 'language' );
+		wp_delete_term( $jp->term_id, SBEK_LANGUAGE_TAXONOMY );
 	}
 
 	// Settings that moved here from the theme option (first run only).
@@ -196,3 +197,40 @@ function sbek_companion_maybe_upgrade(): void {
 	update_option( 'sbek_companion_version', SBEK_COMPANION_VERSION, false );
 }
 add_action( 'init', 'sbek_companion_maybe_upgrade', 20 );
+
+/**
+ * Before 1.0.1 the language taxonomy was registered as `language`. Move its
+ * km / en / jp terms (and so every post's language) to `sbek_language`.
+ *
+ * Only runs while `sbek_language` has no terms yet, and only touches the
+ * slugs this plugin created, so a `language` taxonomy belonging to another
+ * plugin is left alone.
+ */
+function sbek_companion_migrate_language_taxonomy(): void {
+	global $wpdb;
+
+	// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- no API renames a taxonomy; runs once on upgrade.
+	$already = (int) $wpdb->get_var(
+		$wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->term_taxonomy} WHERE taxonomy = %s", SBEK_LANGUAGE_TAXONOMY )
+	);
+	if ( $already ) {
+		return;
+	}
+
+	$slugs        = array_merge( array_keys( sbek_languages() ), array( 'jp' ) );
+	$placeholders = implode( ', ', array_fill( 0, count( $slugs ), '%s' ) );
+
+	$moved = $wpdb->query(
+		$wpdb->prepare(
+			// phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $placeholders is a list of %s.
+			"UPDATE {$wpdb->term_taxonomy} tt INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id SET tt.taxonomy = %s WHERE tt.taxonomy = 'language' AND t.slug IN ( $placeholders )",
+			array_merge( array( SBEK_LANGUAGE_TAXONOMY ), $slugs )
+		)
+	);
+	// phpcs:enable
+
+	if ( $moved ) {
+		clean_taxonomy_cache( SBEK_LANGUAGE_TAXONOMY );
+		wp_cache_flush_group( 'terms' );
+	}
+}

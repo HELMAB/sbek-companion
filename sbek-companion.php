@@ -3,7 +3,7 @@
  * Plugin Name:       Sbek Companion
  * Plugin URI:        https://github.com/HELMAB/sbek-companion
  * Description:       The non-design features of the Sbek news theme: Khmer / English URLs and linked translations, news fields (video, source, sponsored, breaking, trending), share buttons, double opt-in newsletter, SEO tags, analytics, login branding and lockout, query caching and demo content.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            Hel Mab
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SBEK_COMPANION_VERSION', '1.0.0' );
+define( 'SBEK_COMPANION_VERSION', '1.0.1' );
 define( 'SBEK_COMPANION_FILE', __FILE__ );
 define( 'SBEK_COMPANION_DIR', __DIR__ );
 define( 'SBEK_COMPANION_URL', plugins_url( '', __FILE__ ) );

@@ -2,7 +2,7 @@
 
 The non-design half of the [Sbek](https://github.com/HELMAB/sbek) news theme, as a plugin — so the theme can live in the WordPress.org theme directory, which doesn't allow these features in themes:
 
-- `/` Khmer + `/en/` English URLs, the `language` taxonomy, linked translations, English texts and category names (`includes/i18n.php`, `includes/admin/translation.php`, `includes/term-names.php`)
+- `/` Khmer + `/en/` English URLs, the `sbek_language` taxonomy, linked translations, English texts and category names (`includes/i18n.php`, `includes/admin/translation.php`, `includes/term-names.php`)
 - News details post meta: video, source, sponsored, breaking, trending (`includes/admin/post-meta.php`, `includes/frontend/article.php`)
 - Share buttons (`includes/frontend/article.php`, `assets/js/share.js`)
 - Double opt-in newsletter (`includes/frontend/newsletter.php`)
