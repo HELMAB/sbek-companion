@@ -9,7 +9,7 @@ slug="$(basename "$plugin_dir")"
 dist="$plugin_dir/dist"
 main="$plugin_dir/$slug.php"
 
-excludes=( .git bin dist README.md CLAUDE.md .gitignore .DS_Store Thumbs.db .idea .vscode '*.log' '*.l10n.php' )
+excludes=( .git bin dist README.md CLAUDE.md .gitignore .DS_Store Thumbs.db .idea .vscode '*.log' '*.po' '*.mo' '*.l10n.php' )
 
 red=$'\e[31m'; green=$'\e[32m'; bold=$'\e[1m'; reset=$'\e[0m'
 errors=0

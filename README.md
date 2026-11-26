@@ -20,6 +20,8 @@ It only loads while Sbek (or a child theme) is active and plugs into the theme's
 wp i18n make-pot . languages/sbek-companion.pot --domain=sbek-companion --exclude=dist
 msgmerge -N -U languages/sbek-companion-km.po languages/sbek-companion.pot
 wp i18n make-mo languages/sbek-companion-km.po languages/ && wp i18n make-php languages/sbek-companion-km.po languages/
+# The .po/.mo/.l10n.php files stay in git (to import into translate.wordpress.org)
+# but are not shipped: bin/release.sh leaves them out of the zip.
 
 bin/release.sh   # checks + dist/sbek-companion-<version>.zip
 ```

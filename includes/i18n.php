@@ -18,8 +18,10 @@
  *      theme's, this plugin's *and* core strings follow the URL language.
  *   3. Link filters re-add the prefix to every permalink WordPress builds, so
  *      templates simply use get_permalink() / get_term_link().
- *   4. Content is split by the private `language` taxonomy; a pre_get_posts
- *      filter scopes every front-end query to the active language.
+ *   4. Content is split by the private `sbek_language` taxonomy; a
+ *      pre_get_posts filter scopes every front-end query to the active
+ *      language. Posts without a language (written before the plugin was
+ *      activated) count as the default language.
  *   5. Category/tag names are localized from `sbek_name_{lang}` term meta via
  *      a `get_term` filter (menus, badges and archive titles all pick it up).
  *
@@ -341,12 +343,49 @@ function sbek_default_post_language( int $post_id, WP_Post $post ): void {
 add_action( 'save_post', 'sbek_default_post_language', 20, 2 );
 
 /**
- * Language slug of a post, or '' if untagged.
+ * Language slug of a post. Posts without a language term (written before the
+ * plugin was activated) are in the default language; '' only for post types
+ * that don't carry the taxonomy.
  */
 function sbek_post_language( int $post_id ): string {
 	$terms = get_the_terms( $post_id, SBEK_LANGUAGE_TAXONOMY );
 
-	return ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->slug : '';
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		return $terms[0]->slug;
+	}
+
+	return is_object_in_taxonomy( (string) get_post_type( $post_id ), SBEK_LANGUAGE_TAXONOMY ) ? SBEK_DEFAULT_LANGUAGE : '';
+}
+
+/**
+ * Tax-query clause matching posts in any of the given languages. When the
+ * default language is among them, posts without a language term match too,
+ * so content that existed before the plugin was activated stays visible
+ * without rewriting every post on activation.
+ *
+ * @param string[] $langs Language slugs.
+ * @return array<int|string,mixed>
+ */
+function sbek_language_tax_clause( array $langs ): array {
+	$langs  = array_values( $langs );
+	$clause = array(
+		'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
+		'field'    => 'slug',
+		'terms'    => $langs,
+	);
+
+	if ( ! in_array( SBEK_DEFAULT_LANGUAGE, $langs, true ) ) {
+		return $clause;
+	}
+
+	return array(
+		'relation' => 'OR',
+		$clause,
+		array(
+			'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
+			'operator' => 'NOT EXISTS',
+		),
+	);
 }
 
 // ─── 4. Scope front-end queries to the current language ────────────────────────
@@ -372,11 +411,7 @@ function sbek_filter_query_by_language( WP_Query $query ): void {
 	}
 
 	$tax_query   = (array) $query->get( 'tax_query' );
-	$tax_query[] = array(
-		'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
-		'field'    => 'slug',
-		'terms'    => array( sbek_companion_lang() ),
-	);
+	$tax_query[] = sbek_language_tax_clause( array( sbek_companion_lang() ) );
 	$query->set( 'tax_query', $tax_query );
 }
 add_action( 'pre_get_posts', 'sbek_filter_query_by_language' );
@@ -532,11 +567,7 @@ function sbek_term_has_posts_in( WP_Term $term, string $lang ): bool {
 						'taxonomy' => $term->taxonomy,
 						'terms'    => array( $term->term_id ),
 					),
-					array(
-						'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
-						'field'    => 'slug',
-						'terms'    => array( $lang ),
-					),
+					sbek_language_tax_clause( array( $lang ) ),
 				),
 			)
 		);

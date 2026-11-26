@@ -3,7 +3,7 @@
  * Plugin Name:       Sbek Companion
  * Plugin URI:        https://github.com/HELMAB/sbek-companion
  * Description:       The non-design features of the Sbek news theme: Khmer / English URLs and linked translations, news fields (video, source, sponsored, breaking, trending), share buttons, double opt-in newsletter, SEO tags, analytics, login branding and lockout, query caching and demo content.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            Hel Mab
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SBEK_COMPANION_VERSION', '1.0.1' );
+define( 'SBEK_COMPANION_VERSION', '1.0.2' );
 define( 'SBEK_COMPANION_FILE', __FILE__ );
 define( 'SBEK_COMPANION_DIR', __DIR__ );
 define( 'SBEK_COMPANION_URL', plugins_url( '', __FILE__ ) );
@@ -40,8 +40,8 @@ function sbek_companion_theme_is_active(): bool {
  * @param WP_Screen|null $screen Current admin screen (null if not set up yet).
  */
 function sbek_companion_theme_notice_screen( ?WP_Screen $screen ): bool {
-	// TODO: return true only on the screen(s) where this notice belongs.
-	return false;
+	// Plugins (where the plugin was just activated) and Themes (where the fix is).
+	return $screen instanceof WP_Screen && in_array( $screen->id, array( 'plugins', 'themes' ), true );
 }
 
 if ( ! sbek_companion_theme_is_active() ) {
@@ -62,15 +62,6 @@ if ( ! sbek_companion_theme_is_active() ) {
 	);
 	return;
 }
-
-/**
- * Plugin translations (bundled Khmer; WordPress.org language packs take
- * precedence once they exist).
- */
-function sbek_companion_load_textdomain(): void {
-	load_plugin_textdomain( 'sbek-companion', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'sbek_companion_load_textdomain', 0 );
 
 /**
  * Cache-busting version for a plugin asset (its modification time).

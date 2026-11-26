@@ -4,7 +4,7 @@ Tags: khmer, bilingual, news, newsletter, share buttons
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,8 +78,14 @@ The newsletter stores each subscriber's email address, language, status and sign
 
 == Changelog ==
 
+= 1.0.2 - 2026-11-26 =
+* Posts and pages written before the plugin was activated (no language yet) are shown as Khmer instead of disappearing from the front end.
+* Activation no longer touches a `language` taxonomy that may belong to another plugin.
+* Translations come from translate.wordpress.org; no translation files are bundled.
+* Login screen CSS values are validated and escaped.
+
 = 1.0.1 - 2026-11-16 =
-* The language taxonomy is now named `sbek_language` (was `language`) to avoid conflicts with other plugins. Existing posts keep their language: the terms are moved on upgrade.
+* The language taxonomy is now named `sbek_language` (was `language`) to avoid conflicts with other plugins.
 
 = 1.0.0 - 2026-11-03 =
 * Initial release: the language, news, sharing, newsletter, SEO, analytics, login and demo features that used to be part of the Sbek theme.

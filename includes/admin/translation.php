@@ -52,11 +52,7 @@ function sbek_render_translation_meta_box( WP_Post $post ): void {
 			'no_found_rows'      => true,
 			'sbek_all_languages' => true,
 			'tax_query'          => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-				array(
-					'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
-					'field'    => 'slug',
-					'terms'    => array_values( $others ),
-				),
+				sbek_language_tax_clause( $others ),
 			),
 		)
 	);
@@ -138,11 +134,7 @@ function sbek_ajax_translation_search(): void {
 			'no_found_rows'      => true,
 			'sbek_all_languages' => true,
 			'tax_query'          => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-				array(
-					'taxonomy' => SBEK_LANGUAGE_TAXONOMY,
-					'field'    => 'slug',
-					'terms'    => $others,
-				),
+				sbek_language_tax_clause( $others ),
 			),
 		)
 	);

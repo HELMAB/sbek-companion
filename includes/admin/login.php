@@ -54,26 +54,48 @@ function sbek_login_design(): void {
 	$panel_mid = sbek_mix_hex( $d['brand'], '#000000', 0.25 );
 	$on_panel  = 1.05 / ( sbek_luminance( $panel_mid ) + 0.05 ) >= 4.5 ? '#ffffff' : '#111111';
 
+	// Every value is validated for its CSS context before it is printed:
+	// colors must be hex colors, the RGB triplet integers, and the font names
+	// may only hold characters that can't end the declaration or the rule.
 	$vars = array(
-		'--sbek-primary'       => $d['brand'],
-		'--sbek-primary-hover' => $d['brand_dark'],
-		'--sbek-on-primary'    => sbek_readable_on( $d['brand'] ),
-		'--sbek-ring'          => implode( ' ', sbek_hex_to_rgb( $d['brand'] ) ),
-		'--sbek-panel-from'    => $d['brand'],
-		'--sbek-panel-to'      => $panel_end,
-		'--sbek-on-panel'      => $on_panel,
-		'--sbek-font'          => '"' . $family . '", ' . $latin,
+		'--sbek-primary'       => sanitize_hex_color( $d['brand'] ),
+		'--sbek-primary-hover' => sanitize_hex_color( $d['brand_dark'] ),
+		'--sbek-on-primary'    => sanitize_hex_color( sbek_readable_on( $d['brand'] ) ),
+		'--sbek-ring'          => implode( ' ', array_map( 'absint', sbek_hex_to_rgb( $d['brand'] ) ) ),
+		'--sbek-panel-from'    => sanitize_hex_color( $d['brand'] ),
+		'--sbek-panel-to'      => sanitize_hex_color( $panel_end ),
+		'--sbek-on-panel'      => sanitize_hex_color( $on_panel ),
+		'--sbek-font'          => '"' . sbek_login_css_font( $family, false ) . '", ' . sbek_login_css_font( $latin, true ),
 	);
 
 	$css = 'body.login{';
 	foreach ( $vars as $name => $value ) {
-		$css .= $name . ':' . $value . ';';
+		if ( '' !== (string) $value ) {
+			$css .= $name . ':' . $value . ';';
+		}
 	}
 	$css .= '}';
 
-	wp_add_inline_style( 'sbek-login', sbek_font_face_css( $family ) . $css );
+	// @font-face rules read from the theme's own stylesheet; HTML tags are
+	// stripped so nothing can close the <style> element.
+	wp_add_inline_style( 'sbek-login', wp_strip_all_tags( sbek_font_face_css( $family ) . $css ) );
 }
 add_action( 'login_enqueue_scripts', 'sbek_login_design', 20 );
+
+/**
+ * A font family name (printed inside double quotes) or a font stack, reduced
+ * to the characters such values use: letters, digits, spaces and hyphens,
+ * plus commas and double quotes in a stack. Nothing left can close the
+ * quoted name, the declaration, the rule or the <style> element.
+ *
+ * @param string $value Font family name or stack.
+ * @param bool   $stack Whether $value is a comma-separated stack.
+ */
+function sbek_login_css_font( string $value, bool $stack ): string {
+	$pattern = $stack ? '/[^\p{L}\p{N} ,"-]/u' : '/[^\p{L}\p{N} -]/u';
+
+	return trim( (string) preg_replace( $pattern, '', $value ) );
+}
 
 /**
  * Theme language matching the login screen's locale (core's language
@@ -165,10 +187,10 @@ add_filter( 'the_privacy_policy_link', 'sbek_login_privacy_link' );
 function sbek_login_logo_styles(): void {
 	$logo = sbek_companion_logo_url( 'medium' );
 	$css  = $logo
-		? '#login h1.wp-login-logo a{background-image:url("' . esc_url_raw( $logo ) . '");}'
+		? '#login h1.wp-login-logo a{background-image:url("' . esc_url( $logo ) . '");}'
 		: '#login h1.wp-login-logo{display:none;}';
 
-	wp_add_inline_style( 'sbek-login', $css );
+	wp_add_inline_style( 'sbek-login', wp_strip_all_tags( $css ) );
 }
 add_action( 'login_enqueue_scripts', 'sbek_login_logo_styles', 20 );
 
